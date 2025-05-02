@@ -1,26 +1,30 @@
-﻿using UnityEditor;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 [ExecuteAlways]
 public class SurfaceFlat : Prop
 {
-    float spaceBetween = 0.99f; // Shrinks the width to accommodate other expanding surfaces
-    public BoxCollider2D collidr;
+    float spaceBetween = 0.998f; // Shrinks the width to accommodate other expanding surfaces
+    BoxCollider2D collidr;
+    public SurfaceFlatData data;
+
     new void Start()
     {
         base.Start();
         collidr = GetComponent<BoxCollider2D>();
-        // collidr.offset = new Vector2
-        // (
-        //     0,
-        //     collidr.offset.y
-        // ); 
         collidr.size = new Vector2
         (
             SpriteRenderer().size.x * spaceBetween,
             collidr.size.y
         );
+
+        if(data.lock_width)
+        {
+            SpriteRenderer().size= new Vector2(data.nativeSize.x, SpriteRenderer().size.y);
+        }
+        if(data.lock_height)
+        {
+            SpriteRenderer().size= new Vector2(SpriteRenderer().size.x, data.nativeSize.y);
+        }
     }
     public Sprite Sprite()
     {

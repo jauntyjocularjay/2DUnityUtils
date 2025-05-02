@@ -6,7 +6,6 @@ using UnityEngine;
 
 public abstract class Character : Prop
 {
-    private SpriteRenderer spriteRenderer;
     private Animator animator;
     private Rigidbody2D rigidBody;
     [Header("Variables Character")]

@@ -8,7 +8,7 @@ public class CharacterData : ScriptableObject
     [Header("Character")]
     public int MaxHP = 0;
     public bool courtesy = false;
-    public int jumps = 0;
+    public int ExtraJumps = 0;
     [Header("SpriteRenderer")]
     public int sortingLayerID = 1;
     public int sortingOrder = 0;

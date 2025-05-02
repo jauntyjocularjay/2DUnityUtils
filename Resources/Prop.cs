@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-// [ExecuteAlways]
+[ExecuteAlways]
 public abstract class Prop : MonoBehaviour
 {
     Transform tx;
@@ -11,13 +11,21 @@ public abstract class Prop : MonoBehaviour
     public void Start()
     {
         SetSpriteRenderer();
-        SetTX();
+        SetTransform();
     }
-    public void SetTX()
+    // public void SetTX()
+    // {
+    //     tx = GetComponent<Transform>();
+    // }
+    // public Transform TX()
+    // {
+    //     return tx;
+    // }
+    public void SetTransform()
     {
         tx = GetComponent<Transform>();
     }
-    public Transform TX()
+    public Transform Transform()
     {
         return tx;
     }
@@ -35,7 +43,7 @@ public abstract class Prop : MonoBehaviour
     }
     public void SetTransform(Vector3 position, Quaternion rotation)
     {
-        TX().SetPositionAndRotation(position, rotation);
+        Transform().SetPositionAndRotation(position, rotation);
     }
     public void SetSpriteRenderer()
     {
