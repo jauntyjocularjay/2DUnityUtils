@@ -5,10 +5,12 @@ using UnityEngine;
 
 public abstract class BoxPlayer: BoxCharacter
 {
-    public BoxPlayerData data;
+    [SerializeField] BoxPlayerData data;
+    new Camera camera;
     public new void Start()
     {
         base.Start();
+        camera = camera = Camera.main;
         SetCollider2D();
         SetRigidbody2D();
 
@@ -23,5 +25,10 @@ public abstract class BoxPlayer: BoxCharacter
 
         SpriteRenderer().sortingLayerID = data.sortingLayerID;
         SpriteRenderer().sortingOrder = data.sortingOrder;
+    }
+
+    public void Update()
+    {
+        camera.GetComponent<Transform>().position = new Vector3(Transform().position.x, Transform().position.y + 3.75f, -10.0f);
     }
 }

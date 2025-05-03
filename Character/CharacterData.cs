@@ -10,7 +10,7 @@ public class CharacterData : ScriptableObject
     public bool courtesy = false;
     public int ExtraJumps = 0;
     [Header("SpriteRenderer")]
-    public int sortingLayerID = 1;
+    public int sortingLayerID = 0;
     public int sortingOrder = 0;
     public Vector3 movementVelocity = new Vector3(0,0,0); 
     [Header("Rigidbody")]

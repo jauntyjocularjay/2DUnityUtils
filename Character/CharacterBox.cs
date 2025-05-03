@@ -6,7 +6,8 @@ using UnityEngine;
 
 public abstract class BoxCharacter : Character
 {
-    private new BoxCollider2D collider;
+    new BoxCollider2D collider;
+    
     public new void Start()
     {
         base.Start();

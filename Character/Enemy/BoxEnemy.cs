@@ -2,5 +2,5 @@
 
 public class BoxEnemy : BoxCharacter
 {
-
+    public BoxCharacterData data;
 }
