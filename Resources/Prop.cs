@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
 
@@ -13,14 +13,6 @@ public abstract class Prop : MonoBehaviour
         SetSpriteRenderer();
         SetTransform();
     }
-    // public void SetTX()
-    // {
-    //     tx = GetComponent<Transform>();
-    // }
-    // public Transform TX()
-    // {
-    //     return tx;
-    // }
     public void SetTransform()
     {
         tx = GetComponent<Transform>();

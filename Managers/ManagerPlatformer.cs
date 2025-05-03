@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 [ExecuteAlways]
 public class PlatformerManager : Manager
 {
-    public BoxCharacter player;
-    public List<BoxCharacter> enemies;
+    public BoxPlayer player;
+    public List<BoxEnemy> enemies;
     Transform cameraTX;
     void Start()
     {

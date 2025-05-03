@@ -1,16 +1,16 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    BoxCharacter character;
+    BoxPlayer character;
     private Vector2 _moveDirection;
     public InputActionReference move;
     public InputActionReference attack;
     public InputActionReference jump;
     void Start()
     {
-        character = GetComponent<BoxCharacter>();
+        character = GetComponent<BoxPlayer>();
     }
 
     // Update is called once per frame
