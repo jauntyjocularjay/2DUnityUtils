@@ -5,8 +5,8 @@ public class SurfaceFlatData : ScriptableObject
 {
     public Vector2 nativeSize;
     [Header("Size")]
-    public bool lock_width;
-    public bool lock_height;
+    public bool lockWidth;
+    public bool lockHeight;
     void Awake()
     {
     }
