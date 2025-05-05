@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
         character = GetComponent<BoxPlayer>();
     }
 
-    // Update is called once per frame
     public void Update()
     {
         _moveDirection = move.action.ReadValue<Vector2>();
@@ -28,7 +27,17 @@ public class PlayerMovement : MonoBehaviour
         attack.action.started -= Attack;
         jump.action.started -= Jump;
     }
-    void Move(InputAction.CallbackContext obj){}
+    public void Move(InputAction.CallbackContext obj){
+        if(MoveVector().x < 0)
+        {
+            character.SpriteRenderer().flipX = true;
+        }
+        else if (MoveVector().x > 0)
+        {
+            character.SpriteRenderer().flipX = false;
+        }
+        character.GetComponent<Rigidbody2D>().linearVelocityX = MoveVector().x * 5;
+    }
     void Attack(InputAction.CallbackContext obj){}
     void Jump(InputAction.CallbackContext obj){}
     public Vector2 MoveVector()

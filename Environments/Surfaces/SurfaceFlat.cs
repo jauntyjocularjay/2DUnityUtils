@@ -14,6 +14,7 @@ public class SurfaceFlat : Prop
     new void Start()
     {
         base.Start();
+        gameObject.tag = "Surface";
         
         dataNativeSize = data.nativeSize;
         dataLockWidth = data.lockWidth;
