@@ -6,12 +6,12 @@ using UnityEngine;
 public class BoxPlayer: BoxCharacter
 {
     public BoxPlayerData data;
-    new Camera camera;
+    public new Camera camera;
     // public PlayerMovement playerMovement;
     public new void Start()
     {
         base.Start();
-        camera = camera = Camera.main;
+        camera = Camera.main;
         // playerMovement = GetComponent<PlayerMovement>();
         SetCollider2D();
         SetRigidbody2D();
@@ -27,10 +27,5 @@ public class BoxPlayer: BoxCharacter
 
         SpriteRenderer().sortingLayerID = data.sortingLayerID;
         SpriteRenderer().sortingOrder = data.sortingOrder;
-    }
-
-    public void Update()
-    {
-        camera.GetComponent<Transform>().position = new Vector3(Transform().position.x, Transform().position.y + 3.75f, -10.0f);
     }
 }

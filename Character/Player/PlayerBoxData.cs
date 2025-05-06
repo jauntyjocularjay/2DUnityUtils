@@ -7,5 +7,6 @@ public class BoxPlayerData : CharacterData
     public Vector2 colliderSize;
     
     [Header("Player Properties")]
+    public Vector3 cameraOffset;
     public float airControlVelocity;
 }
