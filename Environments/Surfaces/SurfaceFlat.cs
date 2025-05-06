@@ -27,6 +27,8 @@ public class SurfaceFlat : Prop
             collidr.size.y
         );
 
+        // Rigidbody2D().bodyType = RigidbodyType2D.Static;
+
         if(data.lockWidth)
         {
             SpriteRenderer().size= new Vector2(data.nativeSize.x, SpriteRenderer().size.y);

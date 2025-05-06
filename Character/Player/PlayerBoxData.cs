@@ -5,4 +5,7 @@
 public class BoxPlayerData : CharacterData
 {
     public Vector2 colliderSize;
+    
+    [Header("Player Properties")]
+    public float airControlVelocity;
 }
