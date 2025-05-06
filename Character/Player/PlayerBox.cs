@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-public class BoxPlayer: BoxCharacter
+public abstract class BoxPlayer: BoxCharacter
 {
     public BoxPlayerData data;
     public new Camera camera;
