@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BoxPlayer: BoxCharacter
 {
-    [SerializeField] BoxPlayerData data;
+    public BoxPlayerData data;
     new Camera camera;
     // public PlayerMovement playerMovement;
     public new void Start()
