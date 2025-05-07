@@ -6,13 +6,11 @@ using UnityEngine;
 public abstract class BoxPlayer: BoxCharacter
 {
     public BoxPlayerData data;
-    public new Camera camera;
     // public PlayerMovement playerMovement;
     public new void Start()
     {
         base.Start();
-        camera = Camera.main;
-        // playerMovement = GetComponent<PlayerMovement>();
+
         SetCollider2D();
         SetRigidbody2D();
 
