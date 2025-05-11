@@ -3,7 +3,6 @@ using UnityEngine;
 
 
 
-
 public abstract class Character : Prop
 {
     private Animator animator;

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+
+
 public abstract class PolygonCharacter : Character
 {
     public new PolygonCollider2D collider;
