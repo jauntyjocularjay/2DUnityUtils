@@ -25,5 +25,7 @@ public abstract class BoxPlayer: BoxCharacter
 
         SpriteRenderer().sortingLayerID = data.sortingLayerID;
         SpriteRenderer().sortingOrder = data.sortingOrder;
+
+        SetHP(data.MaxHP);
     }
 }

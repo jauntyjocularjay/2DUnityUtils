@@ -15,7 +15,7 @@ public class CharacterData : ScriptableObject
     [Header("SpriteRenderer")]
     public int sortingLayerID = 0;
     public int sortingOrder = 0;
-    public Vector3 movementVelocity = new Vector3(0,0,0); 
+    public Vector3 movementVelocity = new Vector3(0, 0, 0); 
 
     [Header("Rigidbody")]
     public float mass = 1.0f;

@@ -7,8 +7,8 @@ public abstract class Character : Prop
 {
     private Animator animator;
     private Rigidbody2D rigidBody;
+
     [Header("Variables Character")]
-    private int MaxHP = 5;
     private int hp = 0;
     new public void Start()
     {
@@ -16,7 +16,6 @@ public abstract class Character : Prop
         SetSpriteRenderer();
         animator = GetComponent<Animator>();
         SetRigidbody2D();
-        SetHP(MaxHP);
     }
     public Animator Animator()
     {
@@ -62,5 +61,6 @@ public abstract class Character : Prop
         rigidBody.linearVelocity = vector;
     }
 
-    
+
+
 }
