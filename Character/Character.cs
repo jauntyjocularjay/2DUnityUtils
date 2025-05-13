@@ -8,8 +8,8 @@ public abstract class Character : Prop
     private Animator animator;
     private Rigidbody2D rigidBody;
 
-    [Header("Variables Character")]
-    private int hp = 0;
+    // [Header("Variables Character")]
+    // private int hp = 0;
     new public void Start()
     {
         base.Start();
@@ -34,11 +34,15 @@ public abstract class Character : Prop
     }
     public void SetHP(int currentHP)
     {
-        hp = currentHP;
+        Animator().SetInteger("HP", currentHP);
     }
     public int HP()
     {
-        return hp;
+        return Animator().GetInteger("HP");
+    }
+    public void DecrementHP()
+    {
+        SetHP(HP() - 1);
     }
     public void LinearVelocityX(float x)
     {
