@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BrawlerManager : Manager
 {
-    List<BoxPlayer> players;
+    public List<BoxPlayer> players;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     new void Start()
