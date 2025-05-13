@@ -10,8 +10,9 @@ public class PlatformerManager : Manager
     Transform cameraTX;
     public Vector3 cameraMinimumPosition;
     public Vector3 cameraMaximumPosition;
-    void Start()
+    new void Start()
     {
+        base.Start();
         cameraTX = MainCamera().GetComponent<Transform>();
     }
 
