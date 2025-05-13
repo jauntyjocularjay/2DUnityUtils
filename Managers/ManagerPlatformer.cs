@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Common;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -78,8 +77,6 @@ public class PlatformerManager : Manager
             );
         }
     }
-
-    
 }
 
 
