@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+
+
 [ExecuteAlways]
 public abstract class Manager : MonoBehaviour
 {
