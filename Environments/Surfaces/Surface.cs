@@ -22,7 +22,7 @@ public abstract class Surface : Prop
         );
     }
 
-    BoxCollider2D BoxCollider2D()
+    public BoxCollider2D BoxCollider2D()
     {
         return collidr;
     }
@@ -32,4 +32,8 @@ public abstract class Surface : Prop
         collidr.size = size;
     }
 
+    public float SpaceBetween()
+    {
+        return spaceBetween;
+    }
 }

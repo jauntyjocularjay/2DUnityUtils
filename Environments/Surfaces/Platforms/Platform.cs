@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+
+
 [ExecuteAlways]
 public class Platform : Surface
 {
@@ -11,19 +13,38 @@ public class Platform : Surface
         
         gameObject.tag = "Platform";
 
-        base.dataNativeSize = data.nativeSize;
-        base.dataLockWidth = data.lockWidth;
-        base.dataLockHeight = data.lockHeight;
-
+        dataNativeSize = data.nativeSize;
+        dataLockWidth = data.lockWidth;
+        dataLockHeight = data.lockHeight;
+        
         Rigidbody2D().bodyType = RigidbodyType2D.Static;
 
         if(data.lockWidth)
         {
-            SpriteRenderer().size= new Vector2(data.nativeSize.x, SpriteRenderer().size.y);
+            BoxCollider2D().size = new Vector2
+            (
+                data.nativeSize.x * SpaceBetween(), 
+                BoxCollider2D().size.y
+            );
+            SpriteRenderer().size = new Vector2
+            (
+                data.nativeSize.x, 
+                SpriteRenderer().size.y
+            );
         }
         if(data.lockHeight)
         {
-            SpriteRenderer().size= new Vector2(SpriteRenderer().size.x, data.nativeSize.y);
+            float heightDifferential = BoxCollider2D().size.y / SpriteRenderer().size.y;
+            BoxCollider2D().size = new Vector2
+            (
+                BoxCollider2D().size.x,
+                data.nativeSize.y * heightDifferential
+            );
+            SpriteRenderer().size= new Vector2
+            (
+                SpriteRenderer().size.x, 
+                data.nativeSize.y
+            );
         }
     }
     
