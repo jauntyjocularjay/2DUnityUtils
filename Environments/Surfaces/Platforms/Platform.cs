@@ -3,8 +3,6 @@
 [ExecuteAlways]
 public class Platform : Surface
 {
-    float spaceBetween = 0.999f; // Shrinks the width to accommodate other expanding surfaces
-    BoxCollider2D collidr;
     public PlatformData data;
 
     new void Start()

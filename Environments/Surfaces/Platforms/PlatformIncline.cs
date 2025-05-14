@@ -2,7 +2,7 @@
 
 
 
-// public class SurfaceIncline : Prop
+// public class PlatformIncline : Prop
 // {
 //     public PolygonCollider2D collidr;
 //     new void Start()

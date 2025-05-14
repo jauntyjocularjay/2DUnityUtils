@@ -2,7 +2,7 @@
 
 
 
-// public class SurfaceFlatMask : Platform
+// public class PlatformFlatMask : Platform
 // {
 //     SpriteMask spriteMask;
 //     new void Start()
