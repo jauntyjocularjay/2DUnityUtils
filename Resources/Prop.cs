@@ -8,6 +8,8 @@ public abstract class Prop : MonoBehaviour
 {
     Transform tx;
     SpriteRenderer sr;
+    Rigidbody2D rb;
+
     
     public void Start()
     {
@@ -55,5 +57,19 @@ public abstract class Prop : MonoBehaviour
     {
         sr.sprite = sprite;
     }
+    
+    public Sprite Sprite()
+    {
+        return sr.sprite;
+    }
+    public Vector2 PivotPoint()
+    {
+        return sr.sprite.pivot;
+    }
 
+
+    public Rigidbody2D Rigidbody2D()
+    {
+        return rb;
+    }
 }
