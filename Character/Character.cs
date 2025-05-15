@@ -13,9 +13,7 @@ public abstract class Character : Prop
     new public void Start()
     {
         base.Start();
-        SetSpriteRenderer();
         animator = GetComponent<Animator>();
-        SetRigidbody2D();
     }
     public Animator Animator()
     {

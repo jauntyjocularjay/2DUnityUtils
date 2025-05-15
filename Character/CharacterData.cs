@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 
-public class CharacterData : ScriptableObject
+public abstract class CharacterData : ScriptableObject
 {
     [Header("Character")]
     public int MaxHP = 0;
@@ -20,8 +20,5 @@ public class CharacterData : ScriptableObject
     [Header("Rigidbody")]
     public float mass = 1.0f;
     public float gravityScale = 1.0f;
-
-    [Header("BoxCollider")]
-    public Vector2 colliderOffset;
 
 }

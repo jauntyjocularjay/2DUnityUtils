@@ -1,35 +1,28 @@
 ﻿using UnityEngine;
 
 [ExecuteAlways]
-public abstract class Surface : Prop
+public abstract class Surface : PropPhysical
 {
     readonly float spaceBetween = 0.999f; // Shrinks the width to accommodate other expanding surfaces
-    BoxCollider2D collidr;
 
+    public SurfaceData data;
     [Header("Uneditable Information")]
     public Vector2 dataNativeSize;
     public bool dataLockWidth;
     public bool dataLockHeight;
+    
 
-    new void Start()
+    new public void Start()
     {
         base.Start();
         
-        collidr.size = new Vector2
+        Rigidbody2D().bodyType = RigidbodyType2D.Static;
+        
+        BoxCollider2D().size = new Vector2
         (
             SpriteRenderer().size.x * spaceBetween,
-            collidr.size.y
+            BoxCollider2D().size.y
         );
-    }
-
-    public BoxCollider2D BoxCollider2D()
-    {
-        return collidr;
-    }
-    void BoxCollider2D(Vector2 offset, Vector2 size)
-    {
-        collidr.offset = offset;
-        collidr.size = size;
     }
 
     public float SpaceBetween()

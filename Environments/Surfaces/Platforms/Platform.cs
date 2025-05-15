@@ -5,9 +5,7 @@
 [ExecuteAlways]
 public class Platform : Surface
 {
-    public PlatformData data;
-
-    new void Start()
+    new public void Start()
     {
         base.Start();
         
@@ -15,11 +13,9 @@ public class Platform : Surface
 
         dataNativeSize = data.nativeSize;
         dataLockWidth = data.lockWidth;
-        dataLockHeight = data.lockHeight;
-        
-        Rigidbody2D().bodyType = RigidbodyType2D.Static;
+        dataLockHeight = data.lockHeight;        
 
-        if(data.lockWidth)
+        if(data.lockWidth && SpriteRenderer().size.x > data.nativeSize.x)
         {
             BoxCollider2D().size = new Vector2
             (
@@ -32,7 +28,8 @@ public class Platform : Surface
                 SpriteRenderer().size.y
             );
         }
-        if(data.lockHeight)
+        
+        if(data.lockHeight && SpriteRenderer().size.y > data.nativeSize.y)
         {
             float heightDifferential = BoxCollider2D().size.y / SpriteRenderer().size.y;
             BoxCollider2D().size = new Vector2

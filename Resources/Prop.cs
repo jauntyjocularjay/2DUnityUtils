@@ -8,19 +8,14 @@ public abstract class Prop : MonoBehaviour
 {
     Transform tx;
     SpriteRenderer sr;
-    Rigidbody2D rb;
 
     
     public void Start()
     {
-        SetTransform();
-        SetSpriteRenderer();
+        tx = GetComponent<Transform>();
+        sr = GetComponent<SpriteRenderer>();
     }
     
-    public void SetTransform()
-    {
-        tx = GetComponent<Transform>();
-    }
     public Transform Transform()
     {
         return tx;
@@ -45,10 +40,6 @@ public abstract class Prop : MonoBehaviour
         Transform().SetPositionAndRotation(position, rotation);
     }
 
-    public void SetSpriteRenderer()
-    {
-        sr = GetComponent<SpriteRenderer>();
-    }
     public SpriteRenderer SpriteRenderer()
     {
         return sr;
@@ -67,9 +58,4 @@ public abstract class Prop : MonoBehaviour
         return sr.sprite.pivot;
     }
 
-
-    public Rigidbody2D Rigidbody2D()
-    {
-        return rb;
-    }
 }
