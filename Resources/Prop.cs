@@ -4,7 +4,7 @@
 
 
 [ExecuteAlways]
-public abstract class Prop : MonoBehaviour
+public class Prop : MonoBehaviour
 {
     Transform tx;
     SpriteRenderer sr;
