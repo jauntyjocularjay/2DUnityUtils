@@ -2,7 +2,7 @@
 
 public class BoxEnemy : BoxCharacter
 {
-    public new BoxEnemyData data;
+    public BoxEnemyData data;
 
     new void Start()
     {
