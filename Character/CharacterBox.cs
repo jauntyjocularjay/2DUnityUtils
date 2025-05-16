@@ -6,7 +6,7 @@ using UnityEngine;
 
 public abstract class BoxCharacter : Character
 {
-    new BoxCollider2D collider;
+    BoxCollider2D collidr;
     
     public new void Start()
     {
@@ -15,10 +15,10 @@ public abstract class BoxCharacter : Character
     }
     public override void SetCollider2D()
     {
-        collider = GetComponent<BoxCollider2D>();
+        collidr = GetComponent<BoxCollider2D>();
     }
     public BoxCollider2D BoxCollider2D()
     {
-        return collider;
+        return collidr;
     }
 }

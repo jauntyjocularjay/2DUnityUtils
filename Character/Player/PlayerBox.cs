@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-public abstract class BoxPlayer: BoxCharacter
+public class BoxPlayer: BoxCharacter
 {
     public BoxPlayerData data;
     // public PlayerMovement playerMovement;

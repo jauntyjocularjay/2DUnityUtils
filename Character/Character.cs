@@ -8,8 +8,6 @@ public abstract class Character : Prop
     private Animator animator;
     private Rigidbody2D rigidBody;
 
-    // [Header("Variables Character")]
-    // private int hp = 0;
     new public void Start()
     {
         base.Start();
@@ -62,6 +60,7 @@ public abstract class Character : Prop
     {
         rigidBody.linearVelocity = vector;
     }
+
 
 
 

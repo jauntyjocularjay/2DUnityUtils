@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Data", menuName = "Data/BoxPlayer", order = 99)]
+[CreateAssetMenu(fileName = "PlayerData", menuName = "Data/BoxPlayer", order = 80)]
 public class BoxPlayerData : BoxCharacterData
 {
     [Header("Player Properties")]
