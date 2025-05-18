@@ -3,5 +3,6 @@
 
  public class FarmSimManager : Manager
  {
-     public List<Crop> crops;
+    public BoxPlayer player;
+    public List<Crop> crops;
  }

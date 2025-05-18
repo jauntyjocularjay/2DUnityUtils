@@ -7,8 +7,6 @@ public class PlatformerManager : Manager
     public BoxPlayer player;
     public List<BoxEnemy> enemies;
     Transform cameraTX;
-    public Vector3 cameraMinimumPosition;
-    public Vector3 cameraMaximumPosition;
     new void Start()
     {
         base.Start();
