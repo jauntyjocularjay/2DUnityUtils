@@ -12,6 +12,7 @@ public abstract class Character : Prop
     {
         base.Start();
         animator = GetComponent<Animator>();
+        rigidBody = GetComponent<Rigidbody2D>();
     }
     public Animator Animator()
     {
