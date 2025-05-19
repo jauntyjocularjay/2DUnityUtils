@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 [ExecuteAlways]
 public abstract class Manager : MonoBehaviour
 {
-    readonly float mapUnitSide = 1.40625f;
+    readonly float mapUnitSide = 2.8125f;
     [Header("Camera Orthagonal Size Multiplier")]
     public float size = 4.0f;
     public Scene nextScene;
