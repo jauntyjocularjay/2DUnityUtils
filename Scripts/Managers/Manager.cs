@@ -10,8 +10,8 @@ public abstract class Manager : MonoBehaviour
     [Header("Camera Orthagonal Size Multiplier")]
     public float size = 4.0f;
     public Scene nextScene;
-    public Vector3 cameraMinimumPosition;
-    public Vector3 cameraMaximumPosition;
+    public Vector3 cameraMinimumPosition = Vector3.zero;
+    public Vector3 cameraMaximumPosition = Vector3.zero;
     public void Start()
     {
         MainCamera().orthographicSize = size * mapUnitSide;
