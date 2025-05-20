@@ -3,7 +3,6 @@ using UnityEngine;
 
 
 
-
 public abstract class BoxCharacter : Character
 {
     BoxCollider2D collidr;
