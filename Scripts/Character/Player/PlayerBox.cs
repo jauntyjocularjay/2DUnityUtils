@@ -14,17 +14,15 @@ public class BoxPlayer: BoxCharacter
         SetCollider2D();
         SetRigidbody2D();
 
+        SpriteRenderer().sortingLayerID = data.sortingLayerID;
+        SpriteRenderer().sortingOrder = data.sortingOrder;
+
         BoxCollider2D().offset = data.colliderOffset;
         BoxCollider2D().size = data.colliderSize;
+        BoxCollider2D().edgeRadius = data.colliderEdgeRadius;
         
         RigidBody2D().mass = data.mass;
         RigidBody2D().gravityScale = data.gravityScale;
-
-        SpriteRenderer().sortingLayerID = data.sortingLayerID;
-        SpriteRenderer().sortingOrder = data.sortingOrder;
-
-        SpriteRenderer().sortingLayerID = data.sortingLayerID;
-        SpriteRenderer().sortingOrder = data.sortingOrder;
 
         SetHP(data.MaxHP);
     }

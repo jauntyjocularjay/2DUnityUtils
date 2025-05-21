@@ -121,10 +121,10 @@ public class PlatformerManager : Manager
         {
             Object.Destroy(collision.gameObject);
         }
-        else
-        {
-            throw new InvalidEnumArgumentException($"{type} is an invalid TriggerType");
-        }
+        //else
+        //{
+        //    throw new InvalidEnumArgumentException($"{type} is an invalid TriggerType");
+        //}
     }
 }
 
