@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -7,72 +8,122 @@ public class PlatformerManager : Manager
     public BoxPlayer player;
     public List<BoxEnemy> enemies;
     Transform cameraTX;
+    public Vector2 CollidrSize = new Vector2(32, 24);
+    BoxCollider2D collidr;
+
+    public
+
     new void Start()
     {
         base.Start();
         cameraTX = MainCamera().GetComponent<Transform>();
+        collidr = GetComponent<BoxCollider2D>();
+        collidr.size = CollidrSize;
+
+
     }
 
     void Update()
     {
         SetCameraPosition();
     }
+
     void SetCameraPosition()
     {
-        if(player.Transform().position.x + player.data.cameraOffset.x <= cameraMinimumPosition.x)
+        Vector3 newPosition;
+        if (player.Transform().position.x + player.data.cameraOffset.x <= cameraMinimumPosition.x)
         {
-            cameraTX.position = new Vector3
+            newPosition = new Vector3
             (
-                cameraMinimumPosition.x, 
-                cameraTX.position.y, 
+                cameraMinimumPosition.x,
+                cameraTX.position.y,
                 cameraTX.position.z
             );
+            cameraTX.position = newPosition;
+            GetComponent<Transform>().position = newPosition;
+
         }
-        else if(player.Transform().position.x + player.data.cameraOffset.x >= cameraMaximumPosition.x)
+        else if (player.Transform().position.x + player.data.cameraOffset.x >= cameraMaximumPosition.x)
         {
-            cameraTX.position = new Vector3
+            newPosition = new Vector3
             (
-                cameraMaximumPosition.x, 
-                cameraTX.position.y, 
+                cameraMaximumPosition.x,
+                cameraTX.position.y,
                 cameraTX.position.z
             );
+
+            cameraTX.position = newPosition;
+            GetComponent<Transform>().position = newPosition;
         }
         else
         {
-            cameraTX.position = new Vector3
+            newPosition = new Vector3
             (
-                player.Transform().position.x + player.data.cameraOffset.x, 
-                cameraTX.position.y, 
+                player.Transform().position.x + player.data.cameraOffset.x,
+                cameraTX.position.y,
                 cameraTX.position.z
             );
+            
+            cameraTX.position = newPosition;
+            GetComponent<Transform>().position = newPosition;
         }
 
-        if(player.Transform().position.y + player.data.cameraOffset.y <= cameraMinimumPosition.y)
+        if (player.Transform().position.y + player.data.cameraOffset.y <= cameraMinimumPosition.y)
         {
-            cameraTX.position = new Vector3
+            newPosition = new Vector3
             (
-                cameraTX.position.x, 
-                cameraMinimumPosition.y, 
+                cameraTX.position.x,
+                cameraMinimumPosition.y,
                 cameraTX.position.z
             );
+
+            cameraTX.position = newPosition;
+            GetComponent<Transform>().position = newPosition;
         }
         else if (player.Transform().position.y + player.data.cameraOffset.y >= cameraMaximumPosition.y)
         {
-            cameraTX.position = new Vector3
+            newPosition = new Vector3
             (
-                cameraTX.position.x, 
-                cameraMaximumPosition.y, 
+                cameraTX.position.x,
+                cameraMaximumPosition.y,
                 cameraTX.position.z
             );
+
+            cameraTX.position = newPosition;
+            GetComponent<Transform>().position = newPosition;
         }
         else
         {
-            cameraTX.position = new Vector3
+            newPosition = new Vector3
             (
-                cameraTX.position.x, 
+                cameraTX.position.x,
                 player.Transform().position.y + player.data.cameraOffset.y,
                 cameraTX.position.z
             );
+
+            cameraTX.position = newPosition;
+            GetComponent<Transform>().position = newPosition;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        HandleTriggers(collision, TriggerType.Exit);
+    }
+    void HandleTriggers(Collider2D collision, TriggerType type)
+    {
+        // if (type == TriggerType.Enter)
+        // { }
+        // else if (type == TriggerType.Stay)
+        // { }
+        // else
+        if (collision.gameObject.CompareTag("Enemy") && type == TriggerType.Exit)
+        {
+            Object.Destroy(collision.gameObject);
+        }
+        else
+        {
+            throw new InvalidEnumArgumentException($"{type} is an invalid TriggerType");
         }
     }
 }
