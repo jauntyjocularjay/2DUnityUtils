@@ -112,19 +112,10 @@ public class PlatformerManager : Manager
     }
     void HandleTriggers(Collider2D collision, TriggerType type)
     {
-        // if (type == TriggerType.Enter)
-        // { }
-        // else if (type == TriggerType.Stay)
-        // { }
-        // else
-        if (collision.gameObject.CompareTag("Enemy") && type == TriggerType.Exit)
+        if ((collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player")) && type == TriggerType.Exit)
         {
             Object.Destroy(collision.gameObject);
         }
-        //else
-        //{
-        //    throw new InvalidEnumArgumentException($"{type} is an invalid TriggerType");
-        //}
     }
 }
 
