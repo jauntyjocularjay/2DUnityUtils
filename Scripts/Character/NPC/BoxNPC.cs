@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class BoxNPC : BoxCharacter
+namespace DMBTools
 {
-    public BoxNPCData data;
+    public class BoxNPC : BoxCharacter
+    {
+        public BoxNPCData data;
+    }
 }

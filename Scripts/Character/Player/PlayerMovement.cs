@@ -1,47 +1,51 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+namespace DMBTools
 {
-    BoxPlayer character;
-    private Vector2 _moveDirection;
-    public InputActionReference move;
-    public InputActionReference attack;
-    public InputActionReference jump;
-    void Start()
+    public class PlayerMovement : MonoBehaviour
     {
-        character = GetComponent<BoxPlayer>();
-    }
+        BoxPlayer character;
+        private Vector2 _moveDirection;
+        public InputActionReference move;
+        public InputActionReference attack;
+        public InputActionReference jump;
+        void Start()
+        {
+            character = GetComponent<BoxPlayer>();
+        }
 
-    public void Update()
-    {
-        _moveDirection = move.action.ReadValue<Vector2>();
-    }
-    void OnEnable()
-    {
-        attack.action.started += Attack;
-        jump.action.started += Jump;
-    }
-    void OnDisable()
-    {
-        attack.action.started -= Attack;
-        jump.action.started -= Jump;
-    }
-    public void Move(InputAction.CallbackContext obj){
-        if(MoveVector().x < 0)
+        public void Update()
         {
-            character.SpriteRenderer().flipX = true;
+            _moveDirection = move.action.ReadValue<Vector2>();
         }
-        else if (MoveVector().x > 0)
+        void OnEnable()
         {
-            character.SpriteRenderer().flipX = false;
+            attack.action.started += Attack;
+            jump.action.started += Jump;
         }
-        character.GetComponent<Rigidbody2D>().linearVelocityX = MoveVector().x * 5;
-    }
-    void Attack(InputAction.CallbackContext obj){}
-    void Jump(InputAction.CallbackContext obj){}
-    public Vector2 MoveVector()
-    {
-        return _moveDirection;
+        void OnDisable()
+        {
+            attack.action.started -= Attack;
+            jump.action.started -= Jump;
+        }
+        public void Move(InputAction.CallbackContext obj)
+        {
+            if (MoveVector().x < 0)
+            {
+                character.SpriteRenderer().flipX = true;
+            }
+            else if (MoveVector().x > 0)
+            {
+                character.SpriteRenderer().flipX = false;
+            }
+            character.GetComponent<Rigidbody2D>().linearVelocityX = MoveVector().x * 5;
+        }
+        void Attack(InputAction.CallbackContext obj) { }
+        void Jump(InputAction.CallbackContext obj) { }
+        public Vector2 MoveVector()
+        {
+            return _moveDirection;
+        }
     }
 }

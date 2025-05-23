@@ -3,21 +3,24 @@ using UnityEngine;
 
 
 
-public abstract class BoxCharacter : Character
+namespace DMBTools
 {
-    BoxCollider2D collidr;
-    
-    public new void Start()
+    public abstract class BoxCharacter : Character
     {
-        base.Start();
-        SetCollider2D();
-    }
-    public override void SetCollider2D()
-    {
-        collidr = GetComponent<BoxCollider2D>();
-    }
-    public BoxCollider2D BoxCollider2D()
-    {
-        return collidr;
+        BoxCollider2D collidr;
+
+        public new void Start()
+        {
+            base.Start();
+            SetCollider2D();
+        }
+        public override void SetCollider2D()
+        {
+            collidr = GetComponent<BoxCollider2D>();
+        }
+        public BoxCollider2D BoxCollider2D()
+        {
+            return collidr;
+        }
     }
 }

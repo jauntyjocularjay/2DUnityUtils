@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-
-
+namespace DMBTools
+{
 public abstract class Character : Prop
 {
     private Animator animator;
@@ -65,4 +65,5 @@ public abstract class Character : Prop
 
 
 
+}
 }

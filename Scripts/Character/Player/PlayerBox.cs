@@ -3,27 +3,30 @@ using UnityEngine;
 
 
 
-public class BoxPlayer: BoxCharacter
+namespace DMBTools
 {
-    public BoxPlayerData data;
-    // public PlayerMovement playerMovement;
-    public new void Start()
+    public class BoxPlayer : BoxCharacter
     {
-        base.Start();
+        public BoxPlayerData data;
+        // public PlayerMovement playerMovement;
+        public new void Start()
+        {
+            base.Start();
 
-        SetCollider2D();
-        SetRigidbody2D();
+            SetCollider2D();
+            SetRigidbody2D();
 
-        SpriteRenderer().sortingLayerID = data.sortingLayerID;
-        SpriteRenderer().sortingOrder = data.sortingOrder;
+            SpriteRenderer().sortingLayerID = data.sortingLayerID;
+            SpriteRenderer().sortingOrder = data.sortingOrder;
 
-        BoxCollider2D().offset = data.colliderOffset;
-        BoxCollider2D().size = data.colliderSize;
-        BoxCollider2D().edgeRadius = data.colliderEdgeRadius;
-        
-        RigidBody2D().mass = data.mass;
-        RigidBody2D().gravityScale = data.gravityScale;
+            BoxCollider2D().offset = data.colliderOffset;
+            BoxCollider2D().size = data.colliderSize;
+            BoxCollider2D().edgeRadius = data.colliderEdgeRadius;
 
-        SetHP(data.MaxHP);
+            RigidBody2D().mass = data.mass;
+            RigidBody2D().gravityScale = data.gravityScale;
+
+            SetHP(data.MaxHP);
+        }
     }
 }

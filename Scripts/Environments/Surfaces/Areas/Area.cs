@@ -1,16 +1,22 @@
 using UnityEngine;
 
-public class Area : Surface
+
+
+
+namespace DMBTools
 {
-    new void Start()
+    public class Area : Surface
     {
-        base.Start();
-        
-    }
+        new void Start()
+        {
+            base.Start();
+
+        }
 
 
-    void Update()
-    {
-        
+        void Update()
+        {
+
+        }
     }
 }

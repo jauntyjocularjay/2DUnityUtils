@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 
-public class BoxEnemy : BoxCharacter
+namespace DMBTools
 {
-    public BoxEnemyData data;
-
-    new void Start()
+    public class BoxEnemy : BoxCharacter
     {
-        base.Start();
-        SetHP(data.MaxHP);
-    }
+        public BoxEnemyData data;
 
-    public BoxEnemyData Data()
-    {
-        return data;
+        new void Start()
+        {
+            base.Start();
+            SetHP(data.MaxHP);
+        }
+
+        public BoxEnemyData Data()
+        {
+            return data;
+        }
     }
 }
