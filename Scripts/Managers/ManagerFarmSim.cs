@@ -3,7 +3,7 @@
 
 namespace DMBTools
 {
-   public class FarmSimManager : Manager
+    public abstract class FarmSimManager : Manager
    {
       public BoxPlayer player;
       public List<Crop> crops;
@@ -13,10 +13,6 @@ namespace DMBTools
       public new void Start()
       {
          base.Start();
-
-
       }
-
-
    }
 }

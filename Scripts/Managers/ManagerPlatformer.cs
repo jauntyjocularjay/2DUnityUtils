@@ -5,7 +5,7 @@ using UnityEngine;
 namespace DMBTools
 {
     [ExecuteAlways]
-    public class PlatformerManager : Manager
+    public abstract class PlatformerManager : Manager
     {
         public BoxPlayer player;
         public List<BoxEnemy> enemies;
@@ -21,8 +21,6 @@ namespace DMBTools
             cameraTX = MainCamera().GetComponent<Transform>();
             collidr = GetComponent<BoxCollider2D>();
             collidr.size = CollidrSize;
-
-
         }
 
         void Update()
@@ -120,6 +118,5 @@ namespace DMBTools
             }
         }
     }
-
-
 }
+

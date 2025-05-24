@@ -4,21 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
-public abstract class CharacterData : ScriptableObject
+namespace DMBTools
 {
-    [Header("Character")]
-    public int MaxHP = 0;
-    public bool courtesy = false;
-    public int ExtraJumps = 0;
+    public abstract class CharacterData : ScriptableObject
+    {
+        [Header("Character")]
+        public int MaxHP = 0;
+        public bool courtesy = false;
+        public int ExtraJumps = 0;
+    
+        [Header("SpriteRenderer")]
+        public int sortingLayerID = 0;
+        public int sortingOrder = 0;
+        public Vector3 movementVelocity = Vector3.one; 
+    
+        [Header("Rigidbody")]
+        public float mass = 1.0f;
+        public float gravityScale = 1.0f;
+    
+    }
 
-    [Header("SpriteRenderer")]
-    public int sortingLayerID = 0;
-    public int sortingOrder = 0;
-    public Vector3 movementVelocity = Vector3.one; 
-
-    [Header("Rigidbody")]
-    public float mass = 1.0f;
-    public float gravityScale = 1.0f;
 
 }
+

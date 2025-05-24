@@ -5,7 +5,7 @@
 namespace DMBTools
 {
     [ExecuteAlways]
-    public class Platform : Surface
+    public abstract class Platform : Surface
     {
         new public void Start()
         {

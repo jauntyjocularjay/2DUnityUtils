@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 
+
+
 namespace DMBTools
 {
-public class Crop : PropPhysical
-{
-
-}
+    public abstract class Crop : PropPhysical
+    {
+    
+    }
 }

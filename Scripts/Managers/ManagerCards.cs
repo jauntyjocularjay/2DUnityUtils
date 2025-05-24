@@ -2,21 +2,13 @@
 
 
 
-
 namespace DMBTools
 {
-    public abstract class Area : Surface
+    public abstract class CardManager: Manager
     {
         new void Start()
         {
             base.Start();
-
-        }
-
-
-        void Update()
-        {
-
         }
     }
 }

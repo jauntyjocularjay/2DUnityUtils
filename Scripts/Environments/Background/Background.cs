@@ -1,5 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Background : MonoBehaviour
+public abstract class Background : MonoBehaviour
 {
 }

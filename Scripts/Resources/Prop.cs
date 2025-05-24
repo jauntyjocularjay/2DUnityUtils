@@ -5,7 +5,7 @@ namespace DMBTools
 {
 
     [ExecuteAlways]
-    public class Prop : MonoBehaviour
+    public abstract class Prop : MonoBehaviour
     {
         Transform tx;
         SpriteRenderer sr;
