@@ -4,7 +4,7 @@
 
 namespace DMBTools
 {
-    public abstract class Crop : PropPhysical
+    public abstract class Crop : PhysicalProp
     {
     
     }

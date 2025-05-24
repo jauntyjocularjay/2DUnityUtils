@@ -3,7 +3,7 @@
 
 namespace DMBTools
 {
-    public abstract class PropPhysical : Prop
+    public abstract class PhysicalProp : Prop
     {
         BoxCollider2D collidr;
         Rigidbody2D rb;

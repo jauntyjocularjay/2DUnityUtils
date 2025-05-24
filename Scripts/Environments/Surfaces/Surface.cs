@@ -4,7 +4,7 @@
 namespace DMBTools
 {
     [ExecuteAlways]
-    public abstract class Surface : PropPhysical
+    public abstract class Surface : PhysicalProp
     {
         readonly float spaceBetween = 0.999f; // Shrinks the width to accommodate other expanding surfaces
 
