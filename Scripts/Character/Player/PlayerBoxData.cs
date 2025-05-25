@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using Assets.DMBTools.FractionScale;
+using DMBTools;
 
 namespace DMBTools
 {
