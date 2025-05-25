@@ -1,7 +1,12 @@
-public enum Time
+﻿
+namespace DMBTools
 {
-    second = 1000,
-    minute = 60 * 1000,
-    hour = 60 * 60 * 1000,
-    day = 24 * 60 * 60 * 1000
+    public static class TimeUnit
+    {
+        public static int Second = 1000;
+        public static int Minute =   60 * TimeUnit.Second;
+        public static int Hour   =   60 * TimeUnit.Minute;
+        public static int Day    =   24 * TimeUnit.Hour;
+        public static int Week   =    7 * TimeUnit.Day;
+    }
 }

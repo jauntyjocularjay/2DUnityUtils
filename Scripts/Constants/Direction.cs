@@ -1,8 +1,12 @@
-
+﻿
+namespace DMBTools
+{
 public enum Direction
 {
-    North,
-    South,
-    East,
-    West
+    Undefined = 0,
+    North = 1,
+    South = 2,
+    East = 3,
+    West = 4,
+}
 }

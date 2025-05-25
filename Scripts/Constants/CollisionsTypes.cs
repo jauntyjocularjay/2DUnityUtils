@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 
-
-public enum CollisionType
+namespace DMBTools
 {
-    Enter,
-    Stay,
-    Exit
-}
-
-public enum TriggerType
-{
-    Enter,
-    Stay,
-    Exit
+    public enum CollisionType
+    {
+        Enter,
+        Stay,
+        Exit
+    }
+    
+    public enum TriggerType
+    {
+        Enter,
+        Stay,
+        Exit
+    }
 }
