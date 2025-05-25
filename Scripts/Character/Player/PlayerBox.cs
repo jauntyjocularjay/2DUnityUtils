@@ -5,10 +5,9 @@ using UnityEngine;
 
 namespace DMBTools
 {
-    public class BoxPlayer : BoxCharacter
+    public abstract class BoxPlayer : BoxCharacter
     {
         public BoxPlayerData data;
-        // public PlayerMovement playerMovement;
         public new void Start()
         {
             base.Start();

@@ -2,7 +2,7 @@
 
 namespace DMBTools
 {
-    public class BoxNPC : BoxCharacter
+    public abstract class BoxNPC : BoxCharacter
     {
         public BoxNPCData data;
     }
