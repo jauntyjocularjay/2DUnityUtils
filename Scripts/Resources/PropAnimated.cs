@@ -3,6 +3,7 @@ using UnityEngine;
 namespace DMBTools
 {
     public abstract class AnimatedProp : Prop
+    /* @class Animated Prop includes the Prop class and addes getters and setters for the Animator */
     {
         Animator animator;
 
@@ -14,10 +15,12 @@ namespace DMBTools
         }
 
         public Animator Animator()
+        /* @method returns the animator */
         {
             return animator;
         }
         public void Animator(Animator animatr)
+        /* @method sets the animator */
         {
             animator = animatr;
         }
