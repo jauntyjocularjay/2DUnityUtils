@@ -9,7 +9,6 @@ namespace DMBTools
         public int MaxHP = 0;
         public bool courtesy = false;
         public int ExtraJumps = 0;
-        public bool flipX = false;
         public Vector3 movementVelocity = Vector3.one;
 
         [Header("SpriteRenderer")]

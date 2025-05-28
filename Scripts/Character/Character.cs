@@ -10,7 +10,7 @@ namespace DMBTools
     {
         private Animator animator;
         private Rigidbody2D rigidBody;
-    
+
         new public void Start()
         /* @method Start() calls Prop.Start() and sets the 
                 animator and rigidBody variables */
@@ -28,7 +28,7 @@ namespace DMBTools
         public abstract void SetCollider2D();
         /* @method SetCollider2D() should be implemented by 
                 subclasses to set up the Collider2D component */
-        public void SetRigidbody2D( bool rotation = true)
+        public void SetRigidbody2D(bool rotation = true)
         /* @method SetRigidbody2D() fetches the Rigidbody2D 
             component and freezes its rotation by default */
         {
@@ -45,7 +45,7 @@ namespace DMBTools
         /* @method SetHP() uses the Animator()'s Integer 
             boolean to keep track of HP */
         {
-            Animator().SetInteger("HP", currentHP);
+            Animator().SetInteger(Anim.HP, currentHP);
         }
         public int HP()
         /* @method HP() returns the current HP value from 
@@ -95,7 +95,10 @@ namespace DMBTools
             rigidBody.linearVelocity = vector;
         }
 
-
+        public static class Anim
+        {
+            public static string HP = "hp";
+        }
     }
 
 
