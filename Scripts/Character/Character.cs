@@ -19,6 +19,18 @@ namespace DMBTools
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
         }
+
+        void ColisionEnter2D(Collision2D collision) => HandleCollision(collision, CollisionType.Enter);
+        void ColisionStay2D(Collision2D collision) => HandleCollision(collision, CollisionType.Stay);
+        void ColisionExit2D(Collision2D collision) => HandleCollision(collision, CollisionType.Exit);
+        public abstract void HandleCollision(Collision2D collision, CollisionType collisionType);
+
+        void OnTriggerEnter2D(Collider2D collider) => HandleTriggers(collider, TriggerType.Enter);
+        void OnTriggerStay2D(Collider2D collider) => HandleTriggers(collider, TriggerType.Stay);
+        void OnTriggerExit2D(Collider2D collider) => HandleTriggers(collider, TriggerType.Exit);
+        public abstract void HandleTriggers(Collider2D collider, TriggerType triggerType);
+
+
         public Animator Animator()
         /* @method Animator() returns the Animator 
                 component from the GameObject */

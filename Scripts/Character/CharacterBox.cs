@@ -14,6 +14,7 @@ namespace DMBTools
             base.Start();
             SetCollider2D();
         }
+        
         public override void SetCollider2D()
         {
             collidr = GetComponent<BoxCollider2D>();

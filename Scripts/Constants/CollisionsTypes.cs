@@ -6,7 +6,7 @@
     {
         Enter,
         Stay,
-        Exit
+        Exit 
     }
     
     public enum TriggerType
