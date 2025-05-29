@@ -112,7 +112,14 @@ namespace DMBTools
         }
         void HandleTriggers(Collider2D collision, TriggerType type)
         {
-            if ((collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player")) && type == TriggerType.Exit)
+            if
+            (
+                (
+                    collision.gameObject.CompareTag("Enemy") ||
+                    collision.gameObject.CompareTag("Player"
+                )) &&
+                type == TriggerType.Exit
+            )
             {
                 Object.Destroy(collision.gameObject);
             }
