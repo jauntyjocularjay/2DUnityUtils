@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace DMBTools
 {
-    [ExecuteAlways]
     public abstract class PlatformerManager : Manager
     {
         public BoxPlayer player;
