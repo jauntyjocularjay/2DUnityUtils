@@ -25,10 +25,10 @@ namespace DMBTools
         void ColisionExit2D(Collision2D collision) => HandleCollision(collision, CollisionType.Exit);
         public abstract void HandleCollision(Collision2D collision, CollisionType collisionType);
 
-        void OnTriggerEnter2D(Collider2D collider) => HandleTriggers(collider, TriggerType.Enter);
-        void OnTriggerStay2D(Collider2D collider) => HandleTriggers(collider, TriggerType.Stay);
-        void OnTriggerExit2D(Collider2D collider) => HandleTriggers(collider, TriggerType.Exit);
-        public abstract void HandleTriggers(Collider2D collider, TriggerType triggerType);
+        void OnTriggerEnter2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Enter);
+        void OnTriggerStay2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Stay);
+        void OnTriggerExit2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Exit);
+        public abstract void HandleTrigger(Collider2D collider, TriggerType triggerType);
 
 
         public Animator Animator()
@@ -47,7 +47,7 @@ namespace DMBTools
             rigidBody = GetComponent<Rigidbody2D>();
             rigidBody.freezeRotation = rotation;
         }
-        public Rigidbody2D RigidBody2D()
+        public Rigidbody2D Rigidbody2D()
         /* @method RigidBody2D() returns the Rigidbody2D 
             component from the GameObject */
         {

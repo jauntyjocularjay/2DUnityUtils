@@ -22,8 +22,8 @@ namespace DMBTools
             BoxCollider2D().size = data.colliderSize;
             BoxCollider2D().edgeRadius = data.colliderEdgeRadius;
 
-            RigidBody2D().mass = data.mass;
-            RigidBody2D().gravityScale = data.gravityScale;
+            Rigidbody2D().mass = data.mass;
+            Rigidbody2D().gravityScale = data.gravityScale;
 
             SetHP(data.MaxHP);
         }
