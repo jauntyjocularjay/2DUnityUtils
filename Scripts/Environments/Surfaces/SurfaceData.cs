@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Data", menuName ="Data/Surface", order = 10)]
+[CreateAssetMenu(fileName = "Data", menuName ="DMBTools/Data/Surface", order = 10)]
 public class SurfaceData : ScriptableObject
 {
     [Header("Size")]

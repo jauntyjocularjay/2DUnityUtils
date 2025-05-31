@@ -3,7 +3,7 @@ using DMBTools;
 
 namespace DMBTools
 {
-    [CreateAssetMenu(fileName = "PlayerData", menuName = "Data/BoxPlayer", order = 80)]
+    [CreateAssetMenu(fileName = "PlayerData", menuName = "DMBTools/Data/BoxPlayer", order = 0)]
     public class BoxPlayerData : BoxCharacterData
     {
         [Header("Player Properties")]

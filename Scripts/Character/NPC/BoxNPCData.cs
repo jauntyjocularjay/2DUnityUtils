@@ -4,7 +4,7 @@
 
 namespace DMBTools
 {
-    [CreateAssetMenu(fileName = "NPCData", menuName = "Data/BoxNPC", order = 80)]
+    [CreateAssetMenu(fileName = "NPCData", menuName = "DMBTools/Data/BoxNPC", order = 0)]
     public class BoxNPCData : BoxCharacterData
     {
         
