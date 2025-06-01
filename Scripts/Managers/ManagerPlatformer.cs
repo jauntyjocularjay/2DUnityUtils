@@ -12,13 +12,12 @@ namespace DMBTools
         public Vector2 CollidrSize = new Vector2(32, 24);
         BoxCollider2D collidr;
 
-        public
-
-        new void Start()
+        public new void Start()
         {
             base.Start();
             cameraTX = MainCamera().GetComponent<Transform>();
             collidr = GetComponent<BoxCollider2D>();
+            collidr.isTrigger = true;
             collidr.size = CollidrSize;
         }
 
@@ -107,9 +106,9 @@ namespace DMBTools
 
         void OnTriggerExit2D(Collider2D collision)
         {
-            HandleTriggers(collision, TriggerType.Exit);
+            HandleTrigger(collision, TriggerType.Exit);
         }
-        void HandleTriggers(Collider2D collision, TriggerType type)
+        void HandleTrigger(Collider2D collision, TriggerType type)
         {
             if
             (
