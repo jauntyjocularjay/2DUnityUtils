@@ -7,16 +7,12 @@ namespace DMBTools
 {
     public abstract class Area : Surface
     {
-        new void Start()
+        public BoxCollider2D collidr;
+
+        public new void Start()
         {
             base.Start();
-
-        }
-
-
-        void Update()
-        {
-
+            
         }
     }
 }
