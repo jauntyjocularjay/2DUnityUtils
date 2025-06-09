@@ -38,8 +38,9 @@ namespace DMBTools
         public void SetRigidbody2D()
         /* @method Rigidbody2D() returns the Rigidbody2D component from the GameObject */
         {
-            Rigidbody2D().bodyType = RigidbodyType2D.Static;
-            Rigidbody2D().constraints = RigidbodyConstraints2D.FreezeRotation;
+            rb = GetComponent<Rigidbody2D>();
+            rb.bodyType = RigidbodyType2D.Static;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 }
