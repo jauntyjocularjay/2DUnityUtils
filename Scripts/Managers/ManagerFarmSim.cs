@@ -7,8 +7,6 @@ namespace DMBTools
    {
       public BoxPlayer player;
       public List<Crop> crops;
-      public Sun sun;
-      public Moon moon;
 
       public new void Start()
       {
