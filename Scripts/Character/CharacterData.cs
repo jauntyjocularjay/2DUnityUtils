@@ -17,7 +17,6 @@ namespace DMBTools
         [Header("Rigidbody")]
         public float mass = 1.0f;
         public float gravityScale = 1.0f;
-    
     }
 
 
