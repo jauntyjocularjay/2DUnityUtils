@@ -8,8 +8,15 @@ namespace DMBTools
 
         public State(string key, bool value)
         {
-            this.key = key;
+            this.key = key.ToLower();
             this.stateFlag = value;
         }
+
+        /* Comparing states compares their keys rather than their stateFlags for uniqueness */
+        readonly public bool Equals(State target) => target.key.Equals(key);
+
+        readonly public bool DeeplyEquals(State target) =>
+            target.key.Equals(key) &&
+            target.stateFlag.Equals(stateFlag);
     }
 }
