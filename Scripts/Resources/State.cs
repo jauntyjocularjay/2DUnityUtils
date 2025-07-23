@@ -1,3 +1,5 @@
+using UnityEngine.InputSystem;
+
 namespace DMBTools
 {
     [System.Serializable]
@@ -11,6 +13,7 @@ namespace DMBTools
             this.key = key.ToLower();
             this.stateFlag = value;
         }
+        public State(string key): this(key, false) { }
 
         /* Comparing states compares their keys rather than their stateFlags for uniqueness */
         readonly public bool Equals(State target) => target.key.Equals(key);
