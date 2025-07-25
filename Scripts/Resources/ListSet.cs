@@ -8,7 +8,7 @@ namespace DMBTools
     [System.Serializable]
     public class ListSet<T>
     {
-        List<T> list;
+        protected List<T> list;
         int Count => list.Count;
         public ListSet() => list = new List<T>();
         public ListSet(int capacity) => list = new List<T>(capacity);
@@ -16,6 +16,7 @@ namespace DMBTools
 
         /*** Enumerator ***/
         public IEnumerator<T> GetEnumerator() => list.GetEnumerator();
+        public void ForEach(Action<T> action) => list.ForEach(action);
 
         /*** Indexer ***/
         public T this[int i]
@@ -27,6 +28,7 @@ namespace DMBTools
             }
         }
 
+        /*** Adders ***/
         public bool Add(T element)
         {
             if (list.Contains(element))
@@ -53,26 +55,23 @@ namespace DMBTools
             else list.Insert(index, element);
         }
 
+        /*** Checkers ***/
         public bool Contains(T element)
         {
             return list.Contains(element);
         }
         public int IndexOf(T element) => list.IndexOf(element);
 
+        /*** Removers ***/
         public void Remove(T element) => list.Remove(element);
         public void RemoveAt(int index) => list.RemoveAt(index);
 
         public void Clear() => list.Clear();
 
+        /*** Converters ***/
         public T[] ToArray() => list.ToArray();
 
         public void CopyTo(T[] array, int arrayIndex) => list.CopyTo(array, arrayIndex);
-
-        public void ForEach(Action<T> action) => list.ForEach(action);
-
-
-
-
 
 
     }
