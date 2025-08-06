@@ -10,6 +10,7 @@ namespace DMBTools
     {
         private Animator animator;
         private Rigidbody2D rigidBody;
+        protected int hp = 0;
 
         new public void Start()
         /* @method Start() calls Prop.Start() and sets the 
@@ -20,16 +21,10 @@ namespace DMBTools
             rigidBody = GetComponent<Rigidbody2D>();
         }
 
-        void OnCollisionEnter2D(Collision2D collision) => HandleCollision(collision, CollisionType.Enter);
-        void OnCollisionStay2D(Collision2D collision) => HandleCollision(collision, CollisionType.Stay);
-        void OnCollisionExit2D(Collision2D collision) => HandleCollision(collision, CollisionType.Exit);
-        public abstract void HandleCollision(Collision2D collision, CollisionType collisionType);
-
-        void OnTriggerEnter2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Enter);
-        void OnTriggerStay2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Stay);
-        void OnTriggerExit2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Exit);
-        public abstract void HandleTrigger(Collider2D collider, TriggerType triggerType);
-
+        public abstract void HP(int currentHP);
+        public abstract int HP();
+        public abstract void IncrementHP(int i = 1);
+        public abstract void DecrementHP(int i = 1);
 
         public Animator Animator()
         /* @method Animator() returns the Animator 
@@ -53,30 +48,7 @@ namespace DMBTools
         {
             return rigidBody;
         }
-        public void SetHP(int currentHP)
-        /* @method SetHP() uses the Animator()'s Integer 
-            boolean to keep track of HP */
-        {
-            Animator().SetInteger(Anim.HP, currentHP);
-        }
-        public int HP()
-        /* @method HP() returns the current HP value from 
-            the Animator's Integer parameter */
-        {
-            return Animator().GetInteger("HP");
-        }
-        public void IncrementHP(int i = 1)
-        /* @method IncrementHP() increases the HP value by 
-            1 by default, or by the integer you pass */
-        {
-            SetHP(HP() + i);
-        }
-        public void DecrementHP(int i = 1)
-        /* @method DecrementHP() decreases the HP value by 
-                1, or by the integer you pass */
-        {
-            SetHP(HP() - i);
-        }
+
         public void LinearVelocityX(float x)
         /* @method LinearVelocityX(float x) sets the X 
                 value of the Rigidbody2D's linear velocity, 
@@ -107,10 +79,6 @@ namespace DMBTools
             rigidBody.linearVelocity = vector;
         }
 
-        public static class Anim
-        {
-            public static string HP = "hp";
-        }
     }
 
 

@@ -25,7 +25,7 @@ namespace DMBTools
             Rigidbody2D().mass = data.mass;
             Rigidbody2D().gravityScale = data.gravityScale;
 
-            SetHP(data.MaxHP);
+            HP(data.MaxHP);
         }
     }
 }
