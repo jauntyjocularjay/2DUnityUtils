@@ -15,6 +15,8 @@ namespace DMBTools
             base.Start();
             collidr = GetComponent<BoxCollider2D>();
             rb = GetComponent<Rigidbody2D>();
+
+            rb.freezeRotation = true;
         }
 
         public BoxCollider2D BoxCollider2D()
