@@ -10,7 +10,6 @@ namespace DMBTools {
         [SerializeField] protected Character character;
         [SerializeField] protected Vector2 movementVector;
         public Vector2 movementSpeed = Vector2.zero;
-
         protected void Start()
         {
             character = GetComponent<Character>();
@@ -18,7 +17,6 @@ namespace DMBTools {
             inputAction = playerInput.actions;
             playerInput.notificationBehavior = PlayerNotifications.InvokeUnityEvents;
         }
-
         public void MovementVector(InputAction.CallbackContext context) => movementVector = context.action.ReadValue<Vector2>();
         protected Vector2 MovementVector() => movementVector;
 

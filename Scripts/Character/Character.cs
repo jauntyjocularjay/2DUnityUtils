@@ -3,10 +3,7 @@
 namespace DMBTools
 {
     public abstract class Character : Prop
-    /* @class Character extends Prop to provide everything 
-            needed to work with a character with a 
-            physical presence and animator effectively 
-            combining the AnimatedProp and PhysicalProp  */
+    /* @class Character extends Prop to provide everything needed to work with a character with a physical presence and animator effectively combining the AnimatedProp and PhysicalProp  */
     {
         private Animator animator;
         private Rigidbody2D rigidBody;
@@ -20,21 +17,18 @@ namespace DMBTools
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
         }
-
         public abstract void HP(int currentHP);
         public abstract int HP();
         public abstract void IncrementHP(int i = 1);
         public abstract void DecrementHP(int i = 1);
 
         public Animator Animator()
-        /* @method Animator() returns the Animator 
-                component from the GameObject */
+        /* @method Animator() returns the Animator component from the GameObject */
         {
             return animator;
         }
         public abstract void SetCollider2D();
-        /* @method SetCollider2D() should be implemented by 
-                subclasses to set up the Collider2D component */
+        /* @method SetCollider2D() should be implemented by subclasses to set up the Collider2D component */
         public void SetRigidbody2D(bool rotation = true)
         /* @method SetRigidbody2D() fetches the Rigidbody2D 
             component and freezes its rotation by default */
