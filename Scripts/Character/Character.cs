@@ -21,7 +21,6 @@ namespace DMBTools
         public abstract int HP();
         public abstract void IncrementHP(int i = 1);
         public abstract void DecrementHP(int i = 1);
-
         public Animator Animator()
         /* @method Animator() returns the Animator component from the GameObject */
         {
@@ -42,7 +41,6 @@ namespace DMBTools
         {
             return rigidBody;
         }
-
         public void LinearVelocityX(float x)
         /* @method LinearVelocityX(float x) sets the X 
                 value of the Rigidbody2D's linear velocity, 
