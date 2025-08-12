@@ -6,11 +6,7 @@ namespace DMBTools
 
     [ExecuteAlways]
     public abstract class Prop : MonoBehaviour
-    /* @class { Prop } and its extending classes provide ease of use in Unity. Often setting single vector values such as:
-            GetComponent<Transform>().position = new Vector2(3, GetComponent<Transform>().position.y);
-            becomes
-            SetPositionX(3);
-    */
+    /* @class { Prop } and its extending classes provide ease of use in Unity. Often setting single vector values such as: GetComponent<Transform>().position = new Vector2(3, GetComponent<Transform>().position.y); becomes SetPositionX(3); */
     {
         Transform tx;
         SpriteRenderer sr;
@@ -67,6 +63,10 @@ namespace DMBTools
         /* @method Gets the current sprite assigned to the SpriteRenderer */
         {
             return sr.sprite;
+        }
+        public void FlipSprite(bool boolean)
+        {
+            SpriteRenderer().flipX = boolean;
         }
         public Vector2 PivotPoint()
         /* @method Gets the pivot point of the current sprite */
