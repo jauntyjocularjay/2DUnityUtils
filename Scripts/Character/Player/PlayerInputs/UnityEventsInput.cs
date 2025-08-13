@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 
 namespace DMBTools {
-    public abstract class UnityEvents : MonoBehaviour
+    public abstract class UnityEventsInput : MonoBehaviour
     {
         [SerializeField] PlayerInput playerInput;
         [SerializeField] InputActionAsset inputAction;

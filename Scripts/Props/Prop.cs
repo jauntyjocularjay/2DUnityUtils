@@ -24,7 +24,11 @@ namespace DMBTools
         {
             return tx;
         }
-
+        public void Transform(Vector3 position, Quaternion rotation)
+        /* @method Sets the Transform's position and rotation */
+        {
+            Transform().SetPositionAndRotation(position, rotation);
+        }
         public void SetPosition(Vector2 v)
         /* @method Sets the position of the Transform component using a Vector2. */
         {
@@ -35,17 +39,10 @@ namespace DMBTools
         {
             tx.position = new Vector2(f, tx.position.y);
         }
-
         public void SetPositionY(float f)
         /* @method Sets the Y value of the Transform's position, keeping the current X value */
         {
             tx.position = new Vector2(tx.position.x, f);
-        }
-
-        public void SetTransform(Vector3 position, Quaternion rotation)
-        /* @method Sets the Transform's position and rotation */
-        {
-            Transform().SetPositionAndRotation(position, rotation);
         }
 
         public SpriteRenderer SpriteRenderer()
@@ -53,12 +50,11 @@ namespace DMBTools
         {
             return sr;
         }
-        public void SetSprite(Sprite sprite)
+        public void Sprite(Sprite sprite)
         /* @method Sets the sprite of the SpriteRenderer component */
         {
             sr.sprite = sprite;
         }
-
         public Sprite Sprite()
         /* @method Gets the current sprite assigned to the SpriteRenderer */
         {
@@ -73,6 +69,5 @@ namespace DMBTools
         {
             return sr.sprite.pivot;
         }
-
     }
 }
