@@ -17,10 +17,13 @@ namespace DMBTools
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
         }
-        public abstract void HP(int currentHP);
-        public abstract int HP();
-        public abstract void IncrementHP(int i = 1);
-        public abstract void DecrementHP(int i = 1);
+        public void HP(int currentHP)
+        {
+            hp = currentHP;
+        }
+        public int HP() => hp;
+        public void IncrementHP(int i = 1) => hp += i;
+        public void DecrementHP(int i = 1) => hp -= i;
         public Animator Animator()
         /* @method Animator() returns the Animator component from the GameObject */
         {
