@@ -14,7 +14,9 @@ public abstract class Manager : MonoBehaviour
     public void Start()
     {
         MainCamera().orthographicSize = size * mapUnitSide;
+        MainCamera().GetComponent<Transform>().position = cameraMinimumPosition;
     }
+    
     public Camera MainCamera()
     {
         return Camera.main;
