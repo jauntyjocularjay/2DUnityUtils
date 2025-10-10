@@ -17,8 +17,12 @@ namespace DMBTools {
             inputAction = playerInput.actions;
             playerInput.notificationBehavior = PlayerNotifications.InvokeUnityEvents;
         }
-        public void MovementVector(InputAction.CallbackContext context) => movementVector = context.action.ReadValue<Vector2>();
-        protected Vector2 MovementVector() => movementVector;
+        public void MovementVector(InputAction.CallbackContext context)
+        // Don't forget to setup Events in PlayerInput
+            => movementVector = context.action.ReadValue<Vector2>();
+        protected Vector2 MovementVector()
+            => movementVector;
+    
 
         void OnCollisionEnter2D(Collision2D collision) => HandleCollision(collision, CollisionType.Enter);
         void OnCollisionStay2D(Collision2D collision) => HandleCollision(collision, CollisionType.Stay);

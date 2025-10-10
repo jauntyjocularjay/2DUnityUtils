@@ -5,44 +5,17 @@ namespace DMBTools
 {
 
     [ExecuteAlways]
-    public abstract class Prop : MonoBehaviour
+    [RequireComponent(typeof (SpriteRenderer))]
+    public abstract class Prop : DMBMonoBehaviour
     /* @class { Prop } and its extending classes provide ease of use in Unity. Often setting single vector values such as: GetComponent<Transform>().position = new Vector2(3, GetComponent<Transform>().position.y); becomes SetPositionX(3); */
     {
-        Transform tx;
         SpriteRenderer sr;
 
-
-        public void Start()
+        new protected void Start()
         /* @method Attaches the Transform, SpriteRenderer components to variables for later fetching. */
         {
-            tx = GetComponent<Transform>();
+            base.Start();
             sr = GetComponent<SpriteRenderer>();
-        }
-
-        public Transform Transform()
-        /* @method Returns the Transform component from the GameObject */
-        {
-            return tx;
-        }
-        public void Transform(Vector3 position, Quaternion rotation)
-        /* @method Sets the Transform's position and rotation */
-        {
-            Transform().SetPositionAndRotation(position, rotation);
-        }
-        public void SetPosition(Vector2 v)
-        /* @method Sets the position of the Transform component using a Vector2. */
-        {
-            tx.position = v;
-        }
-        public void SetXPositionX(float f)
-        /* @method Sets the X value of the Transform's position, keeping the current Y value */
-        {
-            tx.position = new Vector2(f, tx.position.y);
-        }
-        public void SetPositionY(float f)
-        /* @method Sets the Y value of the Transform's position, keeping the current X value */
-        {
-            tx.position = new Vector2(tx.position.x, f);
         }
 
         public SpriteRenderer SpriteRenderer()

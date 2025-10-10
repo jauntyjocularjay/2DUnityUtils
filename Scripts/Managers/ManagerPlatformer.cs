@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
+
+
 
 namespace DMBTools
 {
+    [RequireComponent(typeof(BoxCollider2D))]
+    [RequireComponent(typeof(Rigidbody2D))]
     public abstract class PlatformerManager : Manager
     {
         public BoxPlayer player;
@@ -12,7 +15,7 @@ namespace DMBTools
         public Vector2 CollidrSize = new Vector2(32, 24);
         BoxCollider2D collidr;
 
-        public new void Start()
+        new protected void Start()
         {
             base.Start();
             cameraTX = MainCamera().GetComponent<Transform>();
@@ -38,7 +41,7 @@ namespace DMBTools
                     cameraTX.position.z
                 );
                 cameraTX.position = newPosition;
-                GetComponent<Transform>().position = newPosition;
+                Transform().position = newPosition;
 
             }
             else if (player.Transform().position.x + player.data.cameraOffset.x >= cameraMaximumPosition.x)
@@ -51,7 +54,7 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                GetComponent<Transform>().position = newPosition;
+                Transform().position = newPosition;
             }
             else
             {
@@ -63,7 +66,7 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                GetComponent<Transform>().position = newPosition;
+                Transform().position = newPosition;
             }
 
             if (player.Transform().position.y + player.data.cameraOffset.y <= cameraMinimumPosition.y)
@@ -76,7 +79,7 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                GetComponent<Transform>().position = newPosition;
+                Transform().position = newPosition;
             }
             else if (player.Transform().position.y + player.data.cameraOffset.y >= cameraMaximumPosition.y)
             {
@@ -88,7 +91,7 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                GetComponent<Transform>().position = newPosition;
+                Transform().position = newPosition;
             }
             else
             {
@@ -100,7 +103,7 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                GetComponent<Transform>().position = newPosition;
+                Transform().position = newPosition;
             }
         }
 
