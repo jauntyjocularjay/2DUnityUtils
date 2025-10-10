@@ -7,6 +7,7 @@ namespace DMBTools
 {
     public abstract class Manager : DMBMonoBehaviour
     {
+<<<<<<< HEAD
         readonly float mapUnitSide = 2.8125f;
         [Header("Camera Orthagonal Size Multiplier")]
         public float size = 2.0f;
@@ -21,6 +22,16 @@ namespace DMBTools
         {
             return Camera.main;
         }
+=======
+        MainCamera().orthographicSize = size * mapUnitSide;
+        MainCamera().GetComponent<Transform>().position = cameraMinimumPosition;
+    }
+    
+    public Camera MainCamera()
+    {
+        return Camera.main;
+    }
+>>>>>>> dev
 
     }
 }
