@@ -12,16 +12,16 @@ namespace DMBTools
         public BoxPlayer player;
         public List<BoxEnemy> enemies;
         Transform cameraTX;
-        public Vector2 CollidrSize = new Vector2(32, 24);
-        BoxCollider2D collidr;
+        public Vector2 deathColliderSize = new Vector2(32, 24);
+        BoxCollider2D deathCollider;
 
         new protected void Start()
         {
             base.Start();
             cameraTX = MainCamera().GetComponent<Transform>();
-            collidr = GetComponent<BoxCollider2D>();
-            collidr.isTrigger = true;
-            collidr.size = CollidrSize;
+            deathCollider = GetComponent<BoxCollider2D>();
+            deathCollider.isTrigger = true;
+            deathCollider.size = deathColliderSize;
         }
 
         void Update()

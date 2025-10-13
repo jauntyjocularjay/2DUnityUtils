@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace DMBTools
 {
+    [RequireComponent(typeof(BoxPlayer))]
     public abstract class CSharpEventsInput : MonoBehaviour
     {
         BoxPlayer character;
