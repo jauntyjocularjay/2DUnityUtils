@@ -21,6 +21,7 @@ namespace DMBTools
 
         private Rigidbody2D sphereRigidBody;
         private Vector2 movementInput;
+        private Character playerCharacter;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Awake()
@@ -31,10 +32,13 @@ namespace DMBTools
         public void MovementInput(InputAction.CallbackContext context)
         {
             movementInput = context.ReadValue<Vector2>();
-            Debug.Log(movementInput);
+        }
+        public Vector2 MovementInput()
+        {
+            return movementInput;
         }
 
-        public void Jump(InputAction.CallbackContext context)
+        public void Sample(InputAction.CallbackContext context)
         {
             /* Event Phases
              * phases within context are
@@ -47,7 +51,6 @@ namespace DMBTools
             }
             if (context.performed)
             {
-                sphereRigidBody.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
             }
             if (context.canceled)
             {
