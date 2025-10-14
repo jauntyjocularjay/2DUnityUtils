@@ -15,9 +15,9 @@ namespace DMBTools
         public bool dataLockHeight;
 
 
-        new public void Start()
+        new public void Awake()
         {
-            base.Start();
+            base.Awake();
 
             Rigidbody2D().bodyType = RigidbodyType2D.Static;
 

@@ -7,9 +7,9 @@ namespace DMBTools
     [ExecuteAlways]
     public abstract class Platform : Surface
     {
-        new public void Start()
+        new public void Awake()
         {
-            base.Start();
+            base.Awake();
 
             gameObject.tag = "Platform";
 

@@ -15,9 +15,9 @@ namespace DMBTools
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
 
-        new protected void Start()
+        new protected void Awake()
         {
-            base.Start();
+            base.Awake();
             cameraTX = MainCamera().GetComponent<Transform>();
             deathCollider = GetComponent<BoxCollider2D>();
             deathCollider.isTrigger = true;

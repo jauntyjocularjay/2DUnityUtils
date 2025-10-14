@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 
@@ -7,7 +7,8 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerInput))]
-    public class DMB2DPlayerInput : MonoBehaviour
+    [RequireComponent(typeof(Character))]
+    public abstract class DMB2DPlayerInput : MonoBehaviour
     {
         /*
             - Add Player Input Manager component to your player GameObject
@@ -17,34 +18,30 @@ namespace DMBTools
                 - Assign the player object to the input actions used in the game
                 - Assign the event to the corresponding method
         */
-
-        private Rigidbody2D sphereRigidBody;
         private Vector2 movementInput;
-        private Character playerCharacter;
-
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Awake()
+        void OnCollisionEnter2D(Collision2D collision) => HandleCollision(collision, CollisionType.Enter);
+        void OnCollisionStay2D(Collision2D collision) => HandleCollision(collision, CollisionType.Stay);
+        void OnCollisionExit2D(Collision2D collision) => HandleCollision(collision, CollisionType.Exit);
+        public abstract void HandleCollision(Collision2D collision, CollisionType type);
+        void OnTriggerEnter2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Enter);
+        void OnTriggerStay2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Stay);
+        void OnTriggerExit2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Exit);
+        public abstract void HandleTrigger(Collider2D collider, TriggerType type);
+        public void MovementInput(InputAction.CallbackContext context) => movementInput = context.ReadValue<Vector2>();
+        public Vector2 MovementVector()
         {
-            sphereRigidBody = GetComponent<Rigidbody2D>();
-        }
-
-        public void MovementInput(InputAction.CallbackContext context)
-        {
-            movementInput = context.ReadValue<Vector2>();
-        }
-        public Vector2 MovementInput()
-        {
+            Debug.Log($"MovementInput: {movementInput}");
             return movementInput;
         }
-
+        /*
         public void Sample(InputAction.CallbackContext context)
         {
-            /* Event Phases
-             * phases within context are
-             *   - context.started
-             *   - context.performed
-             *   - context.canceled
-            */
+        * Event Phases
+        * phases within context are
+        *   - context.started
+        *   - context.performed
+        *   - context.canceled
+        *
             if (context.started)
             {
             }
@@ -55,5 +52,7 @@ namespace DMBTools
             {
             }
         }
+        */
+
     }
 }

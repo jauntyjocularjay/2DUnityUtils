@@ -7,9 +7,9 @@ namespace DMBTools
     {
         public List<BoxPlayer> players;
 
-        new void Start()
+        new void Awake()
         {
-            base.Start();
+            base.Awake();
         }
 
     }

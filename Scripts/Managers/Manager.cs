@@ -13,7 +13,7 @@ namespace DMBTools
         public Scene nextScene;
         [SerializeField] protected Vector3 cameraMinimumPosition;
         [SerializeField] protected Vector3 cameraMaximumPosition;
-        new protected void Start()
+        new protected void Awake()
         {
             MainCamera().orthographicSize = size * mapUnitSide;
             MainCamera().GetComponent<Transform>().position = cameraMinimumPosition;

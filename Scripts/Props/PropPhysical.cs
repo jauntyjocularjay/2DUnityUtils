@@ -3,16 +3,18 @@
 
 namespace DMBTools
 {
+    [RequireComponent(typeof(BoxCollider2D))]
+    [RequireComponent(typeof(Rigidbody2D))]
     public abstract class PhysicalProp : Prop
     /* @class Physical Prop includes the Prop class and addes getters and setters for a BoxCollider2D, Rigidbody2D */
     {
         BoxCollider2D collidr;
         Rigidbody2D rb;
 
-        new public void Start()
+        new public void Awake()
         /* @method Start() calls Prop.Start() and sets references to the BoxCollider2D and Rigidbody2D */
         {
-            base.Start();
+            base.Awake();
             collidr = GetComponent<BoxCollider2D>();
             rb = GetComponent<Rigidbody2D>();
 

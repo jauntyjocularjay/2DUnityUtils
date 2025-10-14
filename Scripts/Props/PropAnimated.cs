@@ -2,14 +2,15 @@ using UnityEngine;
 
 namespace DMBTools
 {
+    [RequireComponent(typeof(Animator))]
     public abstract class AnimatedProp : Prop
     /* @class Animated Prop includes the Prop class and addes getters and setters for the Animator */
     {
         Animator animator;
 
-        new public void Start()
+        new public void Awake()
         {
-            base.Start();
+            base.Awake();
 
             animator = GetComponent<Animator>();
         }

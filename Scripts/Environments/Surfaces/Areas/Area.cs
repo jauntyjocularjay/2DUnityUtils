@@ -3,7 +3,6 @@ using UnityEngine.Tilemaps;
 
 
 
-
 namespace DMBTools
 {
     public abstract class Area : Prop
@@ -11,9 +10,9 @@ namespace DMBTools
         TilemapCollider2D collidr;
         Rigidbody2D rb;
 
-        public new void Start()
+        public new void Awake()
         {
-            base.Start();
+            base.Awake();
 
             SetCompositeCollider2D();
             SetRigidbody2D();

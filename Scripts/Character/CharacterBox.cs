@@ -9,9 +9,9 @@ namespace DMBTools
     {
         BoxCollider2D collidr;
 
-        public new void Start()
+        public new void Awake()
         {
-            base.Start();
+            base.Awake();
             SetCollider2D();
         }
         

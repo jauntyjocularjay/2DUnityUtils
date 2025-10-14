@@ -7,9 +7,9 @@ namespace DMBTools
     public abstract class CardManager: Manager
     {
         
-        new void Start()
+        new void Awake()
         {
-            base.Start();
+            base.Awake();
         }
     }
 }

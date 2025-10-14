@@ -2,6 +2,8 @@
 
 namespace DMBTools
 {
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(Rigidbody2D))]
     public abstract class Character : Prop
     /* @class Character extends Prop to provide everything needed to work with a character with a physical presence and animator effectively combining the AnimatedProp and PhysicalProp  */
     {
@@ -9,11 +11,11 @@ namespace DMBTools
         private Rigidbody2D rigidBody;
         protected int hp = 0;
 
-        new public void Start()
+        new public void Awake()
         /* @method Start() calls Prop.Start() and sets the 
                 animator and rigidBody variables */
         {
-            base.Start();
+            base.Awake();
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
         }
