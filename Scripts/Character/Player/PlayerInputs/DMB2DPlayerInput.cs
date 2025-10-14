@@ -1,48 +1,57 @@
+using DMBTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DMB2DPlayerInput : MonoBehaviour
+
+
+namespace DMBTools
 {
-    /*
-        - Add Player Input Manager component to your player GameObject
-        - Set Notification Behavior to Invoke Unity Events
-        - Assign Actions to InputActions object with defined actions
-        - Under Events
-            - Assign the player object to the input actions used in the game
-            - Assign the event to the corresponding method
-    */
-
-    private Rigidbody sphereRigidBody;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(PlayerInput))]
+    public class DMB2DPlayerInput : MonoBehaviour
     {
-        sphereRigidBody = GetComponent<Rigidbody>();
-    }
+        /*
+            - Add Player Input Manager component to your player GameObject
+            - Set Notification Behavior to Invoke Unity Events
+            - Assign Actions to InputActions object with defined actions
+            - Under Events
+                - Assign the player object to the input actions used in the game
+                - Assign the event to the corresponding method
+        */
 
-    // Update is called once per frame
-    void Update()
-    {
+        private Rigidbody2D sphereRigidBody;
+        private Vector2 movementInput;
 
-    }
-
-    public void Jump(InputAction.CallbackContext context)
-    {
-        Debug.Log($"contextphase: {context.phase}");
-        // sphereRigidBody.AddForce(Vector3.up * 5f, ForceMode2D.Impulse); // THERE IS A COMPLETELY SEPARATE FORCE SYSTEM FOR 2D!!!
-        // Event Phases
-        if (context.started)
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Awake()
         {
-            sphereRigidBody.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+            sphereRigidBody = GetComponent<Rigidbody2D>();
         }
-        if (context.performed)
+
+        public void MovementInput(InputAction.CallbackContext context)
         {
-            sphereRigidBody.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+            movementInput = context.ReadValue<Vector2>();
+            Debug.Log(movementInput);
         }
-        if (context.canceled)
+
+        public void Jump(InputAction.CallbackContext context)
         {
-            sphereRigidBody.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+            /* Event Phases
+             * phases within context are
+             *   - context.started
+             *   - context.performed
+             *   - context.canceled
+            */
+            if (context.started)
+            {
+            }
+            if (context.performed)
+            {
+                sphereRigidBody.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
+            }
+            if (context.canceled)
+            {
+            }
         }
     }
 }
