@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace DMBTools
 {
+    [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(BoxCollider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
     public abstract class PlatformerManager : Manager
@@ -15,13 +16,14 @@ namespace DMBTools
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
 
-        new protected void Awake()
+        new protected void Start()
         {
-            base.Awake();
+            base.Start();
             cameraTX = MainCamera().GetComponent<Transform>();
             deathCollider = GetComponent<BoxCollider2D>();
             deathCollider.isTrigger = true;
             deathCollider.size = deathColliderSize;
+            tx = GetComponent<Transform>();
         }
 
         void Update()

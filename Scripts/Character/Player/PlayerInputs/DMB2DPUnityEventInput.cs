@@ -8,7 +8,7 @@ namespace DMBTools
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(Character))]
-    public abstract class DMB2DPlayerInput : MonoBehaviour
+    public abstract class DMBUnityEventInput2D : MonoBehaviour
     {
         /*
             - Add Player Input Manager component to your player GameObject

@@ -11,10 +11,10 @@ namespace DMBTools
     {
         SpriteRenderer sr;
 
-        new protected void Awake()
+        new protected void Start()
         /* @method Attaches the Transform, SpriteRenderer components to variables for later fetching. */
         {
-            base.Awake();
+            base.Start();
             sr = GetComponent<SpriteRenderer>();
         }
 
@@ -22,25 +22,6 @@ namespace DMBTools
         /* @method Returns the SpriteRenderer component from the GameObject */
         {
             return sr;
-        }
-        public void Sprite(Sprite sprite)
-        /* @method Sets the sprite of the SpriteRenderer component */
-        {
-            sr.sprite = sprite;
-        }
-        public Sprite Sprite()
-        /* @method Gets the current sprite assigned to the SpriteRenderer */
-        {
-            return sr.sprite;
-        }
-        public void FlipSprite(bool boolean)
-        {
-            SpriteRenderer().flipX = boolean;
-        }
-        public Vector2 PivotPoint()
-        /* @method Gets the pivot point of the current sprite */
-        {
-            return sr.sprite.pivot;
         }
     }
 }

@@ -6,9 +6,9 @@ namespace DMBTools
     {
         public BoxEnemyData data;
 
-        new void Awake()
+        new void Start()
         {
-            base.Awake();
+            base.Start();
             HP(data.MaxHP);
             SpriteRenderer().sortingOrder = data.sortingOrder;
         }

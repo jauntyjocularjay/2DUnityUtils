@@ -8,9 +8,9 @@ namespace DMBTools
       public BoxPlayer player;
       public List<Crop> crops;
 
-       public new void Awake()
+       public new void Start()
       {
-         base.Awake();
+         base.Start();
       }
    }
 }

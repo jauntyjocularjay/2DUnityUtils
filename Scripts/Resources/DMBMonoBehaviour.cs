@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
 
@@ -7,8 +7,8 @@ namespace DMBTools
     [RequireComponent(typeof (Transform))]
     public abstract class DMBMonoBehaviour : MonoBehaviour
     {
-        Transform tx;
-        public void Awake()
+        protected Transform tx;
+        protected void Start()
         {
             tx = GetComponent<Transform>();
         }

@@ -10,9 +10,9 @@ namespace DMBTools
         TilemapCollider2D collidr;
         Rigidbody2D rb;
 
-        public new void Awake()
+        public new void Start()
         {
-            base.Awake();
+            base.Start();
 
             SetCompositeCollider2D();
             SetRigidbody2D();

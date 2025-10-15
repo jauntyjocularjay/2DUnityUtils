@@ -8,9 +8,9 @@ namespace DMBTools
     public abstract class BoxPlayer : BoxCharacter
     {
         public BoxPlayerData data;
-        public new void Awake()
+        new protected void Start()
         {
-            base.Awake();
+            base.Start();
 
             SetCollider2D();
             SetRigidbody2D();
