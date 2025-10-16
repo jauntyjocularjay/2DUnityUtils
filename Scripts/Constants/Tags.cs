@@ -4,7 +4,7 @@
 
 namespace DMBTools
 {
-    public static class Tags
+    public static class Tag
     {
         public static string Destroyable = "Destroyable";
         public static string Enemy = "Enemy";

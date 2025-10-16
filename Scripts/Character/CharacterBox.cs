@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace DMBTools
 {
+    [RequireComponent(typeof(BoxCollider2D))]
     public abstract class BoxCharacter : Character
     {
         BoxCollider2D collidr;
@@ -12,13 +13,9 @@ namespace DMBTools
         new protected void Start()
         {
             base.Start();
-            SetCollider2D();
-        }
-        
-        public override void SetCollider2D()
-        {
             collidr = GetComponent<BoxCollider2D>();
         }
+        
         public BoxCollider2D BoxCollider2D()
         {
             return collidr;

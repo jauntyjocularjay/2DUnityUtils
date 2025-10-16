@@ -12,9 +12,6 @@ namespace DMBTools
         {
             base.Start();
 
-            SetCollider2D();
-            SetRigidbody2D();
-
             SpriteRenderer().sortingLayerID = data.sortingLayerID;
             SpriteRenderer().sortingOrder = data.sortingOrder;
 

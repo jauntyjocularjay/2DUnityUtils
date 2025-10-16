@@ -7,11 +7,9 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(BoxCollider2D))]
-    [RequireComponent(typeof(Rigidbody2D))]
     public abstract class PlatformerManager : Manager
     {
-        public BoxPlayer player;
-        public List<BoxEnemy> enemies;
+        BoxPlayer player;
         Transform cameraTX;
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
@@ -115,14 +113,9 @@ namespace DMBTools
         }
         void HandleTrigger(Collider2D collision, TriggerType type)
         {
-            if
-            (
-                (
-                    collision.gameObject.CompareTag("Enemy") ||
-                    collision.gameObject.CompareTag("Player"
-                )) &&
-                type == TriggerType.Exit
-            )
+            if( collision.gameObject.CompareTag("Enemy") ||
+                collision.gameObject.CompareTag("Player") &&
+                type == TriggerType.Exit)
             {
                 Object.Destroy(collision.gameObject);
             }

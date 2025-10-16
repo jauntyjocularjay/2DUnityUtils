@@ -31,15 +31,6 @@ namespace DMBTools
         {
             return animator;
         }
-        public abstract void SetCollider2D();
-        /* @method SetCollider2D() should be implemented by subclasses to set up the Collider2D component */
-        public void SetRigidbody2D(bool rotation = true)
-        /* @method SetRigidbody2D() fetches the Rigidbody2D 
-            component and freezes its rotation by default */
-        {
-            rigidBody = GetComponent<Rigidbody2D>();
-            rigidBody.freezeRotation = rotation;
-        }
         public Rigidbody2D Rigidbody2D()
         /* @method RigidBody2D() returns the Rigidbody2D 
             component from the GameObject */
