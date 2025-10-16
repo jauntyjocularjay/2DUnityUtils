@@ -8,10 +8,10 @@ namespace DMBTools
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerInput))]
     [RequireComponent(typeof(BoxPlayer))]
-    public abstract class DMBUnityEventInput2D : MonoBehaviour
+    public abstract class UnityEventInput : MonoBehaviour
     {
-        BoxPlayer player;
-        protected float flatSurfaceBounds = 0.8f;
+        protected BoxPlayer player;
+        Vector2 movementInput;
         /*
             - Add Player Input Manager component to your player GameObject
             - Set Notification Behavior to Invoke Unity Events
@@ -26,7 +26,6 @@ namespace DMBTools
             player.Rigidbody2D().freezeRotation = true;
             player.Rigidbody2D().bodyType = RigidbodyType2D.Dynamic;
         }
-        private Vector2 movementInput;
         void OnCollisionEnter2D(Collision2D collision) => HandleCollision(collision, CollisionType.Enter);
         void OnCollisionStay2D(Collision2D collision) => HandleCollision(collision, CollisionType.Stay);
         void OnCollisionExit2D(Collision2D collision) => HandleCollision(collision, CollisionType.Exit);
@@ -40,15 +39,14 @@ namespace DMBTools
         {
             return movementInput;
         }
-        /*
-        public void Sample(InputAction.CallbackContext context)
+        void ActionMethod(InputAction.CallbackContext context)
         {
-        * Event Phases
-        * phases within context are
-        *   - context.started
-        *   - context.performed
-        *   - context.canceled
-        *
+        //   Event Phases
+        //   phases within context are
+        //     - context.started
+        //     - context.performed
+        //     - context.canceled
+        
             if (context.started)
             {
             }
@@ -59,7 +57,6 @@ namespace DMBTools
             {
             }
         }
-        */
 
     }
 }
