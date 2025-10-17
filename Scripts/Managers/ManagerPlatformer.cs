@@ -9,7 +9,7 @@ namespace DMBTools
     [RequireComponent(typeof(BoxCollider2D))]
     public abstract class PlatformerManager : Manager
     {
-        BoxPlayer player;
+        public BoxPlayer player;
         Transform cameraTX;
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
