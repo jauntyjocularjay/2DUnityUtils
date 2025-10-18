@@ -10,12 +10,20 @@ namespace DMBTools
         - Add Player Input Manager component to your player GameObject
         - Set Notification Behavior to Invoke Unity Events
         - Assign Actions to InputActions object with defined actions
+        - Assign the material "noFriction" to allow the character to slide on vertical or inclined surfaces.
         - Under Events
             - Assign the player object to the input actions used in the game
             - Assign the event to the corresponding method
     */
     {
+        [SerializeField] protected PhysicsMaterial2D NoFrictionMaterial;
         readonly float flatSurfaceBounds = 0.8f;
+        new protected void Start()
+        {
+            base.Start();
+            player.Rigidbody2D().freezeRotation = true;
+            player.Rigidbody2D().sharedMaterial = NoFrictionMaterial;
+        }
 
         protected bool SurfaceIsFlat(Collision2D collision)
         {

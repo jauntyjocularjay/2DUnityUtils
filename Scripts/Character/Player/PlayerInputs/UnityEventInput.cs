@@ -10,7 +10,7 @@ namespace DMBTools
     [RequireComponent(typeof(BoxPlayer))]
     public abstract class UnityEventInput : MonoBehaviour
     {
-        protected BoxPlayer player;
+        [SerializeField]protected BoxPlayer player;
         Vector2 movementInput;
         /*
             - Add Player Input Manager component to your player GameObject
@@ -23,7 +23,6 @@ namespace DMBTools
         protected void Start()
         {
             player = GetComponent<BoxPlayer>();
-            player.Rigidbody2D().freezeRotation = true;
             player.Rigidbody2D().bodyType = RigidbodyType2D.Dynamic;
         }
         void OnCollisionEnter2D(Collision2D collision) => HandleCollision(collision, CollisionType.Enter);
