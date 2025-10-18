@@ -15,11 +15,25 @@ namespace DMBTools
             - Assign the event to the corresponding method
     */
     {
-        protected float flatSurfaceBounds = 0.8f;
+        readonly float flatSurfaceBounds = 0.8f;
 
         protected bool SurfaceIsFlat(Collision2D collision)
         {
             return Vector2.Dot(collision.GetContact(0).normal, Vector2.up) > flatSurfaceBounds;
+        }
+
+        
+
+        protected bool AtLeastOneFlatSurface(Collision2D collision)
+        {
+            foreach(ContactPoint2D contact in collision.contacts)
+            {
+                if (Vector2.Dot(contact.normal, Vector2.up) > flatSurfaceBounds)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         
     }
