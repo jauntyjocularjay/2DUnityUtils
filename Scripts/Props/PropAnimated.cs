@@ -8,9 +8,9 @@ namespace DMBTools
     {
         Animator animator;
 
-        new public void Start()
+        new public void Awake()
         {
-            base.Start();
+            base.Awake();
 
             animator = GetComponent<Animator>();
         }

@@ -21,8 +21,8 @@ namespace DMBTools
         new protected void Start()
         {
             base.Start();
-            player.Rigidbody2D().freezeRotation = true;
-            player.Rigidbody2D().sharedMaterial = NoFrictionMaterial;
+            player.GetComponent<Rigidbody2D>().freezeRotation = true;
+            player.GetComponent<Rigidbody2D>().sharedMaterial = NoFrictionMaterial;
         }
 
         protected bool SurfaceIsFlat(Collision2D collision)

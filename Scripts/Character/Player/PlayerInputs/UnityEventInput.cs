@@ -23,7 +23,7 @@ namespace DMBTools
         protected void Start()
         {
             player = GetComponent<BoxPlayer>();
-            player.Rigidbody2D().bodyType = RigidbodyType2D.Dynamic;
+            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
         void OnCollisionEnter2D(Collision2D collision) => HandleCollision(collision, CollisionType.Enter);
         void OnCollisionStay2D(Collision2D collision) => HandleCollision(collision, CollisionType.Stay);

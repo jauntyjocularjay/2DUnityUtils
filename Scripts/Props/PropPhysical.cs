@@ -11,13 +11,15 @@ namespace DMBTools
         BoxCollider2D collidr;
         Rigidbody2D rb;
 
-        new public void Start()
+        new public void Awake()
         /* @method Start() calls Prop.Start() and sets references to the BoxCollider2D and Rigidbody2D */
         {
-            base.Start();
+            base.Awake();
             collidr = GetComponent<BoxCollider2D>();
             rb = GetComponent<Rigidbody2D>();
-
+        }
+        protected void Start()
+        {
             rb.freezeRotation = true;
         }
 

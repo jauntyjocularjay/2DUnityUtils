@@ -7,10 +7,9 @@ namespace DMBTools
     [ExecuteAlways]
     public abstract class Platform : Surface
     {
-        new public void Start()
+        new protected void Start()
         {
             base.Start();
-
             gameObject.tag = "Platform";
 
             dataNativeSize = data.nativeSize;

@@ -8,10 +8,9 @@ namespace DMBTools
     public abstract class BoxPlayer : BoxCharacter
     {
         public BoxPlayerData data;
-        new protected void Start()
+        new protected void Awake() => base.Awake();
+        protected void Start()
         {
-            base.Start();
-
             SpriteRenderer().sortingLayerID = data.sortingLayerID;
             SpriteRenderer().sortingOrder = data.sortingOrder;
 

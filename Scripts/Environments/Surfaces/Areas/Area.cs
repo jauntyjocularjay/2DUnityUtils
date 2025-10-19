@@ -10,24 +10,21 @@ namespace DMBTools
         TilemapCollider2D collidr;
         Rigidbody2D rb;
 
-        public new void Start()
+        new protected void Awake()
         {
-            base.Start();
-
-            SetCompositeCollider2D();
-            SetRigidbody2D();
-
+            collidr = GetComponent<TilemapCollider2D>();
+            rb = GetComponent<Rigidbody2D>();
+        }
+        protected void Start()
+        {
+            collidr.isTrigger = true;
+            rb.bodyType = RigidbodyType2D.Static;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
         public TilemapCollider2D CompositeCollider2D()
         {
             return collidr;
-        }
-        void SetCompositeCollider2D()
-        {
-            collidr = GetComponent<TilemapCollider2D>();
-
-            collidr.isTrigger = true;
         }
         public Rigidbody2D Rigidbody2D()
         /* @method Rigidbody2D() returns the Rigidbody2D component from the GameObject */
@@ -37,9 +34,6 @@ namespace DMBTools
         public void SetRigidbody2D()
         /* @method Rigidbody2D() returns the Rigidbody2D component from the GameObject */
         {
-            rb = GetComponent<Rigidbody2D>();
-            rb.bodyType = RigidbodyType2D.Static;
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 }
