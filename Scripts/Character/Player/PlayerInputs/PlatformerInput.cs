@@ -16,6 +16,7 @@ namespace DMBTools
             - Assign the event to the corresponding method
     */
     {
+        protected int jumps = 0;
         [SerializeField] protected PhysicsMaterial2D NoFrictionMaterial;
         readonly float flatSurfaceBounds = 0.8f;
         new protected void Start()
@@ -25,13 +26,10 @@ namespace DMBTools
             player.GetComponent<Rigidbody2D>().sharedMaterial = NoFrictionMaterial;
         }
 
-        protected bool SurfaceIsFlat(ContactPoint2D contact)
+        protected bool SurfaceIsFlat(Collision2D collision)
         {
-            return Vector2.Dot(contact.normal, Vector2.up) > flatSurfaceBounds;
+            return Vector2.Dot(collision.contacts[0].normal, Vector2.up) > flatSurfaceBounds;
         }
-
-        
-
         protected bool AtLeastOneFlatSurface(Collision2D collision)
         {
             foreach(ContactPoint2D contact in collision.contacts)
