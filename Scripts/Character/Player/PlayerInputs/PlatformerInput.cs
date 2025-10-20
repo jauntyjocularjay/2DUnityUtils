@@ -25,9 +25,9 @@ namespace DMBTools
             player.GetComponent<Rigidbody2D>().sharedMaterial = NoFrictionMaterial;
         }
 
-        protected bool SurfaceIsFlat(Collision2D collision)
+        protected bool SurfaceIsFlat(ContactPoint2D contact)
         {
-            return Vector2.Dot(collision.GetContact(0).normal, Vector2.up) > flatSurfaceBounds;
+            return Vector2.Dot(contact.normal, Vector2.up) > flatSurfaceBounds;
         }
 
         
