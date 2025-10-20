@@ -18,7 +18,7 @@ namespace DMBTools
     {
         protected int jumps = 0;
         [SerializeField] protected PhysicsMaterial2D NoFrictionMaterial;
-        readonly float flatSurfaceBounds = 0.8f;
+        [SerializeField] protected float flatSurfaceBounds;
         new protected void Start()
         {
             base.Start();
