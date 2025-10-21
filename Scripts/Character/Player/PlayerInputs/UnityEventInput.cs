@@ -10,7 +10,8 @@ namespace DMBTools
     [RequireComponent(typeof(BoxPlayer))]
     public abstract class UnityEventInput : MonoBehaviour
     {
-        [SerializeField]protected BoxPlayer player;
+        [SerializeField] protected BoxPlayer player;
+        [SerializeField] protected Fan flags;
         Vector2 movementInput;
         /*
             - Add Player Input Manager component to your player GameObject
@@ -28,16 +29,16 @@ namespace DMBTools
         void OnCollisionEnter2D(Collision2D collision) => HandleCollision(collision, CollisionType.Enter);
         void OnCollisionStay2D(Collision2D collision) => HandleCollision(collision, CollisionType.Stay);
         void OnCollisionExit2D(Collision2D collision) => HandleCollision(collision, CollisionType.Exit);
-        public abstract void HandleCollision(Collision2D collision, CollisionType type);
         void OnTriggerEnter2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Enter);
         void OnTriggerStay2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Stay);
         void OnTriggerExit2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Exit);
+        public abstract void HandleCollision(Collision2D collision, CollisionType type);
         public abstract void HandleTrigger(Collider2D collider, TriggerType type);
         public void MovementInput(InputAction.CallbackContext context) => movementInput = context.ReadValue<Vector2>();
-        public Vector2 MovementVector()
-        {
-            return movementInput;
-        }
+        protected Vector2 MovementVector() => movementInput;
+        protected bool MovementVectorXZero() => movementInput.x == 0.0f;
+        protected bool MovementVectorYZero() => movementInput.y == 0.0f;
+
         void ActionMethod(InputAction.CallbackContext context)
         {
         //   Event Phases
