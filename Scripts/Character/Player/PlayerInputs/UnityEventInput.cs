@@ -34,10 +34,9 @@ namespace DMBTools
         void OnTriggerExit2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Exit);
         public abstract void HandleTrigger(Collider2D collider, TriggerType type);
         public void MovementInput(InputAction.CallbackContext context) => movementInput = context.ReadValue<Vector2>();
-        public Vector2 MovementVector()
-        {
-            return movementInput;
-        }
+        public Vector2 MovementVector() => movementInput;
+        public Vector2 MovementVector(Vector2 vector2) => movementInput = vector2;
+
         void ActionMethod(InputAction.CallbackContext context)
         {
         //   Event Phases

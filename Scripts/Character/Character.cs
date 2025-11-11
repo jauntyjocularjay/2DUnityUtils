@@ -26,46 +26,23 @@ namespace DMBTools
         public int HP() => hp;
         public void IncrementHP(int i = 1) => hp += i;
         public void DecrementHP(int i = 1) => hp -= i;
-        public Animator Animator()
+        public Animator Animator() => animator;
         /* @method Animator() returns the Animator component from the GameObject */
-        {
-            return animator;
-        }
-        public Rigidbody2D Rigidbody2D()
-        /* @method RigidBody2D() returns the Rigidbody2D 
-            component from the GameObject */
-        {
-            return rigidBody;
-        }
-        public void LinearVelocityX(float x)
-        /* @method LinearVelocityX(float x) sets the X 
-                value of the Rigidbody2D's linear velocity, 
-                keeping the current Y value */
-        {
-            rigidBody.linearVelocity = new Vector2
-            (
-                x,
-                rigidBody.linearVelocityY
-            );
-        }
-        public void LinearVelocityY(float y)
-        /* @method LinearVelocityY(float y) sets the Y 
-                value of the Rigidbody2D's linear 
-                velocity, keeping the current X value */
-        {
-            rigidBody.linearVelocity = new Vector2
-            (
-                rigidBody.linearVelocityX,
-                y
-            );
-        }
-        public void LinearVelocity(Vector2 vector)
-        /* @method LinearVelocity(Vector2 vector) sets the 
-                Rigidbody2D's linear velocity using a 
-                Vector2 */
-        {
-            rigidBody.linearVelocity = vector;
-        }
+
+        public Rigidbody2D Rigidbody2D() => rigidBody;
+        /* @method RigidBody2D() returns the Rigidbody2D component from the GameObject */
+
+        public float LinearVelocityX() => rigidBody.linearVelocityX;
+        public float LinearVelocityY() => rigidBody.linearVelocityY;
+        public void LinearVelocityX(float x) => rigidBody.linearVelocity = new Vector2(x, LinearVelocityY());
+        /* @method LinearVelocityX(float x) sets the X value of the Rigidbody2D's linear velocity, keeping the current Y value */
+        
+        public void LinearVelocityY(float y) => rigidBody.linearVelocity = new Vector2(LinearVelocityX(), y);
+        /* @method LinearVelocityY(float y) sets the Y value of the Rigidbody2D's linear velocity, keeping the current X value */
+        public void LinearVelocity(Vector2 vector) => rigidBody.linearVelocity = vector;
+        /* @method LinearVelocity(Vector2 vector) sets the Rigidbody2D's linear velocity using a Vector2 */
+        
+        
 
     }
 

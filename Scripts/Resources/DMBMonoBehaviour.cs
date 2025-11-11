@@ -27,13 +27,14 @@ namespace DMBTools
         {
             Transform().position = v;
         }
-        public void SetXPositionX(float f)
-        /* @method Sets the X value of the Transform's position, keeping the current Y value */
+
+        public void SetPositionX(float f)
+        /* @method Sets the Y value of the Transform's position, keeping the current X value */
         {
             Transform().position = new Vector2(f, Transform().position.y);
         }
         public void SetPositionY(float f)
-        /* @method Sets the Y value of the Transform's position, keeping the current X value */
+        /* @method Sets the X value of the Transform's position, keeping the current Y value */
         {
             Transform().position = new Vector2(Transform().position.x, f);
         }

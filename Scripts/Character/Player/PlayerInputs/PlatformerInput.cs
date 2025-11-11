@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 
 
@@ -19,6 +18,7 @@ namespace DMBTools
         protected int jumps = 0;
         [SerializeField] protected PhysicsMaterial2D NoFrictionMaterial;
         [SerializeField] protected float flatSurfaceBounds;
+        [SerializeField] protected float verticalSurfaceBounds;
         new protected void Start()
         {
             base.Start();
@@ -30,17 +30,24 @@ namespace DMBTools
         {
             return Vector2.Dot(collision.contacts[0].normal, Vector2.up) > flatSurfaceBounds;
         }
-        protected bool AtLeastOneFlatSurface(Collision2D collision)
+
+        protected bool SurfaceIsVertical(Collision2D collision)
         {
-            foreach(ContactPoint2D contact in collision.contacts)
+            Vector2 vector = collision.contacts[0].normal;
+
+            if (Vector2.Dot(vector, Vector2.left) > verticalSurfaceBounds ||
+                Vector2.Dot(vector, Vector2.left) < verticalSurfaceBounds
+            )
             {
-                if (Vector2.Dot(contact.normal, Vector2.up) > flatSurfaceBounds)
-                {
-                    return true;
-                }
+                return true;
             }
-            return false;
+            else
+            {
+                return false;
+            }
         }
-        
+
     }
+
+    public abstract class Anim { }
 }
