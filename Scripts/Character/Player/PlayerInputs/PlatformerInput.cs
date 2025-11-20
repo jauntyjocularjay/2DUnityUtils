@@ -28,23 +28,18 @@ namespace DMBTools
 
         protected bool SurfaceIsFlat(Collision2D collision)
         {
-            return Vector2.Dot(collision.contacts[0].normal, Vector2.up) > flatSurfaceBounds;
+            Vector2 vector = collision.contacts[0].normal;
+
+            return Vector2.Dot(vector, Vector2.up) > flatSurfaceBounds;
         }
 
         protected bool SurfaceIsVertical(Collision2D collision)
         {
             Vector2 vector = collision.contacts[0].normal;
 
-            if (Vector2.Dot(vector, Vector2.left) > verticalSurfaceBounds ||
-                Vector2.Dot(vector, Vector2.left) < verticalSurfaceBounds
-            )
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return
+                Vector2.Dot(vector, Vector2.right) > verticalSurfaceBounds ||
+                Vector2.Dot(vector, Vector2.right) < -verticalSurfaceBounds;
         }
 
     }
