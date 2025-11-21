@@ -18,9 +18,7 @@ namespace DMBTools
             airControl = i;
         }
         public float AirControlVelocity()
-        {
-            return airControlVelocity.ToFloat();
-        }
+            => airControlVelocity.ToFloat();
     }
 
 

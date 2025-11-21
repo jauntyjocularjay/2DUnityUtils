@@ -26,41 +26,40 @@ namespace DMBTools
             player = GetComponent<BoxPlayer>();
             player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
-        void OnCollisionEnter2D(Collision2D collision) => HandleCollision(collision, CollisionType.Enter);
-        void OnCollisionStay2D(Collision2D collision) => HandleCollision(collision, CollisionType.Stay);
-        void OnCollisionExit2D(Collision2D collision) => HandleCollision(collision, CollisionType.Exit);
-        void OnTriggerEnter2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Enter);
-        void OnTriggerStay2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Stay);
-        void OnTriggerExit2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Exit);
+        void OnCollisionEnter2D(Collision2D collision)
+            => HandleCollision(collision, CollisionType.Enter);
+        void OnCollisionStay2D(Collision2D collision)
+            => HandleCollision(collision, CollisionType.Stay);
+        void OnCollisionExit2D(Collision2D collision)
+            => HandleCollision(collision, CollisionType.Exit);
+        void OnTriggerEnter2D(Collider2D collider)
+            => HandleTrigger(collider, TriggerType.Enter);
+        void OnTriggerStay2D(Collider2D collider)
+            => HandleTrigger(collider, TriggerType.Stay);
+        void OnTriggerExit2D(Collider2D collider)
+            => HandleTrigger(collider, TriggerType.Exit);
         public abstract void HandleCollision(Collision2D collision, CollisionType type);
         public abstract void HandleTrigger(Collider2D collider, TriggerType type);
-        public void MovementInput(InputAction.CallbackContext context) => movementInput = context.ReadValue<Vector2>();
+        public void MovementInput(InputAction.CallbackContext context)
+            => movementInput = context.ReadValue<Vector2>();
         public void ResetMovementInput()
-        {
-            MovementVector(movementInput);
-        }
-        protected Vector2 MovementVector(Vector2 vector2) => movementInput = vector2;
-        protected Vector2 MovementVector() => movementInput;
-        protected bool MovementVectorXZero() => movementInput.x == 0.0f;
-        protected bool MovementVectorYZero() => movementInput.y == 0.0f;
+            => MovementVector(movementInput);
+        protected Vector2 MovementVector(Vector2 vector2)
+            => movementInput = vector2;
+        protected Vector2 MovementVector()
+            => movementInput;
+        protected bool MovementVectorXZero()
+            => movementInput.x == 0.0f;
+        protected bool MovementVectorYZero()
+            => movementInput.y == 0.0f;
 
-        void ActionMethod(InputAction.CallbackContext context)
+        void OnAction(InputAction.CallbackContext context)
         {
             //   Event Phases
             //   phases within context are
             //     - context.started
             //     - context.performed
             //     - context.canceled
-
-            if (context.started)
-            {
-            }
-            if (context.performed)
-            {
-            }
-            if (context.canceled)
-            {
-            }
         }
 
     }
