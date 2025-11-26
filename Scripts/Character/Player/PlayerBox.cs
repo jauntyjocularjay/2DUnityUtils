@@ -14,12 +14,12 @@ namespace DMBTools
             SpriteRenderer.sortingLayerID = data.sortingLayerID;
             SpriteRenderer.sortingOrder = data.sortingOrder;
 
-            BoxCollider2D().offset = data.colliderOffset;
-            BoxCollider2D().size = data.colliderSize;
-            BoxCollider2D().edgeRadius = data.colliderEdgeRadius;
+            BoxCollider2D.offset = data.colliderOffset;
+            BoxCollider2D.size = data.colliderSize;
+            BoxCollider2D.edgeRadius = data.colliderEdgeRadius;
 
-            Rigidbody2D().mass = data.mass;
-            Rigidbody2D().gravityScale = data.gravityScale;
+            Rigidbody2D.mass = data.mass;
+            Rigidbody2D.gravityScale = data.gravityScale;
 
             HP(data.MaxHP);
         }

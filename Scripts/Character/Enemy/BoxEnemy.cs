@@ -4,17 +4,17 @@ namespace DMBTools
 {
     public abstract class BoxEnemy : BoxCharacter
     {
-        public BoxEnemyData data;
+        BoxEnemyData _Data;
 
         protected void Start()
         {
-            HP(data.MaxHP);
-            SpriteRenderer.sortingOrder = data.sortingOrder;
+            HP(Data.MaxHP);
+            SpriteRenderer.sortingOrder = Data.sortingOrder;
         }
 
-        public BoxEnemyData Data()
+        public BoxEnemyData Data
         {
-            return data;
+            get => _Data;
         }
     }
 }

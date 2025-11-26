@@ -8,17 +8,17 @@ namespace DMBTools
     [RequireComponent(typeof(BoxCollider2D))]
     public abstract class BoxCharacter : Character
     {
-        BoxCollider2D collidr;
+        BoxCollider2D _BoxCollider2D;
 
         new protected void Awake()
         {
             base.Awake();
-            collidr = GetComponent<BoxCollider2D>();
+            _BoxCollider2D = GetComponent<BoxCollider2D>();
         }
-        
-        public BoxCollider2D BoxCollider2D()
+
+        public BoxCollider2D BoxCollider2D
         {
-            return collidr;
+            get => _BoxCollider2D;
         }
     }
 }
