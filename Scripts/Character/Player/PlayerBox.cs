@@ -11,8 +11,8 @@ namespace DMBTools
         new protected void Awake() => base.Awake();
         protected void Start()
         {
-            SpriteRenderer().sortingLayerID = data.sortingLayerID;
-            SpriteRenderer().sortingOrder = data.sortingOrder;
+            SpriteRenderer.sortingLayerID = data.sortingLayerID;
+            SpriteRenderer.sortingOrder = data.sortingOrder;
 
             BoxCollider2D().offset = data.colliderOffset;
             BoxCollider2D().size = data.colliderSize;

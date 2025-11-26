@@ -32,7 +32,7 @@ namespace DMBTools
         void SetCameraPosition()
         {
             Vector3 newPosition;
-            if (player.Transform().position.x + player.data.cameraOffset.x <= cameraMinimumPosition.x)
+            if (player.Transform.position.x + player.data.cameraOffset.x <= cameraMinimumPosition.x)
             {
                 newPosition = new Vector3
                 (
@@ -41,10 +41,10 @@ namespace DMBTools
                     cameraTX.position.z
                 );
                 cameraTX.position = newPosition;
-                Transform().position = newPosition;
+                Transform.position = newPosition;
 
             }
-            else if (player.Transform().position.x + player.data.cameraOffset.x >= cameraMaximumPosition.x)
+            else if (player.Transform.position.x + player.data.cameraOffset.x >= cameraMaximumPosition.x)
             {
                 newPosition = new Vector3
                 (
@@ -54,22 +54,22 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                Transform().position = newPosition;
+                Transform.position = newPosition;
             }
             else
             {
                 newPosition = new Vector3
                 (
-                    player.Transform().position.x + player.data.cameraOffset.x,
+                    player.Transform.position.x + player.data.cameraOffset.x,
                     cameraTX.position.y,
                     cameraTX.position.z
                 );
 
                 cameraTX.position = newPosition;
-                Transform().position = newPosition;
+                Transform.position = newPosition;
             }
 
-            if (player.Transform().position.y + player.data.cameraOffset.y <= cameraMinimumPosition.y)
+            if (player.Transform.position.y + player.data.cameraOffset.y <= cameraMinimumPosition.y)
             {
                 newPosition = new Vector3
                 (
@@ -79,9 +79,9 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                Transform().position = newPosition;
+                Transform.position = newPosition;
             }
-            else if (player.Transform().position.y + player.data.cameraOffset.y >= cameraMaximumPosition.y)
+            else if (player.Transform.position.y + player.data.cameraOffset.y >= cameraMaximumPosition.y)
             {
                 newPosition = new Vector3
                 (
@@ -91,19 +91,19 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                Transform().position = newPosition;
+                Transform.position = newPosition;
             }
             else
             {
                 newPosition = new Vector3
                 (
                     cameraTX.position.x,
-                    player.Transform().position.y + player.data.cameraOffset.y,
+                    player.Transform.position.y + player.data.cameraOffset.y,
                     cameraTX.position.z
                 );
 
                 cameraTX.position = newPosition;
-                Transform().position = newPosition;
+                Transform.position = newPosition;
             }
         }
 

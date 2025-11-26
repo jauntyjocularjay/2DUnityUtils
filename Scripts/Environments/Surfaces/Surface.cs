@@ -21,10 +21,10 @@ namespace DMBTools
 
             Rigidbody2D().bodyType = RigidbodyType2D.Static;
 
-            BoxCollider2D().size = new Vector2
+            BoxCollider2D.size = new Vector2
             (
-                SpriteRenderer().size.x * spaceBetween,
-                BoxCollider2D().size.y
+                SpriteRenderer.size.x * spaceBetween,
+                BoxCollider2D.size.y
             );
         }
 
