@@ -16,14 +16,10 @@ namespace DMBTools
         }
 
         public Animator Animator()
-        /* @method returns the animator */
-        {
-            return animator;
-        }
+            /* @method returns the animator */
+            => animator;
         public void Animator(Animator animatr)
         /* @method sets the animator */
-        {
-            animator = animatr;
-        }
+            => animator = animatr;
     }
 }

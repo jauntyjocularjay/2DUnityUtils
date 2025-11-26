@@ -21,7 +21,7 @@ namespace DMBTools
             deathCollider = GetComponent<BoxCollider2D>();
             deathCollider.isTrigger = true;
             deathCollider.size = deathColliderSize;
-            tx = GetComponent<Transform>();
+            _transform = GetComponent<Transform>();
         }
 
         void Update()
@@ -113,7 +113,7 @@ namespace DMBTools
         }
         void HandleTrigger(Collider2D collision, TriggerType type)
         {
-            if( collision.gameObject.CompareTag("Enemy") ||
+            if (collision.gameObject.CompareTag("Enemy") ||
                 collision.gameObject.CompareTag("Player") &&
                 type == TriggerType.Exit)
             {

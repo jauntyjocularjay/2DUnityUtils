@@ -4,18 +4,18 @@
 
 namespace DMBTools
 {
-    [RequireComponent(typeof (Transform))]
+    [RequireComponent(typeof(Transform))]
     public abstract class DMBMonoBehaviour : MonoBehaviour
     {
-        protected Transform tx;
+        protected Transform _transform;
         protected void Awake()
         {
-            tx = GetComponent<Transform>();
+            _transform = GetComponent<Transform>();
         }
 
         public Transform Transform()
         {
-            return tx;
+            return _transform;
         }
         public void Transform(Vector3 position, Quaternion rotation)
         /* @method Sets the Transform's position and rotation */
