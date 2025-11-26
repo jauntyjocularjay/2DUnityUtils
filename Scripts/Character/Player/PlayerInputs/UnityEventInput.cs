@@ -12,7 +12,7 @@ namespace DMBTools
     {
         [SerializeField] protected BoxPlayer player;
         [SerializeField] protected Fan flags;
-        Vector2 movementInput;
+        [SerializeField] Vector2 movementInput;
         /*
             - Add Player Input Manager component to your player GameObject
             - Set Notification Behavior to Invoke Unity Events
