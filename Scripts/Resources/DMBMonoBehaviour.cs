@@ -8,7 +8,7 @@ namespace DMBTools
     public abstract class DMBMonoBehaviour : MonoBehaviour
     {
         protected Transform _transform;
-        protected void Awake()
+        public void Start()
         {
             _transform = GetComponent<Transform>();
         }

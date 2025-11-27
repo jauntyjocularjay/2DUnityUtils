@@ -7,11 +7,9 @@ namespace DMBTools
     /* @class Animated Prop includes the Prop class and addes getters and setters for the Animator */
     {
         Animator animator;
-
-        new public void Awake()
+        new public void Start()
         {
-            base.Awake();
-
+            base.Start();
             animator = GetComponent<Animator>();
         }
 

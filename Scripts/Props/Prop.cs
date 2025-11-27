@@ -11,10 +11,10 @@ namespace DMBTools
     {
         SpriteRenderer _SpriteRenderer;
 
-        new protected void Awake()
+        new protected void Start()
         /* @method Attaches the Transform, SpriteRenderer components to variables for later fetching. */
         {
-            base.Awake();
+            base.Start();
             _SpriteRenderer = GetComponent<SpriteRenderer>();
         }
 
