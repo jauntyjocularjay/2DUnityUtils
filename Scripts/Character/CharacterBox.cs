@@ -10,9 +10,9 @@ namespace DMBTools
     {
         BoxCollider2D _BoxCollider2D;
 
-        new protected void Awake()
+        new protected void Start()
         {
-            base.Awake();
+            base.Start();
             _BoxCollider2D = GetComponent<BoxCollider2D>();
         }
 

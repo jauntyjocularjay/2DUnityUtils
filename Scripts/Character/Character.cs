@@ -11,11 +11,11 @@ namespace DMBTools
         Rigidbody2D _RigidBody2D;
         protected int hp = 0;
 
-        new protected void Awake()
+        new protected void Start()
         /* @method Start() calls Prop.Start() and sets the 
                 animator and rigidBody variables */
         {
-            base.Awake();
+            base.Start();
             _Animator = GetComponent<Animator>();
             _RigidBody2D = GetComponent<Rigidbody2D>();
         }
