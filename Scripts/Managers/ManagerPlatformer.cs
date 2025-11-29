@@ -32,7 +32,13 @@ namespace DMBTools
         void SetCameraPosition()
         {
             Vector3 newPosition;
-            if (player.Transform.position.x + player.data.cameraOffset.x <= cameraMinimumPosition.x)
+            if
+            (
+                player.Transform.position.x +
+                player.data.cameraOffset.x
+                <=
+                cameraMinimumPosition.x
+            )
             {
                 newPosition = new Vector3
                 (

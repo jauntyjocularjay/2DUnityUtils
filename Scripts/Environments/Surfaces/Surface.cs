@@ -19,7 +19,7 @@ namespace DMBTools
         {
             base.Start();
 
-            Rigidbody2D().bodyType = RigidbodyType2D.Static;
+            Rigidbody2D.bodyType = RigidbodyType2D.Static;
 
             BoxCollider2D.size = new Vector2
             (
