@@ -6,18 +6,20 @@ namespace DMBTools
     public abstract class AnimatedProp : Prop
     /* @class Animated Prop includes the Prop class and addes getters and setters for the Animator */
     {
-        Animator animator;
-        new public void Start()
+        Animator _Animator;
+        new protected void Awake()
         {
-            base.Start();
-            animator = GetComponent<Animator>();
+            _Animator = GetComponent<Animator>();
         }
 
-        public Animator Animator()
-            /* @method returns the animator */
-            => animator;
-        public void Animator(Animator animatr)
-        /* @method sets the animator */
-            => animator = animatr;
+        new protected void Start()
+        {
+            base.Start();
+        }
+        public Animator Animator
+        {
+            get => _Animator;
+            set => _Animator = value;
+        }
     }
 }

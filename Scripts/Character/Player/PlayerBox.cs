@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 
@@ -8,6 +7,10 @@ namespace DMBTools
     public abstract class BoxPlayer : BoxCharacter
     {
         public BoxPlayerData data;
+        new protected void Awake()
+        {
+            base.Awake();
+        }
         new protected void Start()
         {
             base.Start();
