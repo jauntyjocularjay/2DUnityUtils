@@ -15,11 +15,6 @@ namespace DMBTools
             base.Awake();
             _SpriteRenderer = GetComponent<SpriteRenderer>();
         }
-        new protected void Start()
-        /* @method Attaches the Transform, SpriteRenderer components to variables for later fetching. */
-        {
-            base.Start();
-        }
 
         public SpriteRenderer SpriteRenderer
         /* @method Returns the SpriteRenderer component from the GameObject */

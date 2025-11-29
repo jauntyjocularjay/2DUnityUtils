@@ -15,7 +15,7 @@ namespace DMBTools
             collidr = GetComponent<TilemapCollider2D>();
             rb = GetComponent<Rigidbody2D>();
         }
-        new protected void Start()
+        protected void Start()
         {
             collidr.isTrigger = true;
             rb.bodyType = RigidbodyType2D.Static;

@@ -6,9 +6,8 @@ namespace DMBTools
     {
         BoxEnemyData _Data;
 
-        new protected void Start()
+        protected void Start()
         {
-            base.Start();
             HP(Data.MaxHP);
             SpriteRenderer.sortingOrder = Data.sortingOrder;
         }

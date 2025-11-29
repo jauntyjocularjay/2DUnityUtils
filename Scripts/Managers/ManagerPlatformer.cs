@@ -21,7 +21,6 @@ namespace DMBTools
             deathCollider = GetComponent<BoxCollider2D>();
             deathCollider.isTrigger = true;
             deathCollider.size = deathColliderSize;
-            _transform = GetComponent<Transform>();
         }
 
         void Update()
@@ -32,6 +31,9 @@ namespace DMBTools
         void SetCameraPosition()
         {
             Vector3 newPosition;
+            Debug.Log($"player.Transform.position.x: {player.Transform.position.x}");
+            Debug.Log($"player.data.cameraOffset.x: {player.data.cameraOffset.x}");
+
             if
             (
                 player.Transform.position.x +

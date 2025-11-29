@@ -14,7 +14,7 @@ namespace DMBTools {
         TilemapCollider2D tilemapCollider2D;
         new Rigidbody2D rigidbody2D;
     
-        new protected void Start()
+        protected void Start()
         {
             tilemap = GetComponent<Tilemap>();
     

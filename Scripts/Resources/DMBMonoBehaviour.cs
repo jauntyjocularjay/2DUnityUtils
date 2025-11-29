@@ -7,18 +7,16 @@ namespace DMBTools
     [RequireComponent(typeof(Transform))]
     public abstract class DMBMonoBehaviour : MonoBehaviour
     {
-        protected Transform _transform;
+        protected Transform _Transform;
         protected void Awake()
         {
-            _transform = GetComponent<Transform>();
+            _Transform = GetComponent<Transform>();
         }
-        protected void Start()
-        { }
 
         public Transform Transform
         {
-            get => _transform;
-            set => _transform = value;
+            get => _Transform;
+            set => _Transform = value;
         }
         public void SetPosition(Vector2 v)
         /* @method Sets the position of the Transform component using a Vector2. */

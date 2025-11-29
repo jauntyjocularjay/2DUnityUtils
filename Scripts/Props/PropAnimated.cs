@@ -11,11 +11,6 @@ namespace DMBTools
         {
             _Animator = GetComponent<Animator>();
         }
-
-        new protected void Start()
-        {
-            base.Start();
-        }
         public Animator Animator
         {
             get => _Animator;
