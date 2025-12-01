@@ -13,6 +13,7 @@ namespace DMBTools
         }
         protected void Start()
         {
+            base.Start();
             SpriteRenderer.sortingLayerID = data.sortingLayerID;
             SpriteRenderer.sortingOrder = data.sortingOrder;
 

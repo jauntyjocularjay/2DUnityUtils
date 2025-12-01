@@ -16,6 +16,10 @@ namespace DMBTools
             _Animator = GetComponent<Animator>();
             _Rigidbody2D = GetComponent<Rigidbody2D>();
         }
+        new protected void Start()
+        {
+            base.Start();
+        }
         public void HP(int currentHP)
         {
             hp = currentHP;
