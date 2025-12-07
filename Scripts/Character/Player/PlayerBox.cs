@@ -11,7 +11,7 @@ namespace DMBTools
         {
             base.Awake();
         }
-        protected void Start()
+        new protected void Start()
         {
             base.Start();
             SpriteRenderer.sortingLayerID = data.sortingLayerID;

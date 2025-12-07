@@ -9,8 +9,9 @@ namespace DMBTools
         Camera mainCamera;
         Vector2 cameraInitialPosition;
 
-        void Start()
+        new void Start()
         {
+            base.Start();
             initialPosition = new Vector2(Transform.position.x, Transform.position.y);
             mainCamera = Camera.main;
             cameraInitialPosition = mainCamera.transform.position;

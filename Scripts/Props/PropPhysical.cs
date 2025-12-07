@@ -16,7 +16,7 @@ namespace DMBTools
             _Rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
-        protected void Start()
+        new protected void Start()
         /* @method Start() calls Prop.Start() and sets references to the BoxCollider2D and Rigidbody2D */
         {
             Rigidbody2D.freezeRotation = true;

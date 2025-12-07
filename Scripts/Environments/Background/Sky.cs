@@ -8,8 +8,9 @@ namespace DMBTools
     {
         Camera mainCamera;
         Vector2 initialPosition;
-        void Start()
+        new void Start()
         {
+            base.Start();
             mainCamera = Camera.main;
             initialPosition = new Vector2
             (

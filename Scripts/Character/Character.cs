@@ -19,6 +19,17 @@ namespace DMBTools
         new protected void Start()
         {
             base.Start();
+            Rigidbody2D.freezeRotation = true;
+        }
+        public Animator Animator
+        {
+            get => GetComponent<Animator>();
+            set => _Animator = value;
+        }
+        public Rigidbody2D Rigidbody2D
+        {
+            get => GetComponent<Rigidbody2D>();
+            set => _Rigidbody2D = value;
         }
         public void HP(int currentHP)
         {
@@ -27,20 +38,6 @@ namespace DMBTools
         public int HP() => hp;
         public void IncrementHP(int i = 1) => hp += i;
         public void DecrementHP(int i = 1) => hp -= i;
-        public Animator Animator
-        {
-            get => _Animator;
-            set => _Animator = value;
-        }
-        /* @method Animator() returns the Animator component from the GameObject */
-
-        public Rigidbody2D Rigidbody2D
-        {
-            get => _Rigidbody2D;
-            set => _Rigidbody2D = value;
-        }
-        /* @method RigidBody2D() returns the Rigidbody2D component from the GameObject */
-
     }
 
 
