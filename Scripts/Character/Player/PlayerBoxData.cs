@@ -7,8 +7,6 @@ namespace DMBTools
     [CreateAssetMenu(fileName = "PlayerData", menuName = "DMBTools/Data/BoxPlayer", order = 0)]
     public class BoxPlayerData : BoxCharacterData
     {
-        [Header("Player Properties")]
-        public Vector3 cameraOffset;
         [Header("airControl is an integer between 0-12 that adds velocity during jumps.")]
         public int airControl;
         public FractionScale airControlVelocity = new FractionScale(0, 12);

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 
@@ -10,6 +11,8 @@ namespace DMBTools
     public abstract class PlatformerManager : Manager
     {
         public BoxPlayer player;
+        [Tooltip("Controls the position of the player sprite relative to the Camera.main")]
+        public Vector2 playerCameraOffset = Vector2.zero;
         Transform cameraTX;
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
@@ -32,7 +35,7 @@ namespace DMBTools
         {
             Vector3 newPosition;
 
-            if (player.Transform.position.x + player.data.cameraOffset.x <= cameraMinimumPosition.x)
+            if (player.Transform.position.x + playerCameraOffset.x <= cameraMinimumPosition.x)
             {
                 newPosition = new Vector3
                 (
@@ -44,7 +47,7 @@ namespace DMBTools
                 Transform.position = newPosition;
 
             }
-            else if (player.Transform.position.x + player.data.cameraOffset.x >= cameraMaximumPosition.x)
+            else if (player.Transform.position.x + playerCameraOffset.x >= cameraMaximumPosition.x)
             {
                 newPosition = new Vector3
                 (
@@ -60,7 +63,7 @@ namespace DMBTools
             {
                 newPosition = new Vector3
                 (
-                    player.Transform.position.x + player.data.cameraOffset.x,
+                    player.Transform.position.x + playerCameraOffset.x,
                     cameraTX.position.y,
                     cameraTX.position.z
                 );
@@ -69,7 +72,7 @@ namespace DMBTools
                 Transform.position = newPosition;
             }
 
-            if (player.Transform.position.y + player.data.cameraOffset.y <= cameraMinimumPosition.y)
+            if (player.Transform.position.y + playerCameraOffset.y <= cameraMinimumPosition.y)
             {
                 newPosition = new Vector3
                 (
@@ -81,7 +84,7 @@ namespace DMBTools
                 cameraTX.position = newPosition;
                 Transform.position = newPosition;
             }
-            else if (player.Transform.position.y + player.data.cameraOffset.y >= cameraMaximumPosition.y)
+            else if (player.Transform.position.y + playerCameraOffset.y >= cameraMaximumPosition.y)
             {
                 newPosition = new Vector3
                 (
@@ -98,7 +101,7 @@ namespace DMBTools
                 newPosition = new Vector3
                 (
                     cameraTX.position.x,
-                    player.Transform.position.y + player.data.cameraOffset.y,
+                    player.Transform.position.y + playerCameraOffset.y,
                     cameraTX.position.z
                 );
 
