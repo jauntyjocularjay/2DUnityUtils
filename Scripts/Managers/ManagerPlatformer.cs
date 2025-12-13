@@ -7,6 +7,7 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(BoxCollider2D))]
+    [ExecuteAlways]
     public abstract class PlatformerManager : Manager
     {
         [Tooltip("Defaults to the BoxPlayer in the root.")]
@@ -14,14 +15,9 @@ namespace DMBTools
         [Tooltip("Controls the position of the player sprite relative to the Camera.main")]
         public Vector2 playerCameraOffset = Vector2.zero;
         Transform cameraTX;
+        [Tooltip("The death collider will trigger a player death ")]
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
-
-        new protected void Awake()
-        {
-            base.Awake();
-            SetPlayer();
-        }
 
         new protected void Start()
         {
@@ -141,6 +137,12 @@ namespace DMBTools
                 UnityEngine.Object.Destroy(collision.gameObject);
             }
         }
+        // Unity Editor methods
+        void OnRenderObject()
+        {
+            SetPlayer();
+        }
     }
+
 }
 

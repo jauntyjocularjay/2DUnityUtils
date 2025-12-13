@@ -4,7 +4,7 @@
 
 namespace DMBTools
 {
-    public abstract class StaticBackground : DMBMonoBehaviour
+    public abstract class StaticBackground : Prop
     {
         [Tooltip("The camera will default to Camera.main unless otherwise specified.")]
         public Camera _camera;
@@ -12,17 +12,22 @@ namespace DMBTools
         new void Awake()
         {
             base.Awake();
-            _camera = _camera ? _camera : Camera.main;
+            SetCamera();
             backgroundInitialLocalPosition = new Vector2
             (
                 Transform.localPosition.x,
                 Transform.localPosition.y
             );
         }
+        void SetCamera()
+        {
+            if (_camera == null)
+                _camera = Camera.main;
+        }
         new void Start()
         {
             base.Start();
-            _camera = _camera ? _camera : Camera.main;
+            SetCamera();
             backgroundInitialLocalPosition = new Vector2
             (
                 Transform.localPosition.x,
@@ -41,6 +46,12 @@ namespace DMBTools
                 backgroundInitialLocalPosition.x + ViewingCamera.transform.localPosition.x,
                 backgroundInitialLocalPosition.y + ViewingCamera.transform.localPosition.y
             );
+        }
+
+        // Editor Methods
+        void OnRenderObject()
+        {
+            SetCamera();
         }
     }
 }
