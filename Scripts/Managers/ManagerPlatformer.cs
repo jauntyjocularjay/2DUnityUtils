@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEditor.EditorTools;
+﻿using System;
 using UnityEngine;
 
 
@@ -10,6 +9,7 @@ namespace DMBTools
     [RequireComponent(typeof(BoxCollider2D))]
     public abstract class PlatformerManager : Manager
     {
+        [Tooltip("Defaults to the BoxPlayer in the root.")]
         public BoxPlayer player;
         [Tooltip("Controls the position of the player sprite relative to the Camera.main")]
         public Vector2 playerCameraOffset = Vector2.zero;
@@ -17,13 +17,31 @@ namespace DMBTools
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
 
+        new protected void Awake()
+        {
+            base.Awake();
+            SetPlayer();
+        }
+
         new protected void Start()
         {
             base.Start();
+            SetPlayer();
             cameraTX = MainCamera().GetComponent<Transform>();
             deathCollider = GetComponent<BoxCollider2D>();
             deathCollider.isTrigger = true;
             deathCollider.size = deathColliderSize;
+        }
+        void SetPlayer()
+        {
+            if (player == null)
+            {
+                throw new Exception("Player is not defined. Add a player to the root");
+            }
+            else
+            {
+                player = (BoxPlayer)FindFirstObjectByType(typeof(BoxPlayer));
+            }
         }
 
         void Update()
@@ -120,7 +138,7 @@ namespace DMBTools
                 collision.gameObject.CompareTag("Player") &&
                 type == TriggerType.Exit)
             {
-                Object.Destroy(collision.gameObject);
+                UnityEngine.Object.Destroy(collision.gameObject);
             }
         }
     }
