@@ -22,8 +22,8 @@ namespace DMBTools
         }
         void SetCamera()
         {
-            if (_camera == null)
-                _camera = Camera.main;
+            if (Camera == null)
+                Camera = Camera.main;
         }
 
         // Editor Methods
