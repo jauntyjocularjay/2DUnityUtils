@@ -1,11 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 
 
 namespace DMBTools
 {
-    [ExecuteAlways]
-    public abstract class ParallaxBackground : StaticBackground
+    public abstract class ParallaxBackground : Background
     {
         [Header("Parallax Settings")]
         [Tooltip("Rate of Change dictates how the ParallaxBackgrounds move in relationship to the main camera. If the camera's position is modified on Awake (ex. by the GameManager), you need to account for this when you place your background.")]
@@ -17,9 +16,10 @@ namespace DMBTools
         new void Start()
         {
             base.Start();
-            cameraInitialLocalPosition = ViewingCamera.transform.localPosition;
+            cameraInitialLocalPosition = Camera.transform.localPosition;
         }
-        new public virtual void FixedUpdate()
+
+        void FixedUpdate()
         {
             Scroll();
         }
@@ -28,8 +28,8 @@ namespace DMBTools
         {
             cameraPositionChange = new Vector2
             (
-                ViewingCamera.transform.localPosition.x - cameraInitialLocalPosition.x,
-                ViewingCamera.transform.localPosition.y + cameraInitialLocalPosition.y
+                Camera.transform.localPosition.x - cameraInitialLocalPosition.x,
+                Camera.transform.localPosition.y + cameraInitialLocalPosition.y
             );
             backgroundLocalPosition = new Vector2
             (
@@ -45,5 +45,4 @@ namespace DMBTools
         }
 
     }
-
 }

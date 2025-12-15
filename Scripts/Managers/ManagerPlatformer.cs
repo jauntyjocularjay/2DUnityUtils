@@ -7,7 +7,6 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(BoxCollider2D))]
-    [ExecuteAlways]
     public abstract class PlatformerManager : Manager
     {
         [Tooltip("Defaults to the BoxPlayer in the root.")]
@@ -32,11 +31,7 @@ namespace DMBTools
         {
             if (player == null)
             {
-                throw new Exception("Player is not defined. Add a player to the root");
-            }
-            else
-            {
-                player = (BoxPlayer)FindFirstObjectByType(typeof(BoxPlayer));
+                throw new Exception("Player is not defined. Set your player in the GameManager");
             }
         }
 
