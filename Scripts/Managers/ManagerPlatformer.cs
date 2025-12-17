@@ -17,6 +17,9 @@ namespace DMBTools
         [Tooltip("The death collider will trigger a player death ")]
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
+        public Vector3 camera_initial_position;
+        // How do I pass camera_initial_position to every ParallaxBackground
+        bool camera_initial_position_is_set = false;
 
         new protected void Start()
         {
@@ -116,6 +119,12 @@ namespace DMBTools
 
                 cameraTX.position = newPosition;
                 Transform.position = newPosition;
+            }
+
+            if (!camera_initial_position_is_set)
+            {
+                camera_initial_position = newPosition;
+                camera_initial_position_is_set = true;
             }
         }
 
