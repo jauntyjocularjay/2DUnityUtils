@@ -5,7 +5,7 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Tilemap))]
     [RequireComponent(typeof(TilemapRenderer))]
-    public abstract class TilemapParallaxBackground : ParallaxBackground, ITilemapBackground
+    public class TilemapParallaxBackground : ParallaxBackground, ITilemapBackground
     {
         Tilemap _tilemap;
         public Tilemap Tilemap

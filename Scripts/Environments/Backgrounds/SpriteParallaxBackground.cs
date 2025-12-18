@@ -5,7 +5,7 @@
 namespace DMBTools
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public abstract class SpriteParallaxBackground : ParallaxBackground, ISpriteBackground
+    public class SpriteParallaxBackground : ParallaxBackground, ISpriteBackground
     {
 
         SpriteRenderer _spriteRenderer;

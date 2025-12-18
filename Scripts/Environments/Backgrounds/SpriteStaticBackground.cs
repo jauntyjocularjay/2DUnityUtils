@@ -3,7 +3,7 @@ using UnityEngine;
 namespace DMBTools
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public abstract class StaticSpriteBackground : StaticBackground, ISpriteBackground
+    public class StaticSpriteBackground : StaticBackground, ISpriteBackground
     {
         SpriteRenderer _spriteRenderer;
         public SpriteRenderer SpriteRenderer

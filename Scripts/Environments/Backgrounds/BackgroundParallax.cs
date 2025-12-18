@@ -12,11 +12,17 @@ namespace DMBTools
         protected Vector2 cameraInitialLocalPosition;
         protected Vector2 cameraPositionChange;
         protected Vector2 backgroundLocalPosition;
+        public CameraInfo CameraInfo
+        {
+            get => Camera.main.GetComponent<CameraInfo>();
+            set => CameraInfo = value;
+        }
 
         new void Start()
         {
             base.Start();
-            cameraInitialLocalPosition = Camera.transform.localPosition;
+            cameraInitialLocalPosition = CameraInfo.camera_initial_position;
+
         }
 
         void FixedUpdate()
@@ -29,7 +35,7 @@ namespace DMBTools
             cameraPositionChange = new Vector2
             (
                 Camera.transform.localPosition.x - cameraInitialLocalPosition.x,
-                Camera.transform.localPosition.y + cameraInitialLocalPosition.y
+                Camera.transform.localPosition.y - cameraInitialLocalPosition.y
             );
             backgroundLocalPosition = new Vector2
             (

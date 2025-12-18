@@ -14,18 +14,28 @@ namespace DMBTools
         [Tooltip("Controls the position of the player sprite relative to the Camera.main")]
         public Vector2 playerCameraOffset = Vector2.zero;
         Transform cameraTX;
+        CameraInfo _camera_info;
+        public CameraInfo CameraInfo
+        {
+            get => cameraTX.GetComponent<CameraInfo>();
+            set => CameraInfo = value;
+        }
         [Tooltip("The death collider will trigger a player death ")]
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
-        public Vector3 camera_initial_position;
-        // How do I pass camera_initial_position to every ParallaxBackground
-        bool camera_initial_position_is_set = false;
+
+        new protected void Awake()
+        {
+            base.Awake();
+
+            SetPlayer();
+            cameraTX = MainCamera().GetComponent<Transform>();
+            SetCameraPosition();
+        }
 
         new protected void Start()
         {
             base.Start();
-            SetPlayer();
-            cameraTX = MainCamera().GetComponent<Transform>();
             deathCollider = GetComponent<BoxCollider2D>();
             deathCollider.isTrigger = true;
             deathCollider.size = deathColliderSize;
@@ -121,10 +131,10 @@ namespace DMBTools
                 Transform.position = newPosition;
             }
 
-            if (!camera_initial_position_is_set)
+            if (!CameraInfo.camera_initial_position_is_set)
             {
-                camera_initial_position = newPosition;
-                camera_initial_position_is_set = true;
+                CameraInfo.camera_initial_position = newPosition;
+                CameraInfo.camera_initial_position_is_set = true;
             }
         }
 
