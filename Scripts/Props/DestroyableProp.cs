@@ -9,6 +9,7 @@ namespace DMBTools
     public abstract class DestroyableProp : AnimatedProp
     {
         BoxCollider2D _BoxCollider2D;
+        public GameObject itemPrefab;
         new protected void Start()
         {
             base.Start();
@@ -27,8 +28,6 @@ namespace DMBTools
         void OnTriggerStay2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Stay);
         void OnTriggerExit2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Exit);
         public abstract void HandleTrigger(Collider2D collider, TriggerType triggerType);
-
-        public void SelfDestruct() => GameObject.Destroy(this);
     }
 
 }
