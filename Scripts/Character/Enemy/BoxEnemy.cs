@@ -9,7 +9,7 @@ namespace DMBTools
         new protected void Start()
         {
             base.Start();
-            HP(Data.MaxHP);
+            HP = Data.MaxHP;
             SpriteRenderer.sortingOrder = Data.sortingOrder;
         }
 

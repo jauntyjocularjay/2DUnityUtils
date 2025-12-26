@@ -7,9 +7,10 @@ namespace DMBTools
     public abstract class Character : Prop
     /* @class Character extends Prop to provide everything needed to work with a character with a physical presence and animator effectively combining the AnimatedProp and PhysicalProp  */
     {
-        Animator _Animator;
-        Rigidbody2D _Rigidbody2D;
-        protected int hp = 0;
+        protected Animator _Animator;
+        protected Rigidbody2D _Rigidbody2D;
+        protected int _hp = 0;
+        public int HP { get; set; }
         new protected void Awake()
         {
             base.Awake();
@@ -31,13 +32,8 @@ namespace DMBTools
             get => GetComponent<Rigidbody2D>();
             set => _Rigidbody2D = value;
         }
-        public void HP(int currentHP)
-        {
-            hp = currentHP;
-        }
-        public int HP() => hp;
-        public void IncrementHP(int i = 1) => hp += i;
-        public void DecrementHP(int i = 1) => hp -= i;
+        public void IncrementHP(int i = 1) => HP += i;
+        public void DecrementHP(int i = 1) => HP -= i;
     }
 
 
