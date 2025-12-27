@@ -26,6 +26,10 @@ namespace DMBTools
 
         new protected void Awake()
         {
+            if(CameraInfo == null)
+            {
+                throw new Exception("CameraInfo is missing, add CameraInfo component to the camera.");
+            }
             base.Awake();
 
             SetPlayer();
