@@ -13,8 +13,8 @@ namespace DMBTools
         [Header("Camera Orthagonal Size Multiplier")]
         public float size = 2.0f;
         public Scene nextScene;
-        [SerializeField] protected Vector3 cameraMinimumPosition;
-        [SerializeField] protected Vector3 cameraMaximumPosition;
+        public Vector3 cameraMinimumPosition;
+        public Vector3 cameraMaximumPosition;
 
         new protected void Start()
         {

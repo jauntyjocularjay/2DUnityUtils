@@ -17,7 +17,7 @@ namespace DMBTools
         CameraInfo _camera_info;
         public CameraInfo CameraInfo
         {
-            get => cameraTX.GetComponent<CameraInfo>();
+            get => Camera.main.GetComponent<CameraInfo>();
             set => CameraInfo = value;
         }
         [Tooltip("The death collider will trigger a player death ")]
@@ -26,7 +26,7 @@ namespace DMBTools
 
         new protected void Awake()
         {
-            if(CameraInfo == null)
+            if (CameraInfo == null)
             {
                 throw new Exception("CameraInfo is missing, add CameraInfo component to the camera.");
             }
