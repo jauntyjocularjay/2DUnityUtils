@@ -1,9 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public interface ITilemapBackground
 {
     public Camera Camera { get; set; }
-    Tilemap Tilemap { get; set; }
+    Tilemap Tilemap { get; }
     TilemapRenderer TilemapRenderer { get; set; }
 }

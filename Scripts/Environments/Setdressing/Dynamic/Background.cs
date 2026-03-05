@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DMBTools
 {
@@ -8,7 +8,7 @@ namespace DMBTools
         public Camera _camera;
         public Camera Camera
         {
-            get => _camera;
+            get => Camera.main;
             set => _camera = value;
         }
         protected Vector2 backgroundInitialLocalPosition;
