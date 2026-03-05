@@ -14,22 +14,13 @@ namespace DMBTools
         [Tooltip("Controls the position of the player sprite relative to the Camera.main")]
         public Vector2 playerCameraOffset = Vector2.zero;
         Transform cameraTX;
-        CameraInfo _camera_info;
-        public CameraInfo CameraInfo
-        {
-            get => Camera.main.GetComponent<CameraInfo>();
-            set => CameraInfo = value;
-        }
+
         [Tooltip("The death collider will trigger a player death ")]
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
 
         new protected void Awake()
         {
-            if (CameraInfo == null)
-            {
-                throw new Exception("CameraInfo is missing, add CameraInfo component to the camera.");
-            }
             base.Awake();
 
             SetPlayer();
@@ -135,11 +126,6 @@ namespace DMBTools
                 Transform.position = newPosition;
             }
 
-            if (!CameraInfo.camera_initial_position_is_set)
-            {
-                CameraInfo.camera_initial_position = newPosition;
-                CameraInfo.camera_initial_position_is_set = true;
-            }
         }
 
         void OnTriggerExit2D(Collider2D collision)

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
 
@@ -12,16 +12,21 @@ namespace DMBTools
         protected Vector2 cameraInitialLocalPosition;
         protected Vector2 cameraPositionChange;
         protected Vector2 backgroundLocalPosition;
-        public CameraInfo CameraInfo
-        {
-            get => Camera.main.GetComponent<CameraInfo>();
-            set => CameraInfo = value;
-        }
 
         new void Start()
         {
             base.Start();
-            cameraInitialLocalPosition = CameraInfo.camera_initial_position;
+            if(Camera == null)
+            {
+                Camera = Camera.main;
+            }
+            
+            cameraInitialLocalPosition = new Vector2
+            (
+                Camera.transform.localPosition.x, 
+                Camera.transform.localPosition.y
+            );
+            //cameraInitialLocalPosition = CameraInfo.camera_initial_position;
 
         }
 
@@ -37,11 +42,13 @@ namespace DMBTools
                 Camera.transform.localPosition.x - cameraInitialLocalPosition.x,
                 Camera.transform.localPosition.y - cameraInitialLocalPosition.y
             );
+
             backgroundLocalPosition = new Vector2
             (
                 backgroundInitialLocalPosition.x + cameraPositionChange.x,
                 backgroundInitialLocalPosition.y + cameraPositionChange.y
             );
+
             // Camera Initial Position - The camera position is what the background positions will be based from
             Transform.localPosition = new Vector2
             (

@@ -18,18 +18,7 @@ namespace DMBTools
         {
             base.Start();
             backgroundInitialLocalPosition = Transform.position;
-            SetCamera();
-        }
-        void SetCamera()
-        {
-            if (Camera == null)
-                Camera = Camera.main;
-        }
-
-        // Editor Methods
-        void OnRenderObject()
-        {
-            SetCamera();
+            Camera ??= Camera.main; // set the camera to the main camera if it is
         }
 
     }
