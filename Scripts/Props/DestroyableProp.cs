@@ -6,7 +6,7 @@ namespace DMBTools
 {
 
     [RequireComponent(typeof(BoxCollider2D))]
-    public abstract class DestroyableProp : AnimatedProp
+    public abstract class DestroyableProp : AnimatedProp, ICollisioner
     {
         BoxCollider2D _BoxCollider2D;
         public GameObject itemPrefab;
@@ -20,10 +20,10 @@ namespace DMBTools
             get => GetComponent<BoxCollider2D>();
             set => BoxCollider2D = value;
         }
-        void OnCollisionEnter2D(Collision2D collision) => HandleCollision(collision, TriggerType.Enter);
-        void OnCollisionStay2D(Collision2D collision) => HandleCollision(collision, TriggerType.Stay);
-        void OnCollisionExit2D(Collision2D collision) => HandleCollision(collision, TriggerType.Exit);
-        public abstract void HandleCollision(Collision2D collision, TriggerType triggerType);
+        void OnCollisionEnter2D(Collision2D collision) => HandleCollision(collision, CollisionType.Enter);
+        void OnCollisionStay2D(Collision2D collision) => HandleCollision(collision, CollisionType.Stay);
+        void OnCollisionExit2D(Collision2D collision) => HandleCollision(collision, CollisionType.Exit);
+        public abstract void HandleCollision(Collision2D collision, CollisionType collisionType);
         void OnTriggerEnter2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Enter);
         void OnTriggerStay2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Stay);
         void OnTriggerExit2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Exit);
