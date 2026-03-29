@@ -9,15 +9,25 @@ namespace DMBTools
         readonly float spaceBetween = 0.999f; // Shrinks the width to accommodate other expanding surfaces
 
         public SurfaceData data;
-        [Header("Uneditable Information")]
-        public Vector2 dataNativeSize;
-        public bool dataLockWidth;
-        public bool dataLockHeight;
+        
+        [Space(10)]
+        [SerializeField] private SurfaceDataPreview preview;
 
 
         new public void Start()
         {
             base.Start();
+            
+            // Update preview struct for inspector visibility
+            if (data != null)
+            {
+                preview = new SurfaceDataPreview
+                {
+                    nativeSize = data.nativeSize,
+                    lockWidth = data.lockWidth,
+                    lockHeight = data.lockHeight
+                };
+            }
 
             Rigidbody2D.bodyType = RigidbodyType2D.Static;
 
@@ -32,5 +42,19 @@ namespace DMBTools
         {
             return spaceBetween;
         }
+    }
+
+    [System.Serializable]
+    public struct SurfaceDataPreview
+    {
+        [Header("📊 Current Data Values")]
+        [ReadOnly, Tooltip("Read-only preview of data.nativeSize")]
+        public Vector2 nativeSize;
+        
+        [ReadOnly, Tooltip("Read-only preview of data.lockWidth")]
+        public bool lockWidth;
+        
+        [ReadOnly, Tooltip("Read-only preview of data.lockHeight")]
+        public bool lockHeight;
     }
 }

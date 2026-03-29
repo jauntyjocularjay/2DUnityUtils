@@ -5,16 +5,16 @@
 namespace DMBTools
 {
     [ExecuteAlways]
-    public abstract class Platform : Surface
+    public class Platform : Surface
     {
         new protected void Start()
         {
             base.Start();
             gameObject.tag = "Platform";
 
-            dataNativeSize = data.nativeSize;
-            dataLockWidth = data.lockWidth;
-            dataLockHeight = data.lockHeight;
+            //dataNativeSize = data.nativeSize;
+            //dataLockWidth = data.lockWidth;
+            //dataLockHeight = data.lockHeight;
 
             if (data.lockWidth && SpriteRenderer.size.x > data.nativeSize.x)
             {

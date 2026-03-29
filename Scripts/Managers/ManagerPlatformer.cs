@@ -7,10 +7,10 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(BoxCollider2D))]
-    public abstract class PlatformerManager : Manager
+    public class PlatformerManager : Manager
     {
         [Tooltip("Defaults to the BoxPlayer in the root.")]
-        public BoxPlayer player;
+        public Transform playerTransform;
         [Tooltip("Controls the position of the player sprite relative to the Camera.main")]
         public Vector2 playerCameraOffset = Vector2.zero;
         Transform cameraTX;
@@ -37,7 +37,7 @@ namespace DMBTools
         }
         void SetPlayer()
         {
-            if (player == null)
+            if (playerTransform == null)
             {
                 throw new Exception("Player is not defined. Set your player in the GameManager");
             }
@@ -52,7 +52,7 @@ namespace DMBTools
         {
             Vector3 newPosition;
 
-            if (player.Transform.position.x + playerCameraOffset.x <= cameraMinimumPosition.x)
+            if (playerTransform.position.x + playerCameraOffset.x <= cameraMinimumPosition.x)
             {
                 newPosition = new Vector3
                 (
@@ -64,7 +64,7 @@ namespace DMBTools
                 Transform.position = newPosition;
 
             }
-            else if (player.Transform.position.x + playerCameraOffset.x >= cameraMaximumPosition.x)
+            else if (playerTransform.position.x + playerCameraOffset.x >= cameraMaximumPosition.x)
             {
                 newPosition = new Vector3
                 (
@@ -80,7 +80,7 @@ namespace DMBTools
             {
                 newPosition = new Vector3
                 (
-                    player.Transform.position.x + playerCameraOffset.x,
+                    playerTransform.position.x + playerCameraOffset.x,
                     cameraTX.position.y,
                     cameraTX.position.z
                 );
@@ -89,7 +89,7 @@ namespace DMBTools
                 Transform.position = newPosition;
             }
 
-            if (player.Transform.position.y + playerCameraOffset.y <= cameraMinimumPosition.y)
+            if (playerTransform.position.y + playerCameraOffset.y <= cameraMinimumPosition.y)
             {
                 newPosition = new Vector3
                 (
@@ -101,7 +101,7 @@ namespace DMBTools
                 cameraTX.position = newPosition;
                 Transform.position = newPosition;
             }
-            else if (player.Transform.position.y + playerCameraOffset.y >= cameraMaximumPosition.y)
+            else if (playerTransform.position.y + playerCameraOffset.y >= cameraMaximumPosition.y)
             {
                 newPosition = new Vector3
                 (
@@ -118,7 +118,7 @@ namespace DMBTools
                 newPosition = new Vector3
                 (
                     cameraTX.position.x,
-                    player.Transform.position.y + playerCameraOffset.y,
+                    playerTransform.position.y + playerCameraOffset.y,
                     cameraTX.position.z
                 );
 

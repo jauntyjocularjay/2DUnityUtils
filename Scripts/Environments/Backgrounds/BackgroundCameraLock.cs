@@ -4,7 +4,7 @@
 
 namespace DMBTools
 {
-    public abstract class StaticBackground : Background
+    public abstract class CameraLockBackground : Background
     {
         public void FixedUpdate()
         {

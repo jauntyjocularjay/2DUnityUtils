@@ -3,7 +3,7 @@
 namespace DMBTools
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public class StaticSpriteBackground : StaticBackground, ISpriteBackground
+    public class SpriteCameraLockBackground : CameraLockBackground, ISpriteBackground
     {
         SpriteRenderer _spriteRenderer;
         public SpriteRenderer SpriteRenderer
