@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
 
@@ -28,7 +28,7 @@ namespace DMBTools
             playerTransform = FindFirstObjectByType<BoxPlayer>().GetComponent<Transform>();
             if (playerTransform == null) throw new System.Exception("VariableBrightness Player Character undefined in the scene.");
             Manager manager = FindFirstObjectByType<Manager>();
-            levelHypotenuse = FindHypotenuse(manager.cameraMinimumPosition, manager.cameraMaximumPosition);
+            levelHypotenuse = FindHypotenuse(Manager.cameraMinimumPosition, Manager.cameraMaximumPosition);
         }
         void FixedUpdate()
         {

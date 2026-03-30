@@ -24,7 +24,7 @@ namespace DMBTools
             base.Awake();
 
             SetPlayer();
-            cameraTX = MainCamera().GetComponent<Transform>();
+            cameraTX = Camera.main.GetComponent<Transform>();
             SetCameraPosition();
         }
 
