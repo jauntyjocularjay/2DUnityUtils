@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace DMBTools
 {
@@ -20,6 +22,7 @@ namespace DMBTools
             set => _rigidbody2D = value;
         }
         public int HP = 0;
+        public StateSet state;
         new protected void Awake()
         {
             base.Awake();
@@ -30,6 +33,15 @@ namespace DMBTools
         {
             base.Start();
             Rigidbody2D.freezeRotation = true;
+            List<State> states = new List<State>{
+                new State("walking"), 
+                new State("running"), 
+                new State("airbourne"), 
+                new State("recovering")
+            };
+
+            state.Add(states);
+
         }
         public void IncrementHP(int i = 1) => HP += i;
         public void DecrementHP(int i = 1) => HP -= i;
