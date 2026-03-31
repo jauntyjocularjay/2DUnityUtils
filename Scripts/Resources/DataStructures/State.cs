@@ -158,6 +158,35 @@ namespace DMBTools
         }
 
         /// <summary>
+        /// Overrides Object.Equals to maintain consistency with operator == implementation.
+        /// Uses the same value-equality semantics (compares flag only, ignoring keys).
+        /// </summary>
+        /// <param name="obj">The object to compare with this instance</param>
+        /// <returns>true if obj is a State with the same flag value; otherwise, false</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj is State other)
+            {
+                return this.ValueEquals(other);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Overrides Object.GetHashCode to maintain consistency with Equals implementation.
+        /// Returns hash code based on the flag value only (ignoring key) to match equality semantics.
+        /// </summary>
+        /// <returns>Hash code based on the flag value</returns>
+        /// <remarks>
+        /// This ensures that States with the same flag value (but different keys) will have the same hash code,
+        /// which is required for correct behavior in hash-based collections like Dictionary and HashSet.
+        /// </remarks>
+        public override int GetHashCode()
+        {
+            return flag.GetHashCode();
+        }
+
+        /// <summary>
         /// Implicitly converts a State to its boolean value for convenient conditional usage.
         /// Allows natural syntax like: if (state) { ... } instead of if (state.flag) { ... }
         /// </summary>
