@@ -11,7 +11,6 @@ namespace DMBTools
     public abstract class UnityEventInput : MonoBehaviour
     {
         [SerializeField] protected BoxPlayer player;
-        [SerializeField] protected Fan flags;
         [SerializeField] Vector2 movementInput;
         /*
             - Add Player Input Manager component to your player GameObject
