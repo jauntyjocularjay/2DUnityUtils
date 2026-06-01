@@ -1,4 +1,6 @@
-﻿namespace DMBTools
+﻿
+
+namespace DMBTools
 {
     public enum CollisionType
     /* @enum CollisionType provides three values that make evaluating different types of collision 

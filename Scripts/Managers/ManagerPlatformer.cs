@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEditor.EditorTools;
+﻿using System;
 using UnityEngine;
 
 
@@ -8,22 +7,40 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(BoxCollider2D))]
-    public abstract class PlatformerManager : Manager
+    public class PlatformerManager : Manager
     {
-        public BoxPlayer player;
+        [Tooltip("Defaults to the BoxPlayer in the root.")]
+        public Transform playerTransform;
         [Tooltip("Controls the position of the player sprite relative to the Camera.main")]
         public Vector2 playerCameraOffset = Vector2.zero;
         Transform cameraTX;
+
+        [Tooltip("The death collider will trigger a player death ")]
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
+
+        new protected void Awake()
+        {
+            base.Awake();
+
+            SetPlayer();
+            cameraTX = Camera.main.GetComponent<Transform>();
+            SetCameraPosition();
+        }
 
         new protected void Start()
         {
             base.Start();
-            cameraTX = MainCamera().GetComponent<Transform>();
             deathCollider = GetComponent<BoxCollider2D>();
             deathCollider.isTrigger = true;
             deathCollider.size = deathColliderSize;
+        }
+        void SetPlayer()
+        {
+            if (playerTransform == null)
+            {
+                throw new Exception("Player is not defined. Set your player in the GameManager");
+            }
         }
 
         void Update()
@@ -35,7 +52,7 @@ namespace DMBTools
         {
             Vector3 newPosition;
 
-            if (player.Transform.position.x + playerCameraOffset.x <= cameraMinimumPosition.x)
+            if (playerTransform.position.x + playerCameraOffset.x <= cameraMinimumPosition.x)
             {
                 newPosition = new Vector3
                 (
@@ -47,7 +64,7 @@ namespace DMBTools
                 Transform.position = newPosition;
 
             }
-            else if (player.Transform.position.x + playerCameraOffset.x >= cameraMaximumPosition.x)
+            else if (playerTransform.position.x + playerCameraOffset.x >= cameraMaximumPosition.x)
             {
                 newPosition = new Vector3
                 (
@@ -63,7 +80,7 @@ namespace DMBTools
             {
                 newPosition = new Vector3
                 (
-                    player.Transform.position.x + playerCameraOffset.x,
+                    playerTransform.position.x + playerCameraOffset.x,
                     cameraTX.position.y,
                     cameraTX.position.z
                 );
@@ -72,7 +89,7 @@ namespace DMBTools
                 Transform.position = newPosition;
             }
 
-            if (player.Transform.position.y + playerCameraOffset.y <= cameraMinimumPosition.y)
+            if (playerTransform.position.y + playerCameraOffset.y <= cameraMinimumPosition.y)
             {
                 newPosition = new Vector3
                 (
@@ -84,7 +101,7 @@ namespace DMBTools
                 cameraTX.position = newPosition;
                 Transform.position = newPosition;
             }
-            else if (player.Transform.position.y + playerCameraOffset.y >= cameraMaximumPosition.y)
+            else if (playerTransform.position.y + playerCameraOffset.y >= cameraMaximumPosition.y)
             {
                 newPosition = new Vector3
                 (
@@ -101,13 +118,14 @@ namespace DMBTools
                 newPosition = new Vector3
                 (
                     cameraTX.position.x,
-                    player.Transform.position.y + playerCameraOffset.y,
+                    playerTransform.position.y + playerCameraOffset.y,
                     cameraTX.position.z
                 );
 
                 cameraTX.position = newPosition;
                 Transform.position = newPosition;
             }
+
         }
 
         void OnTriggerExit2D(Collider2D collision)
@@ -120,9 +138,15 @@ namespace DMBTools
                 collision.gameObject.CompareTag("Player") &&
                 type == TriggerType.Exit)
             {
-                Object.Destroy(collision.gameObject);
+                UnityEngine.Object.Destroy(collision.gameObject);
             }
         }
+        // Unity Editor methods
+        void OnRenderObject()
+        {
+            SetPlayer();
+        }
     }
+
 }
 
