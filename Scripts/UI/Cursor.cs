@@ -7,9 +7,8 @@ namespace DMBTools
     [RequireComponent(typeof(PlayerInput))]    
     public abstract class Cursor : Prop
     {
-        Vector2 position;
+        Vector3 mousePosition;
         PlayerInput _playerInput;
-
         PlayerInput PlayerInput
         {
             get => _playerInput;
@@ -20,13 +19,17 @@ namespace DMBTools
             base.Start();
 
             _playerInput = GetComponent<PlayerInput>();
-
-            // Transform.position = PlayerInput.;
         }
 
         void FixedUpdate()
         {
-            Transform.position = new Vector2(Mouse.current.position.value.x, Mouse.current.position.value.y);
+            mousePosition = new Vector3(
+                Mouse.current.position.value.x,
+                Mouse.current.position.value.y,
+                Camera.main.nearClipPlane
+            );
+
+            Transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
         }
 
     }
