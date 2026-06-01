@@ -9,5 +9,8 @@ namespace DMBTools
         public static int Hour   =   60 * TimeUnit.Minute;
         public static int Day    =   24 * TimeUnit.Hour;
         public static int Week   =    7 * TimeUnit.Day;
+        public static int Month  =   30 * TimeUnit.Day;
+        public static int Year   =   12 * TimeUnit.Month;
+
     }
 }

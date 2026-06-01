@@ -4,8 +4,7 @@
 
 namespace DMBTools
 {
-    [ExecuteAlways]
-    public abstract class ParallaxBackground : StaticBackground
+    public abstract class ParallaxBackground : Background
     {
         [Header("Parallax Settings")]
         [Tooltip("Rate of Change dictates how the ParallaxBackgrounds move in relationship to the main camera. If the camera's position is modified on Awake (ex. by the GameManager), you need to account for this when you place your background.")]
@@ -17,9 +16,21 @@ namespace DMBTools
         new void Start()
         {
             base.Start();
-            cameraInitialLocalPosition = ViewingCamera.transform.localPosition;
+            if(Camera == null)
+            {
+                Camera = Camera.main;
+            }
+            
+            cameraInitialLocalPosition = new Vector2
+            (
+                Camera.transform.localPosition.x, 
+                Camera.transform.localPosition.y
+            );
+            //cameraInitialLocalPosition = CameraInfo.camera_initial_position;
+
         }
-        new public virtual void FixedUpdate()
+
+        void FixedUpdate()
         {
             Scroll();
         }
@@ -28,14 +39,16 @@ namespace DMBTools
         {
             cameraPositionChange = new Vector2
             (
-                ViewingCamera.transform.localPosition.x - cameraInitialLocalPosition.x,
-                ViewingCamera.transform.localPosition.y + cameraInitialLocalPosition.y
+                Camera.transform.localPosition.x - cameraInitialLocalPosition.x,
+                Camera.transform.localPosition.y - cameraInitialLocalPosition.y
             );
+
             backgroundLocalPosition = new Vector2
             (
                 backgroundInitialLocalPosition.x + cameraPositionChange.x,
                 backgroundInitialLocalPosition.y + cameraPositionChange.y
             );
+
             // Camera Initial Position - The camera position is what the background positions will be based from
             Transform.localPosition = new Vector2
             (
@@ -45,5 +58,4 @@ namespace DMBTools
         }
 
     }
-
 }

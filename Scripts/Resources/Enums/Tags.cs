@@ -1,8 +1,4 @@
-﻿using UnityEngine;
-
-
-
-namespace DMBTools
+﻿namespace DMBTools
 {
     public static class Tag
     {

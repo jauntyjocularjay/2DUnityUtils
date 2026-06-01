@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DMBTools
 {
-[CreateAssetMenu(fileName = "Crop Data", menuName = "HelsingFarm/Data/Crop", order = 0)]
+[CreateAssetMenu(fileName = "Crop Data", menuName = "DMBTools/Data/Crop", order = 0)]
 public class CropData : ScriptableObject
 {
     public CropType type;
