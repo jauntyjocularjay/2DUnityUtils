@@ -1,3 +1,4 @@
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,7 +21,13 @@ namespace DMBTools
 
             _playerInput = GetComponent<PlayerInput>();
 
-            Transform.position = Vector2.zero;
+            // Transform.position = PlayerInput.;
         }
+
+        void FixedUpdate()
+        {
+            Transform.position = new Vector2(Mouse.current.position.value.x, Mouse.current.position.value.y);
+        }
+
     }
 }
