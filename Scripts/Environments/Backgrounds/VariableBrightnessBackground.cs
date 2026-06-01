@@ -23,11 +23,13 @@ namespace DMBTools
 
         void Start()
         {
+            playerTransform = FindAnyObjectByType<BoxPlayer>().GetComponent<Transform>() 
+                ?? throw new System.Exception("VariableBrightness Player Character undefined in the scene.");
+
             startColor = SpriteRenderer.color;
             levelProgress = new FractionScale(0, increments);
-            playerTransform = FindFirstObjectByType<BoxPlayer>().GetComponent<Transform>();
-            if (playerTransform == null) throw new System.Exception("VariableBrightness Player Character undefined in the scene.");
-            Manager manager = FindFirstObjectByType<Manager>();
+            
+            Manager manager = FindAnyObjectByType<Manager>();
             levelHypotenuse = FindHypotenuse(Manager.cameraMinimumPosition, Manager.cameraMaximumPosition);
         }
         void FixedUpdate()
