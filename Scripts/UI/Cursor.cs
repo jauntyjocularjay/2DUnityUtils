@@ -14,14 +14,14 @@ namespace DMBTools
             get => _playerInput;
         }
 
-        new void Start()
+        new protected void Start()
         {
             base.Start();
 
             _playerInput = GetComponent<PlayerInput>();
         }
 
-        void FixedUpdate()
+        protected void FixedUpdate()
         {
             mousePosition = new Vector3(
                 Mouse.current.position.value.x,
