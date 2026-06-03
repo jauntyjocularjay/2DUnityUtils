@@ -7,7 +7,9 @@ namespace DMBTools
     [RequireComponent(typeof(PlayerInput))]    
     public abstract class Cursor : Prop
     {
+
         protected Vector3 mouseWorldPosition;
+        public float clickThreshold = 0.1f;
         PlayerInput _playerInput;
         protected PlayerInput PlayerInput
         {
