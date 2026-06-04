@@ -16,12 +16,8 @@ namespace DMBTools
         public static Vector3 cameraMinimumPosition;
         public static Vector3 cameraMaximumPosition;
 
-        new protected void Start()
-        {
-            SetupCamera();
-        }
-
         public static void SetupCamera()
+        // Public to pass information to the ManagerInspector
         {
             Camera.main.orthographicSize = size * Manager.mapUnitSide;
             Camera.main.GetComponent<Transform>().position = new Vector3(cameraMinimumPosition.x, cameraMinimumPosition.y, Camera.main.transform.position.z);
