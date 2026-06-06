@@ -21,10 +21,8 @@ namespace DMBTools
         }
 
         public SpriteRenderer SpriteRenderer
-        /* @method Returns the SpriteRenderer component from the GameObject */
         {
-            get => GetComponent<SpriteRenderer>();
-            set => _SpriteRenderer = value;
+            get => _SpriteRenderer;
         }
 
     }
