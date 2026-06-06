@@ -9,15 +9,7 @@ namespace DMBTools
     /* @class Physical Prop includes the Prop class and addes getters and setters for a BoxCollider2D, Rigidbody2D */
     {
         BoxCollider2D _BoxCollider2D;
-        public BoxCollider2D BoxCollider2D { get => _BoxCollider2D; }
         Rigidbody2D _Rigidbody2D;
-        public Rigidbody2D Rigidbody2D { get => _Rigidbody2D; }
-        new protected void Awake()
-        {
-            // _BoxCollider2D = GetComponent<BoxCollider2D>();
-            // _Rigidbody2D = GetComponent<Rigidbody2D>();
-        }
-
         new protected void Start()
         /* @method Start() calls Prop.Start() and sets references to the BoxCollider2D and Rigidbody2D */
         {
@@ -27,6 +19,9 @@ namespace DMBTools
 
             Rigidbody2D.freezeRotation = true;
         }
+
+        public BoxCollider2D BoxCollider2D { get => _BoxCollider2D; }
+        public Rigidbody2D Rigidbody2D { get => _Rigidbody2D; }
 
     }
 }

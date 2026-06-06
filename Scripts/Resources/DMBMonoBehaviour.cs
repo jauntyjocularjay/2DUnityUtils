@@ -10,7 +10,7 @@ namespace DMBTools
         Transform _Transform;
         protected void Awake()
         {
-            _Transform = GetComponent<Transform>();
+            // _Transform = GetComponent<Transform>();
         }
         protected void Start()
         {
