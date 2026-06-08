@@ -12,7 +12,7 @@ namespace DMBTools
         public FractionScale airControlVelocity = new FractionScale(0, 12);
         public void AirControlVelocity(int i)
         {
-            airControlVelocity.SetNumerator(i);
+	        airControlVelocity.Numerator = i;
             airControl = i;
         }
         public float AirControlVelocity()
