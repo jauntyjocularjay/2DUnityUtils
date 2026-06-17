@@ -21,8 +21,6 @@ public class ScriptableObjectDrawer : PropertyDrawer
     {
         ScriptableObject scriptableObject = serializedProperty.objectReferenceValue as ScriptableObject;
         SerializedObject serializedObject = new SerializedObject(scriptableObject);
-        string key = $"ScriptableObjectDrawer_{scriptableObject.GetEntityId()}";
-        bool isExpanded = EditorPrefs.GetBool(key,false);
 
         ScriptableObjectDrawer.recursionDepth++;
         if(ScriptableObjectDrawer.recursionDepth > ScriptableObjectDrawer.MAX_RECURSION_DEPTH)
