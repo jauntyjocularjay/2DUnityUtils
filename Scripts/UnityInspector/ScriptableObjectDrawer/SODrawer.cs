@@ -23,19 +23,20 @@ public class ScriptableObjectDrawer : PropertyDrawer
             return;
         }
 
-        Rect dataFieldRect = new Rect(dataPosition);
+        Rect propertyFieldRect = new Rect(dataPosition);
         Rect foldoutBodyRect;
+        GUIContent foldoutGUIContent = new GUIContent(dataLabel);
         string key = $"ScriptableObjectDrawer_{dataScriptableObject.GetEntityId()}";
         bool isExpanded = EditorPrefs.GetBool(key,false);
 
-        dataFieldRect.height = EditorGUIUtility.singleLineHeight;
-        foldoutBodyRect = new Rect(dataFieldRect);
+        propertyFieldRect.height = EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(propertyFieldRect, dataSerializedProperty, dataLabel);
+
+        foldoutBodyRect = new Rect(propertyFieldRect);
         foldoutBodyRect.height = EditorGUIUtility.singleLineHeight;
         foldoutBodyRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-
-        EditorGUI.PropertyField(dataFieldRect, dataSerializedProperty, dataLabel);
-
-        isExpanded = EditorGUI.Foldout(foldoutBodyRect, isExpanded, new GUIContent("ScriptableObject Contents"));
+        foldoutGUIContent.text += " contents";
+        isExpanded = EditorGUI.Foldout(foldoutBodyRect, isExpanded, foldoutGUIContent);
         EditorPrefs.SetBool(key, isExpanded);
 
         if(isExpanded)
