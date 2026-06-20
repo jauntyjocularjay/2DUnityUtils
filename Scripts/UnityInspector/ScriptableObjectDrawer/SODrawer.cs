@@ -55,8 +55,8 @@ public class ScriptableObjectDrawer : PropertyDrawer
         SerializedProperty fieldProperty;
 
         ScriptableObjectDrawer.recursionDepth++;
-        position.x += indentation; // Indentation
-        position.width -= indentation; // Indentation
+        position.x += indentation;
+        position.width -= indentation;
 
         if(ScriptableObjectDrawer.recursionDepth > ScriptableObjectDrawer.MAX_RECURSION_DEPTH)
         {
