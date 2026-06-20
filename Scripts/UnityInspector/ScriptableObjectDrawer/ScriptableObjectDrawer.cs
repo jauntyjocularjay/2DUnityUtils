@@ -15,20 +15,21 @@ public class ScriptableObjectDrawer : PropertyDrawer
     public override void OnGUI(Rect dataPosition, SerializedProperty dataSerializedProperty, GUIContent dataLabel)
     {
         if(dataSerializedProperty == null) return;
-        ScriptableObject dataScriptableObject = dataSerializedProperty.objectReferenceValue as ScriptableObject;
-        if(dataScriptableObject == null)
-        // if the Scriptable Object is null, display the field normally
-        {
-            EditorGUI.PropertyField(dataPosition, dataSerializedProperty, dataLabel);
-            return;
-        }
 
+        ScriptableObject dataScriptableObject = dataSerializedProperty.objectReferenceValue as ScriptableObject;
         Rect propertyFieldRect = new Rect(dataPosition);
         Rect foldoutBodyRect;
         Rect contentsRect;
         GUIContent foldoutGUIContent = new GUIContent(dataLabel);
         string key = $"ScriptableObjectDrawer_{dataScriptableObject.GetEntityId()}";
         bool isExpanded = EditorPrefs.GetBool(key,false);
+
+        if(dataScriptableObject == null)
+        // if the Scriptable Object is null, display the field normally
+        {
+            EditorGUI.PropertyField(dataPosition, dataSerializedProperty, dataLabel);
+            return;
+        }
 
         propertyFieldRect.height = EditorGUIUtility.singleLineHeight;
         EditorGUI.PropertyField(propertyFieldRect, dataSerializedProperty, dataLabel);
@@ -94,7 +95,6 @@ public class ScriptableObjectDrawer : PropertyDrawer
     {
         ScriptableObject scriptableObject = serializedProperty.objectReferenceValue as ScriptableObject;
         if(scriptableObject == null) return EditorGUIUtility.singleLineHeight;
-
         float drawerHeight = (EditorGUIUtility.singleLineHeight * 2) + (EditorGUIUtility.standardVerticalSpacing * 2);
         SerializedObject serializedObject = new SerializedObject(scriptableObject);
         SerializedProperty fieldProperty;
@@ -120,9 +120,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
     public List<FieldInfo> AnalyzeFields(ScriptableObject scriptableObject)
     {
         List<FieldInfo> result = new List<FieldInfo>();
-        
         Type type = scriptableObject.GetType();
-
         FieldInfo[] fields = type.GetFields(
             System.Reflection.BindingFlags.Public |
             System.Reflection.BindingFlags.NonPublic |
