@@ -12,6 +12,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
 {
     private static int recursionDepth = 0;
     private const int MAX_RECURSION_DEPTH = 100;
+    private const int indentation = 12;
     public override void OnGUI(Rect dataPosition, SerializedProperty dataSerializedProperty, GUIContent dataLabel)
     {
         if(dataSerializedProperty == null) return;
@@ -25,6 +26,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
 
         Rect propertyFieldRect = new Rect(dataPosition);
         Rect foldoutBodyRect;
+        Rect contentsRect;
         GUIContent foldoutGUIContent = new GUIContent(dataLabel);
         string key = $"ScriptableObjectDrawer_{dataScriptableObject.GetEntityId()}";
         bool isExpanded = EditorPrefs.GetBool(key,false);
@@ -41,7 +43,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
 
         if(isExpanded)
         {
-            Rect contentsRect = new Rect(foldoutBodyRect);
+            contentsRect = new Rect(foldoutBodyRect);
             contentsRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
             DrawScriptableObjectContents(contentsRect, dataSerializedProperty, dataLabel);
         }
@@ -51,10 +53,11 @@ public class ScriptableObjectDrawer : PropertyDrawer
     {
         ScriptableObject scriptableObject = serializedProperty.objectReferenceValue as ScriptableObject;
         SerializedObject serializedObject = new SerializedObject(scriptableObject);
+        SerializedProperty fieldProperty;
 
         ScriptableObjectDrawer.recursionDepth++;
-        position.x += 10f; // Indentation
-        position.width -= 10f;
+        position.x += indentation; // Indentation
+        position.width -= indentation; // Indentation
 
         if(ScriptableObjectDrawer.recursionDepth > ScriptableObjectDrawer.MAX_RECURSION_DEPTH)
         {
@@ -70,7 +73,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
 
         foreach(FieldInfo field in AnalyzeFields(scriptableObject))
         {
-            SerializedProperty fieldProperty = serializedObject.FindProperty(field.Name);
+            fieldProperty = serializedObject.FindProperty(field.Name);
             if(fieldProperty == null) continue;
 
             position.height = EditorGUI.GetPropertyHeight(fieldProperty, true);
@@ -95,6 +98,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
 
         float drawerHeight = (EditorGUIUtility.singleLineHeight * 2) + (EditorGUIUtility.standardVerticalSpacing * 2);
         SerializedObject serializedObject = new SerializedObject(scriptableObject);
+        SerializedProperty fieldProperty;
         string key = $"ScriptableObjectDrawer_{scriptableObject.GetEntityId()}";
         bool isExpanded = EditorPrefs.GetBool(key, false);
 
@@ -102,12 +106,11 @@ public class ScriptableObjectDrawer : PropertyDrawer
         {
             foreach(FieldInfo field in AnalyzeFields(scriptableObject))
             {
-                SerializedProperty fieldProperty = serializedObject.FindProperty(field.Name);
+                fieldProperty = serializedObject.FindProperty(field.Name);
                 if(fieldProperty == null) {
                     drawerHeight += EditorGUIUtility.standardVerticalSpacing;
                     continue;
                 }
-
                 drawerHeight += EditorGUI.GetPropertyHeight(fieldProperty, true) + EditorGUIUtility.standardVerticalSpacing;
             }
         }
