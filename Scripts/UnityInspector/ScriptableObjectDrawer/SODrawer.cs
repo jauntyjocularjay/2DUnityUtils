@@ -15,9 +15,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
     public override void OnGUI(Rect dataPosition, SerializedProperty dataSerializedProperty, GUIContent dataLabel)
     {
         if(dataSerializedProperty == null) return;
-
         ScriptableObject dataScriptableObject = dataSerializedProperty.objectReferenceValue as ScriptableObject;
-
         if(dataScriptableObject == null)
         // if the Scriptable Object is null, display the field normally
         {
@@ -26,23 +24,25 @@ public class ScriptableObjectDrawer : PropertyDrawer
         }
 
         Rect dataFieldRect = new Rect(dataPosition);
-        Rect foldoutBodyRect = new Rect(dataPosition);
+        Rect foldoutBodyRect;
         string key = $"ScriptableObjectDrawer_{dataScriptableObject.GetEntityId()}";
         bool isExpanded = EditorPrefs.GetBool(key,false);
 
         dataFieldRect.height = EditorGUIUtility.singleLineHeight;
-        foldoutBodyRect.y += EditorGUIUtility.standardVerticalSpacing;
+        foldoutBodyRect = new Rect(dataFieldRect);
+        foldoutBodyRect.height = EditorGUIUtility.singleLineHeight;
+        foldoutBodyRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 
         EditorGUI.PropertyField(dataFieldRect, dataSerializedProperty, dataLabel);
 
-        isExpanded = EditorGUI.Foldout(foldoutBodyRect, isExpanded, new GUIContent("Contents"));
+        isExpanded = EditorGUI.Foldout(foldoutBodyRect, isExpanded, new GUIContent("ScriptableObject Contents"));
         EditorPrefs.SetBool(key, isExpanded);
 
         if(isExpanded)
         {
-            foldoutBodyRect.height += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-            foldoutBodyRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-            DrawScriptableObjectContents(foldoutBodyRect, dataSerializedProperty, dataLabel);
+            Rect contentsRect = new Rect(foldoutBodyRect);
+            contentsRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+            DrawScriptableObjectContents(contentsRect, dataSerializedProperty, dataLabel);
         }
     }
 
@@ -52,11 +52,12 @@ public class ScriptableObjectDrawer : PropertyDrawer
         SerializedObject serializedObject = new SerializedObject(scriptableObject);
 
         ScriptableObjectDrawer.recursionDepth++;
-        position.x += 10f;
+        position.x += 10f; // Indentation
+        position.width -= 10f;
 
         if(ScriptableObjectDrawer.recursionDepth > ScriptableObjectDrawer.MAX_RECURSION_DEPTH)
         {
-            throw new StackOverflowException("Scriptable object recursion.");
+            throw new StackOverflowException("Scriptable object recursion overflow.");
         }
 
         if(serializedProperty.objectReferenceValue == null)
