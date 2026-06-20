@@ -129,14 +129,11 @@ public class ScriptableObjectDrawer : PropertyDrawer
 
         foreach(FieldInfo field in fields)
         {
-            if(field.GetCustomAttribute<NonSerializedAttribute>() != null)
-                continue;
+            if(field.GetCustomAttribute<NonSerializedAttribute>() != null) continue;
 
-            if(field.IsPublic)
-                result.Add(field);
+            if(field.IsPublic) result.Add(field);
 
-            if(!field.IsPublic && field.GetCustomAttribute<SerializeField>() != null)
-                result.Add(field);
+            if(!field.IsPublic && field.GetCustomAttribute<SerializeField>() != null) result.Add(field);
         }
 
         return result;
