@@ -7,6 +7,7 @@ using UnityEngine;
 
 
 [CustomPropertyDrawer(typeof(DrawScriptableObjectAttribute))]
+// [DrawScriptableObjectAttribute] on a variable to show the ScriptableObject drawer
 public class ScriptableObjectDrawer : PropertyDrawer
 {
     private static int recursionDepth = 0;

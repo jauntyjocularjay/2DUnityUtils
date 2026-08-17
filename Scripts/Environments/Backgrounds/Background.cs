@@ -8,7 +8,7 @@ namespace DMBTools
         public Camera _camera;
         public Camera Camera
         {
-            get => Camera.main;
+            get => _camera;
             set => _camera = value;
         }
         protected Vector2 backgroundInitialLocalPosition;
@@ -18,7 +18,7 @@ namespace DMBTools
         {
             base.Start();
             backgroundInitialLocalPosition = Transform.position;
-            Camera ??= Camera.main; // set the camera to the main camera if it is
+            if(Camera == null) Camera = Camera.main; // set the camera to the main camera if it is
         }
 
     }
