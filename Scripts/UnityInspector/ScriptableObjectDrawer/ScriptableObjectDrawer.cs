@@ -18,6 +18,13 @@ public class ScriptableObjectDrawer : PropertyDrawer
         if(dataSerializedProperty == null) return;
 
         ScriptableObject dataScriptableObject = dataSerializedProperty.objectReferenceValue as ScriptableObject;
+        if(dataScriptableObject == null)
+        // if the Scriptable Object is null, display the field normally
+        {
+            EditorGUI.PropertyField(dataPosition, dataSerializedProperty, dataLabel);
+            return;
+        }
+
         Rect propertyFieldRect = new Rect(dataPosition);
         Rect foldoutBodyRect;
         Rect contentsRect;
@@ -25,12 +32,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
         string key = $"ScriptableObjectDrawer_{dataScriptableObject.GetEntityId()}";
         bool isExpanded = EditorPrefs.GetBool(key,false);
 
-        if(dataScriptableObject == null)
-        // if the Scriptable Object is null, display the field normally
-        {
-            EditorGUI.PropertyField(dataPosition, dataSerializedProperty, dataLabel);
-            return;
-        }
+
 
         propertyFieldRect.height = EditorGUIUtility.singleLineHeight;
         EditorGUI.PropertyField(propertyFieldRect, dataSerializedProperty, dataLabel);
