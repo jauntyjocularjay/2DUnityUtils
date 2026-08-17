@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
@@ -35,7 +34,7 @@ public static class DrawScriptableObjectValidator
                         if(!typeof(ScriptableObject).IsAssignableFrom(fieldType))
                         {
                             UnityEngine.Debug.LogError($"Field '{field.Name}' has [DrawScriptableObject] but is type '{fieldType.Name}'. It must be a ScriptableObject.");
-                            throw new InvalidCastException("[DrawScriptableObject] attribute applied to a non-scriptable object.");
+                            throw new InvalidObjectException("[DrawScriptableObject] attribute applied to a non-ScriptableObject.");
                         }
                     }
 
@@ -43,5 +42,10 @@ public static class DrawScriptableObjectValidator
             }
 
         }
+    }
+
+    class InvalidObjectException: Exception
+    {
+        public InvalidObjectException(string message): base(message){}
     }
 }

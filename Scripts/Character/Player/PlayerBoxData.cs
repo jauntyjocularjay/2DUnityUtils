@@ -5,7 +5,7 @@
 namespace DMBTools
 {
     [CreateAssetMenu(fileName = "PlayerData", menuName = "DMBTools/Data/BoxPlayer", order = 0)]
-    public class BoxPlayerData : BoxCharacterData
+    public class BoxPlayerData : CharacterData
     {
         [Header("airControl is an integer between 0-12 that adds velocity during jumps.")]
         public int airControl;

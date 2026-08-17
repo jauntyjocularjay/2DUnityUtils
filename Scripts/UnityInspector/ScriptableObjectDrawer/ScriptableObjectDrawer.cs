@@ -7,6 +7,7 @@ using UnityEngine;
 
 
 [CustomPropertyDrawer(typeof(DrawScriptableObjectAttribute))]
+// [DrawScriptableObjectAttribute] on a variable to show the ScriptableObject drawer
 public class ScriptableObjectDrawer : PropertyDrawer
 {
     private static int recursionDepth = 0;
@@ -15,6 +16,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
     public override void OnGUI(Rect dataPosition, SerializedProperty dataSerializedProperty, GUIContent dataLabel)
     {
         if(dataSerializedProperty == null) return;
+
         ScriptableObject dataScriptableObject = dataSerializedProperty.objectReferenceValue as ScriptableObject;
         if(dataScriptableObject == null)
         // if the Scriptable Object is null, display the field normally
@@ -29,6 +31,8 @@ public class ScriptableObjectDrawer : PropertyDrawer
         GUIContent foldoutGUIContent = new GUIContent(dataLabel);
         string key = $"ScriptableObjectDrawer_{dataScriptableObject.GetEntityId()}";
         bool isExpanded = EditorPrefs.GetBool(key,false);
+
+
 
         propertyFieldRect.height = EditorGUIUtility.singleLineHeight;
         EditorGUI.PropertyField(propertyFieldRect, dataSerializedProperty, dataLabel);
@@ -55,8 +59,8 @@ public class ScriptableObjectDrawer : PropertyDrawer
         SerializedProperty fieldProperty;
 
         ScriptableObjectDrawer.recursionDepth++;
-        position.x += indentation; // Indentation
-        position.width -= indentation; // Indentation
+        position.x += indentation;
+        position.width -= indentation;
 
         if(ScriptableObjectDrawer.recursionDepth > ScriptableObjectDrawer.MAX_RECURSION_DEPTH)
         {
@@ -94,7 +98,6 @@ public class ScriptableObjectDrawer : PropertyDrawer
     {
         ScriptableObject scriptableObject = serializedProperty.objectReferenceValue as ScriptableObject;
         if(scriptableObject == null) return EditorGUIUtility.singleLineHeight;
-
         float drawerHeight = (EditorGUIUtility.singleLineHeight * 2) + (EditorGUIUtility.standardVerticalSpacing * 2);
         SerializedObject serializedObject = new SerializedObject(scriptableObject);
         SerializedProperty fieldProperty;
@@ -120,9 +123,7 @@ public class ScriptableObjectDrawer : PropertyDrawer
     public List<FieldInfo> AnalyzeFields(ScriptableObject scriptableObject)
     {
         List<FieldInfo> result = new List<FieldInfo>();
-        
         Type type = scriptableObject.GetType();
-
         FieldInfo[] fields = type.GetFields(
             System.Reflection.BindingFlags.Public |
             System.Reflection.BindingFlags.NonPublic |
@@ -131,14 +132,11 @@ public class ScriptableObjectDrawer : PropertyDrawer
 
         foreach(FieldInfo field in fields)
         {
-            if(field.GetCustomAttribute<NonSerializedAttribute>() != null)
-                continue;
+            if(field.GetCustomAttribute<NonSerializedAttribute>() != null) continue;
 
-            if(field.IsPublic)
-                result.Add(field);
+            if(field.IsPublic) result.Add(field);
 
-            if(!field.IsPublic && field.GetCustomAttribute<SerializeField>() != null)
-                result.Add(field);
+            if(!field.IsPublic && field.GetCustomAttribute<SerializeField>() != null) result.Add(field);
         }
 
         return result;
