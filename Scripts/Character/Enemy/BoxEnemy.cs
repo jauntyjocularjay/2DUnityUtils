@@ -11,7 +11,6 @@ namespace DMBTools
         {
             base.Start();
             HP = data.MaxHP;
-            SpriteRenderer.sortingOrder = data.sortingOrder;
         }
     }
 }

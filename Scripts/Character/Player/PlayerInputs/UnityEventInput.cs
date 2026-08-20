@@ -29,13 +29,13 @@ namespace DMBTools
             => movementInput = context.ReadValue<Vector2>();
         public void ResetMovementInput()
             => MovementVector(movementInput);
-        protected Vector2 MovementVector(Vector2 vector2)
+        public Vector2 MovementVector(Vector2 vector2)
             => movementInput = vector2;
-        protected Vector2 MovementVector()
+        public Vector2 MovementVector()
             => movementInput;
-        protected bool MovementVectorXZero()
+        public bool MovementVectorXZero()
             => movementInput.x == 0.0f;
-        protected bool MovementVectorYZero()
+        public bool MovementVectorYZero()
             => movementInput.y == 0.0f;
 
         void OnAction(InputAction.CallbackContext context)
