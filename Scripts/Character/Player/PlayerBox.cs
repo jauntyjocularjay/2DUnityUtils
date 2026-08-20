@@ -6,7 +6,7 @@ namespace DMBTools
 {
     public abstract class BoxPlayer : BoxCharacter
     {
-        [SerializeField][DrawScriptableObjectAttribute] BoxPlayerData data;
+        [DrawScriptableObjectAttribute] public BoxPlayerData data;
         new protected void Awake()
         {
             base.Awake();
