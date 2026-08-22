@@ -7,10 +7,10 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerInput))]
-    [RequireComponent(typeof(BoxPlayer))]
+    [RequireComponent(typeof(Character))]
     public abstract class UnityEventInput : MonoBehaviour
     {
-        [SerializeField] protected BoxPlayer player;
+        Character character;
         [SerializeField] Vector2 _movementInput;
         /*
             - Add Player Input Manager component to your player GameObject
@@ -22,8 +22,8 @@ namespace DMBTools
         */
         protected void Start()
         {
-            player = GetComponent<BoxPlayer>();
-            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            character = GetComponent<Character>();
+            character.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
         public void MovementInput(InputAction.CallbackContext context)
             => _movementInput = context.ReadValue<Vector2>();
