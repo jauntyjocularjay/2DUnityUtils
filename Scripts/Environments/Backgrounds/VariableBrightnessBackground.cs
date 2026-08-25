@@ -30,7 +30,7 @@ namespace DMBTools
             levelProgress = new FractionScale(0, increments);
             
             Manager manager = FindAnyObjectByType<Manager>();
-            levelHypotenuse = FindHypotenuse(Manager.cameraMinimumPosition, Manager.cameraMaximumPosition);
+            // levelHypotenuse = FindHypotenuse(Manager.cameraMinimumPosition, Manager.cameraMaximumPosition);
         }
         void FixedUpdate()
         {

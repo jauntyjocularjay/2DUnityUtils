@@ -26,6 +26,8 @@ namespace DMBTools
             SetPlayer();
             cameraTX = Camera.main.GetComponent<Transform>();
             SetCameraPosition();
+            deathCollider = GetComponent<BoxCollider2D>();
+            deathCollider.isTrigger = true;
         }
 
         new protected void Start()

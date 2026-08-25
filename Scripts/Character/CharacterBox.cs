@@ -17,6 +17,5 @@ namespace DMBTools
             _BoxCollider2D = GetComponent<BoxCollider2D>();
         }
 
-        
     }
 }
