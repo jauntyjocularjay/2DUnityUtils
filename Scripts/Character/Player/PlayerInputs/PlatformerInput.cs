@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 
 namespace DMBTools
 {
+    [RequireComponent(typeof(BoxPlayer))]
     public abstract class PlatformerInput : UnityEventInput
     /*
         - Add Player Input Manager component to your player GameObject
@@ -15,12 +17,14 @@ namespace DMBTools
     */
     {
         protected int jumps = 0;
+        BoxPlayer boxPlayer;
         [SerializeField] protected float flatSurfaceBounds;
         [SerializeField] protected float verticalSurfaceBounds;
         new protected void Start()
         {
             base.Start();
-            player.GetComponent<Rigidbody2D>().freezeRotation = true;
+            boxPlayer = GetComponent<BoxPlayer>();
+            boxPlayer.GetComponent<Rigidbody2D>().freezeRotation = true;
         }
 
         protected bool SurfaceIsFlat(Collision2D collision)
@@ -48,6 +52,4 @@ namespace DMBTools
                 Vector2.Dot(collision.contacts[0].normal, Vector2.right) < -verticalSurfaceBounds;
 
     }
-
-    public abstract class Anim { }
 }

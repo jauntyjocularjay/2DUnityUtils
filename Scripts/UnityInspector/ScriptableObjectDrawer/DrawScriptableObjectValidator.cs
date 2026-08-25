@@ -26,7 +26,7 @@ public static class DrawScriptableObjectValidator
 
                 foreach(FieldInfo field in fields)
                 {
-                    DrawScriptableObjectAttribute attr = field.GetCustomAttribute<DrawScriptableObjectAttribute>();
+                    ScriptableObjectAttribute attr = field.GetCustomAttribute<ScriptableObjectAttribute>();
 
                     if(attr != null)
                     {
