@@ -12,6 +12,8 @@ namespace DMBTools
         protected Vector2 cameraInitialLocalPosition;
         protected Vector2 cameraPositionChange;
         protected Vector2 backgroundLocalPosition;
+        public bool lock_x = false;
+        public bool lock_y = false;
 
         new void Start()
         {
@@ -39,8 +41,8 @@ namespace DMBTools
         {
             cameraPositionChange = new Vector2
             (
-                Camera.transform.localPosition.x - cameraInitialLocalPosition.x,
-                Camera.transform.localPosition.y - cameraInitialLocalPosition.y
+                !lock_x ? Camera.transform.localPosition.x - cameraInitialLocalPosition.x : 0.0f,
+                !lock_y ? Camera.transform.localPosition.y - cameraInitialLocalPosition.y : 0.0f
             );
 
             backgroundLocalPosition = new Vector2

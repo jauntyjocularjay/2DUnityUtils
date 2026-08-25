@@ -7,11 +7,11 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerInput))]
-    [RequireComponent(typeof(BoxPlayer))]
+    [RequireComponent(typeof(Character))]
     public abstract class UnityEventInput : MonoBehaviour
     {
-        [SerializeField] protected BoxPlayer player;
-        [SerializeField] Vector2 movementInput;
+        Character character;
+        [SerializeField] Vector2 _movementInput;
         /*
             - Add Player Input Manager component to your player GameObject
             - Set Notification Behavior to Invoke Unity Events
@@ -22,21 +22,24 @@ namespace DMBTools
         */
         protected void Start()
         {
-            player = GetComponent<BoxPlayer>();
-            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            character = GetComponent<Character>();
+            character.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
         public void MovementInput(InputAction.CallbackContext context)
-            => movementInput = context.ReadValue<Vector2>();
+            => _movementInput = context.ReadValue<Vector2>();
         public void ResetMovementInput()
-            => MovementVector(movementInput);
-        protected Vector2 MovementVector(Vector2 vector2)
-            => movementInput = vector2;
-        protected Vector2 MovementVector()
-            => movementInput;
-        protected bool MovementVectorXZero()
-            => movementInput.x == 0.0f;
-        protected bool MovementVectorYZero()
-            => movementInput.y == 0.0f;
+        {
+            MovementVector = _movementInput;
+        }
+        public Vector2 MovementVector
+        {
+            get => _movementInput;
+            set => _movementInput = value;
+        }
+        public bool ResetMovementVectorX()
+            => _movementInput.x == 0.0f;
+        public bool ResetMovementVectorY()
+            => _movementInput.y == 0.0f;
 
         void OnAction(InputAction.CallbackContext context)
         {
