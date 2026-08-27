@@ -7,7 +7,6 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerInput))]
-    [RequireComponent(typeof(Character))]
     public abstract class UnityEventInput : MonoBehaviour
     {
         [SerializeField] Vector2 _movementInput;
