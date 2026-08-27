@@ -34,10 +34,10 @@ namespace DMBTools
         {
             if(isTriggered)
             {
-                Transform.localPosition = new Vector2
+                transform.localPosition = new Vector2
                 (
-                    Transform.localPosition.x + movementVelocity.x / 100,
-                    Transform.localPosition.y + movementVelocity.y / 100
+                    transform.localPosition.x + movementVelocity.x / 100,
+                    transform.localPosition.y + movementVelocity.y / 100
                 );
             }
         }

@@ -7,14 +7,14 @@ namespace DMBTools {
     [RequireComponent(typeof(TilemapRenderer))]
     [RequireComponent(typeof(TilemapCollider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PlatformTilemap : DMBMonoBehaviour
+    public class PlatformTilemap : MonoBehaviour
     {
         Tilemap tilemap;
         TilemapRenderer tilemapRenderer;
         TilemapCollider2D tilemapCollider2D;
-        new Rigidbody2D rigidbody2D;
+        Rigidbody2D _rigidbody2D;
     
-        new protected void Start()
+        protected void Start()
         {
             tilemap = GetComponent<Tilemap>();
     
@@ -23,10 +23,8 @@ namespace DMBTools {
             tilemapCollider2D = GetComponent<TilemapCollider2D>();
             tilemapCollider2D.compositeOperation = Collider2D.CompositeOperation.Merge;
     
-            rigidbody2D = GetComponent<Rigidbody2D>();
-            rigidbody2D.bodyType = RigidbodyType2D.Static;
-    
-    
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+            _rigidbody2D.bodyType = RigidbodyType2D.Static;
         }
     
     }

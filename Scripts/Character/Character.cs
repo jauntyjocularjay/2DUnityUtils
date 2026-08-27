@@ -5,21 +5,23 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public abstract class Character : Prop
+    public abstract class Character : MonoBehaviour
     /* @class Character extends Prop to provide everything needed to work with a character with a physical presence and animator effectively combining the AnimatedProp and PhysicalProp  */
     {
+        protected SpriteRenderer _SpriteRenderer;
+        public SpriteRenderer SpriteRenderer { get => _SpriteRenderer; }
         protected Animator _Animator;
+        public Animator Animator { get => _Animator; }
         protected Rigidbody2D _Rigidbody2D;
+        public Rigidbody2D Rigidbody2D { get => _Rigidbody2D; }
         public int HP = 0;
-        new protected void Start()
+        protected void Start()
         {
-            base.Start();
             _Animator = GetComponent<Animator>();
             _Rigidbody2D = GetComponent<Rigidbody2D>();
-            Rigidbody2D.freezeRotation = true;
+            _Rigidbody2D.freezeRotation = true;
         }
-        public Animator Animator { get => _Animator; }
-        public Rigidbody2D Rigidbody2D { get => _Rigidbody2D; }
+
         public void IncrementHP(int i = 1) => HP += i;
         public void DecrementHP(int i = 1) => HP -= i;
     }

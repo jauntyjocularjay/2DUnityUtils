@@ -19,10 +19,8 @@ namespace DMBTools
         public Vector2 deathColliderSize = new Vector2(32, 24);
         BoxCollider2D deathCollider;
 
-        new protected void Awake()
+        protected void Awake()
         {
-            base.Awake();
-
             SetPlayer();
             cameraTX = Camera.main.GetComponent<Transform>();
             SetCameraPosition();
@@ -63,7 +61,7 @@ namespace DMBTools
                     cameraTX.position.z
                 );
                 cameraTX.position = newPosition;
-                Transform.position = newPosition;
+                transform.position = newPosition;
 
             }
             else if (playerTransform.position.x + playerCameraOffset.x >= cameraMaximumPosition.x)
@@ -76,7 +74,7 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                Transform.position = newPosition;
+                transform.position = newPosition;
             }
             else
             {
@@ -88,7 +86,7 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                Transform.position = newPosition;
+                transform.position = newPosition;
             }
 
             if (playerTransform.position.y + playerCameraOffset.y <= cameraMinimumPosition.y)
@@ -101,7 +99,7 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                Transform.position = newPosition;
+                transform.position = newPosition;
             }
             else if (playerTransform.position.y + playerCameraOffset.y >= cameraMaximumPosition.y)
             {
@@ -113,7 +111,7 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                Transform.position = newPosition;
+                transform.position = newPosition;
             }
             else
             {
@@ -125,7 +123,7 @@ namespace DMBTools
                 );
 
                 cameraTX.position = newPosition;
-                Transform.position = newPosition;
+                transform.position = newPosition;
             }
 
         }

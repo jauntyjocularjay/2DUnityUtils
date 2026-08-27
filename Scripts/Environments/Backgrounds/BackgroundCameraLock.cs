@@ -12,7 +12,7 @@ namespace DMBTools
         }
         void MoveWithCamera()
         {
-            Transform.position = new Vector2
+            transform.position = new Vector2
             (
                 backgroundInitialLocalPosition.x + Camera.transform.localPosition.x,
                 backgroundInitialLocalPosition.y + Camera.transform.localPosition.y

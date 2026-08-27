@@ -31,7 +31,7 @@ namespace DMBTools
                 Camera.main.nearClipPlane
             ));
 
-            Transform.position = mouseWorldPosition;
+            transform.position = mouseWorldPosition;
         }
 
     }

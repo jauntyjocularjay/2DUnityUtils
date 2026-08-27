@@ -5,24 +5,22 @@ using UnityEngine.Tilemaps;
 
 namespace DMBTools
 {
-    public abstract class Area : Prop
+    public abstract class Area : MonoBehaviour
     {
         TilemapCollider2D collidr;
         Rigidbody2D rb;
 
-        new protected void Awake()
+        protected void Awake()
         {
             collidr = GetComponent<TilemapCollider2D>();
             rb = GetComponent<Rigidbody2D>();
         }
-        new protected void Start()
+        protected void Start()
         {
-            base.Start();
             collidr.isTrigger = true;
             rb.bodyType = RigidbodyType2D.Static;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
-
         public TilemapCollider2D CompositeCollider2D()
         {
             return collidr;

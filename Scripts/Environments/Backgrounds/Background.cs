@@ -17,7 +17,7 @@ namespace DMBTools
         new protected void Start()
         {
             base.Start();
-            backgroundInitialLocalPosition = Transform.position;
+            backgroundInitialLocalPosition = transform.position;
             if(Camera == null) Camera = Camera.main; // set the camera to the main camera if it is
         }
 

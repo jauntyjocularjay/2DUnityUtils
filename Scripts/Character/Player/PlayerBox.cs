@@ -7,10 +7,6 @@ namespace DMBTools
     public abstract class BoxPlayer : BoxCharacter
     {
         [ScriptableObjectAttribute] public BoxPlayerData data;
-        new protected void Awake()
-        {
-            base.Awake();
-        }
         new protected void Start()
         {
             base.Start();

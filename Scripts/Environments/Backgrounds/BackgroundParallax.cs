@@ -52,7 +52,7 @@ namespace DMBTools
             );
 
             // Camera Initial Position - The camera position is what the background positions will be based from
-            Transform.localPosition = new Vector2
+            transform.localPosition = new Vector2
             (
                 backgroundLocalPosition.x - (cameraPositionChange.x * rateOfChange.x / 10),
                 backgroundLocalPosition.y - (cameraPositionChange.y * rateOfChange.y / 10)

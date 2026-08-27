@@ -10,7 +10,6 @@ namespace DMBTools
     [RequireComponent(typeof(Character))]
     public abstract class UnityEventInput : MonoBehaviour
     {
-        Character character;
         [SerializeField] Vector2 _movementInput;
         /*
             - Add Player Input Manager component to your player GameObject
@@ -20,11 +19,6 @@ namespace DMBTools
                 - Assign the player object to the input actions used in the game
                 - Assign the event to the corresponding method
         */
-        protected void Start()
-        {
-            character = GetComponent<Character>();
-            character.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        }
         public void MovementInput(InputAction.CallbackContext context)
             => _movementInput = context.ReadValue<Vector2>();
         public void ResetMovementInput()
