@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace DMBTools
 {
-    public abstract class MovingTilemap : DMBMonoBehaviour, ITriggerer
+    public abstract class MovingTilemap : MonoBehaviour, ITriggerer
     {
         TilemapRenderer _tilemapRenderer;
         TilemapRenderer TilemapRenderer
@@ -23,9 +23,8 @@ namespace DMBTools
         [Tooltip("In hundreths of a Unity unit per second.")]
         public Vector2 movementVelocity = new Vector2(1f, 1f);
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        public new void Start()
+        public void Start()
         {
-            base.Start();
             TilemapRenderer = GetComponent<TilemapRenderer>();
             BoxCollider2D = GetComponent<BoxCollider2D>();
         }
@@ -42,9 +41,9 @@ namespace DMBTools
             }
         }
 
-        void OnTriggerEnter2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Enter);
-        void OnTriggerStay2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Stay);
-        void OnTriggerExit2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Exit);
+        public void OnTriggerEnter2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Enter);
+        public void OnTriggerStay2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Stay);
+        public void OnTriggerExit2D(Collider2D collider) => HandleTrigger(collider, TriggerType.Exit);
 
         public void HandleTrigger(Collider2D collider, TriggerType triggerType)
         {

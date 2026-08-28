@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 namespace DMBTools
 {
-    [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(PlayerInput))]
     public abstract class UnityEventInput : MonoBehaviour
     {
         [SerializeField] Vector2 _movementInput;
+
         /*
             - Add Player Input Manager component to your player GameObject
             - Set Notification Behavior to Invoke Unity Events
@@ -19,7 +19,9 @@ namespace DMBTools
                 - Assign the event to the corresponding method
         */
         public void MovementInput(InputAction.CallbackContext context)
-            => _movementInput = context.ReadValue<Vector2>();
+        {
+            _movementInput = context.ReadValue<Vector2>();
+        }
         public void ResetMovementInput()
         {
             MovementVector = _movementInput;
