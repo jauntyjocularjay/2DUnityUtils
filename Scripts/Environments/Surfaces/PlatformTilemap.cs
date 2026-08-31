@@ -6,8 +6,9 @@ namespace DMBTools {
     [RequireComponent(typeof(Tilemap))]
     [RequireComponent(typeof(TilemapRenderer))]
     [RequireComponent(typeof(TilemapCollider2D))]
+    [RequireComponent(typeof(CompositeCollider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class PlatformTilemap : MonoBehaviour
+    public abstract class DMBPlatformTilemap : MonoBehaviour
     {
         Tilemap tilemap;
         TilemapRenderer tilemapRenderer;
