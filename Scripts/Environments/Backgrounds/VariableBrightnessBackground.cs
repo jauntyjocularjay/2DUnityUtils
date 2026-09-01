@@ -29,7 +29,7 @@ namespace DMBTools
             startColor = SpriteRenderer.color;
             levelProgress = new FractionScale(0, increments);
             
-            Manager manager = FindAnyObjectByType<Manager>();
+            GameManager manager = FindAnyObjectByType<GameManager>();
             // levelHypotenuse = FindHypotenuse(Manager.cameraMinimumPosition, Manager.cameraMaximumPosition);
         }
         void FixedUpdate()

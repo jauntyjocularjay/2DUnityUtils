@@ -13,6 +13,8 @@ namespace DMBTools {
         Tilemap tilemap;
         TilemapRenderer tilemapRenderer;
         TilemapCollider2D tilemapCollider2D;
+        CompositeCollider2D compositeCollider2D;
+        public Vector2 compositeColliderOffset = new Vector2(0,-0.02f);
         Rigidbody2D _rigidbody2D;
     
         protected void Start()
@@ -23,6 +25,9 @@ namespace DMBTools {
     
             tilemapCollider2D = GetComponent<TilemapCollider2D>();
             tilemapCollider2D.compositeOperation = Collider2D.CompositeOperation.Merge;
+
+            compositeCollider2D = GetComponent<CompositeCollider2D>();
+            compositeCollider2D.offset = compositeColliderOffset;
     
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _rigidbody2D.bodyType = RigidbodyType2D.Static;

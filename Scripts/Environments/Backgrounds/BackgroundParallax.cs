@@ -8,7 +8,7 @@ namespace DMBTools
     {
         [Header("Parallax Settings")]
         [Tooltip("Rate of Change dictates how the ParallaxBackgrounds move in relationship to the main camera. If the camera's position is modified on Awake (ex. by the GameManager), you need to account for this when you place your background.")]
-        public Vector2 rateOfChange = Vector2.zero;
+        public Vector2 rateOfChange = Vector2.one;
         protected Vector2 cameraInitialLocalPosition;
         protected Vector2 cameraPositionChange;
         protected Vector2 backgroundLocalPosition;
@@ -54,8 +54,8 @@ namespace DMBTools
             // Camera Initial Position - The camera position is what the background positions will be based from
             transform.localPosition = new Vector2
             (
-                backgroundLocalPosition.x - (cameraPositionChange.x * rateOfChange.x / 10),
-                backgroundLocalPosition.y - (cameraPositionChange.y * rateOfChange.y / 10)
+                backgroundLocalPosition.x - (cameraPositionChange.x * rateOfChange.x),
+                backgroundLocalPosition.y - (cameraPositionChange.y * rateOfChange.y)
             );
         }
 

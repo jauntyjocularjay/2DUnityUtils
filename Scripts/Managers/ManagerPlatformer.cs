@@ -7,7 +7,7 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(BoxCollider2D))]
-    public class PlatformerManager : Manager
+    public class PlatformerManager : GameManager
     {
         [Tooltip("Defaults to the BoxPlayer in the root.")]
         public Transform playerTransform;
@@ -28,9 +28,8 @@ namespace DMBTools
             deathCollider.isTrigger = true;
         }
 
-        new protected void Start()
+        protected void Start()
         {
-            base.Start();
             deathCollider = GetComponent<BoxCollider2D>();
             deathCollider.isTrigger = true;
             deathCollider.size = deathColliderSize;
