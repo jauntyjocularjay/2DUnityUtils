@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 namespace DMBTools
 {
     [RequireComponent(typeof(PlayerInput))]    
-    public abstract class Cursor : Prop
+    public abstract class Cursor : MonoBehaviour
     {
 
         protected Vector3 mouseWorldPosition;
@@ -16,9 +16,8 @@ namespace DMBTools
             get => _playerInput;
         }
 
-        new protected void Start()
+        protected void Start()
         {
-            base.Start();
 
             _playerInput = GetComponent<PlayerInput>();
         }

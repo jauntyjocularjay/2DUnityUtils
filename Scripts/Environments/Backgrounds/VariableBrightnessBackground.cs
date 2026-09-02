@@ -23,8 +23,7 @@ namespace DMBTools
 
         void Start()
         {
-            playerTransform = FindAnyObjectByType<BoxPlayer>().GetComponent<Transform>() 
-                ?? throw new System.Exception("VariableBrightness Player Character undefined in the scene.");
+            if (playerTransform == null) throw new System.Exception("VariableBrightness Player Character undefined in the scene.");
 
             startColor = SpriteRenderer.color;
             levelProgress = new FractionScale(0, increments);

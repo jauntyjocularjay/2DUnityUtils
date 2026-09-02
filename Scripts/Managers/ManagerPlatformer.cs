@@ -7,8 +7,11 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(BoxCollider2D))]
-    public class PlatformerManager : GameManager
+    public abstract class PlatformerManager : MonoBehaviour
     {
+        
+        public Vector3 cameraMinimumPosition;
+        public Vector3 cameraMaximumPosition;
         [Tooltip("Defaults to the BoxPlayer in the root.")]
         public Transform playerTransform;
         [Tooltip("Controls the position of the player sprite relative to the Camera.main")]
