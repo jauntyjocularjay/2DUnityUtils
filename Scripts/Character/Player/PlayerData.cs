@@ -8,7 +8,6 @@ namespace DMBTools
     [CreateAssetMenu(fileName = "PlayerData", menuName = "DMBTools/Data/PlayerData", order = 99)]
     public class PlayerData : CharacterData
     {
-        public int maxHealth;
         [Tooltip("airControl is an integer between 0-12 that adds velocity during jumps dictated by the input Vector.x")]
         public int airControl;
         public FractionScale airControlVelocity = new FractionScale(0, 12);
