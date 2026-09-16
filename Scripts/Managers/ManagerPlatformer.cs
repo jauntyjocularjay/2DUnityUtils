@@ -7,15 +7,18 @@ namespace DMBTools
 {
     [RequireComponent(typeof(Transform))]
     [RequireComponent(typeof(BoxCollider2D))]
+    [RequireComponent(typeof(AudioSource))]
     public abstract class PlatformerManager : MonoBehaviour
     {
-        
+        [SerializeField] AudioSource _audioSource;
+        public AudioSource AudioSource { get => _audioSource; }
         public Vector3 cameraMinimumPosition;
         public Vector3 cameraMaximumPosition;
         [Tooltip("Defaults to the BoxPlayer in the root.")]
         public Transform playerTransform;
         [Tooltip("Controls the position of the player sprite relative to the Camera.main")]
         public Vector2 playerCameraOffset = Vector2.zero;
+        public float cameraFollowFactor = 0.1f;
         Transform cameraTX;
 
         [Tooltip("The death collider will trigger a player death ")]
@@ -36,6 +39,10 @@ namespace DMBTools
             deathCollider = GetComponent<BoxCollider2D>();
             deathCollider.isTrigger = true;
             deathCollider.size = deathColliderSize;
+
+            _audioSource = GetComponent<AudioSource>();
+            if(cameraFollowFactor < 0.0f) cameraFollowFactor = 0.0f;
+            else if(cameraFollowFactor > 1.0f) cameraFollowFactor = 1.0f;
         }
         void SetPlayer()
         {
@@ -62,8 +69,6 @@ namespace DMBTools
                     cameraTX.position.y,
                     cameraTX.position.z
                 );
-                cameraTX.position = newPosition;
-                transform.position = newPosition;
 
             }
             else if (playerTransform.position.x + playerCameraOffset.x >= cameraMaximumPosition.x)
@@ -74,9 +79,6 @@ namespace DMBTools
                     cameraTX.position.y,
                     cameraTX.position.z
                 );
-
-                cameraTX.position = newPosition;
-                transform.position = newPosition;
             }
             else
             {
@@ -86,47 +88,38 @@ namespace DMBTools
                     cameraTX.position.y,
                     cameraTX.position.z
                 );
-
-                cameraTX.position = newPosition;
-                transform.position = newPosition;
             }
 
             if (playerTransform.position.y + playerCameraOffset.y <= cameraMinimumPosition.y)
             {
                 newPosition = new Vector3
                 (
-                    cameraTX.position.x,
+                    newPosition.x,
                     cameraMinimumPosition.y,
                     cameraTX.position.z
                 );
-
-                cameraTX.position = newPosition;
-                transform.position = newPosition;
             }
             else if (playerTransform.position.y + playerCameraOffset.y >= cameraMaximumPosition.y)
             {
                 newPosition = new Vector3
                 (
-                    cameraTX.position.x,
+                    newPosition.x,
                     cameraMaximumPosition.y,
                     cameraTX.position.z
                 );
-
-                cameraTX.position = newPosition;
-                transform.position = newPosition;
             }
             else
             {
                 newPosition = new Vector3
                 (
-                    cameraTX.position.x,
+                    newPosition.x,
                     playerTransform.position.y + playerCameraOffset.y,
                     cameraTX.position.z
                 );
-
-                cameraTX.position = newPosition;
-                transform.position = newPosition;
             }
+
+            cameraTX.position = Vector3.Lerp(cameraTX.position, newPosition, cameraFollowFactor);
+            transform.position = Vector3.Lerp(transform.position, newPosition, cameraFollowFactor);
 
         }
 
@@ -136,8 +129,8 @@ namespace DMBTools
         }
         void HandleTrigger(Collider2D collision, TriggerType type)
         {
-            if (collision.gameObject.CompareTag("Enemy") ||
-                collision.gameObject.CompareTag("Player") &&
+            if (collision.gameObject.layer == LayerIndex.Enemy ||
+                collision.gameObject.layer == LayerIndex.Player &&
                 type == TriggerType.Exit)
             {
                 UnityEngine.Object.Destroy(collision.gameObject);
