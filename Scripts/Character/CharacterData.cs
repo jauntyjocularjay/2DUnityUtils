@@ -9,6 +9,7 @@ namespace DMBTools
         public bool silhouette = false;
         public int jumps = 1;
         public Vector3 movementVelocity = Vector3.one;
+        public int maxHealth;
     }
 
 
