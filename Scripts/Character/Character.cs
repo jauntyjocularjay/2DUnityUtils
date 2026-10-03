@@ -23,8 +23,6 @@ namespace DMBTools
         AudioSource _audioSource;
         public AudioSource AudioSource { get; set; }
 
-        public int maxHealth;
-
         protected void Start()
         {
             SpriteRenderer = GetComponent<SpriteRenderer>();
