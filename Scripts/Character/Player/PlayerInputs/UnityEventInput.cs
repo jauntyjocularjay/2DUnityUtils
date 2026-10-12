@@ -31,6 +31,16 @@ namespace DMBTools
             get => _movementInput;
             set => _movementInput = value;
         }
+        public float MovementX
+        {
+            get => _movementInput.x;
+            set => _movementInput.x = value;
+        }
+        public float MovementY
+        {
+            get => _movementInput.y;
+            set => _movementInput.y = value;
+        }
         public bool ResetMovementVectorX()
             => _movementInput.x == 0.0f;
         public bool ResetMovementVectorY()
